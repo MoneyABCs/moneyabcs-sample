@@ -65,23 +65,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand logo" id="logo" ui-sref="home"><img src="images/logo.png"></a>
+            <a class="navbar-brand logo" id="logo" href="/index.html" ui-sref="home"><img src="images/logo.png"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav nav-money">
                 <li class="dropdown">
-                    <a showpage="default" href="../" ng-click="showpagefunc($event)"
+                    <a href="/index.html" ng-click="showpagefunc($event)"
                        class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="../" ng-click="showpage='aboutUS' ">About Us</a></li>
-                        <li><a href="../" ng-click="showpage='contactUS' ">Contact Us</a></li>
+                        <li><a ng-click="changeShowPage('aboutUS')">About Us</a></li>
+                        <li><a ng-click="changeShowPage('contactUS')">Contact Us</a></li>
                     </ul>
                 </li>
-                <li class=""><a href="../" showpage="student" ng-click="showpagefunc($event)">Student</a></li>
-                <li class=""><a href="../" showpage="educator" ng-click="showpagefunc($event)">Educator</a></li>
-                <li><a href="../" showpage="supportflp" ng-click="showpagefunc($event)">Support FLP</a></li>
+                <li class=""><a ng-click="changeShowPage('student')">Student</a></li>
+                <li class=""><a ng-click="changeShowPage('educator')">Educator</a></li>
+                <li><a ng-click="changeShowPage('supportflp')" >Support FLP</a></li>
                 <li ng-if="(uName != undefined) && (uName != '')"><a href="/dashboard">Dashboard</a></li>
 
             </ul>
