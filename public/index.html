@@ -499,7 +499,7 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
     </li><br><li>Majority of the videos uploaded by the public onto YouTube have been embedded on the landing page itself of this website, therefore, making this website a very effective and engaging financial literacy micro-database. From a business perspective, MoneyABCs.com solves an existing issue within the community of a single user friendly go-to place for personalized information in personal finance and financial literacy communicated at a personal level.
 </li></ul>
 </div>
-<section  style="display: -webkit-box;margin: 5px;width: 160px;border-radius: 36px;background-color: #8CC63F !important;float: right;">
+<section ng-if="showpage =='default'"  style="display: -webkit-box;margin: 5px;width: 160px;border-radius: 36px;background-color: #8CC63F !important;float: right;">
     <p style="margin: 7px 5px 5px 10px;color: white;">Sort By </p>
     <select ng-model="newssortby" style="width: 80px;margin: 7px 5px 5px 5px;border-radius: inherit;" ng-change="onNewsSortChange(newssortby)" >
         <!--<option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>-->
