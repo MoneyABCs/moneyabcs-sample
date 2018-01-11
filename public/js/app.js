@@ -118,6 +118,25 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
     $scope.uName = localStorage.getItem("uName");
     $scope.email = localStorage.getItem("email");
     $scope.showpage = "default";
+	// tab link fix
+	$scope.changeShowPage = function changeShowPage(value){
+        $window.location.href = '/index.html';
+        localStorage.setItem('valuePage', value);
+        $scope.showpage = value;
+        //alert(value);
+
+
+
+
+
+    };
+    if(localStorage.getItem('valuePage')!=null){
+        $scope.showpage = localStorage.getItem('valuePage');
+        //console.log(localStorage.getItem('valuePage'));
+        localStorage.setItem('valuePage', "default");
+    }
+	//fix tab links 
+	
     $scope.showpagefunc = function(obj){
 
         $scope.showpage = obj.target.attributes.showpage.value;
