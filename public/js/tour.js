@@ -115,7 +115,7 @@ var homepage = {
         //  }
 //set a flag in cookie
     };
-init();
+//init();
 
 var customoverlay = {
         id: 'customoverlay',
