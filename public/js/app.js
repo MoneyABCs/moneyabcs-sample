@@ -605,6 +605,36 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
     }
 
     getFeaturedArticles($scope);
+$scope.refreshData = function(){
+
+if(($scope.uName != undefined) && ($scope.uName != "")) {
+        // console.log($scope.uName);
+        $http.post('/api/getProfile', {emailId: $scope.uName }).success(function (res) {
+            console.log("Response "+res[0])
+            $scope.saved_articles = res[0];
+        });
+        // $scope.profile
+        $http.post('/api/getUserProfile', {username: $scope.uName}).success(function (res) {
+            $scope.profile = res.local;
+        });
+
+
+        $scope.deleteSavedArticlesfunc = function (index) {
+            // console.log("Clicked..........");
+            // console.log(index);
+            // console.log($scope.saved_articles.title[index].title);
+            var id = $scope.saved_articles.title[index]._id;
+            if (confirm("Confirm Deletion")) {
+                $scope.saved_articles.title.splice(index, 1);
+                $.post("/api/deleteProfile", {emailId: $scope.uName, id: id})
+                    .done(function (data) {
+                        console.log("Deleted: " + data);
+                    });
+            }
+        }
+    }
+
+    }
 
 
     //getgoogleDrive();
