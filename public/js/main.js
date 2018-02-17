@@ -81,6 +81,17 @@ $(function () {
  //   $('.headDef').css('display','block');
  //   $('.subtitleDef').css('display','block');
 //}
+    var SelectedLayout = localStorage.getItem("SelectedLayout");
+    if(SelectedLayout !== "")
+    {
+        $("#schema div div[layout='"+ SelectedLayout +"']").addClass('selectionlayout');
+        $("#SelectedLayout").val(SelectedLayout);
+    }
+    else
+    {
+        $("#schema div div[layout='col-md-3']").addClass('selectionlayout');
+        $("#SelectedLayout").val("col-md-3");
+    }
     var topicsContent;
     $.getJSON( "/topics.json", function( data ) {
     var topic_images = $('.topic-images');
@@ -254,24 +265,37 @@ function sixcols() {
     $('.row:nth-child(n+2) .col-md-3').addClass('col-md-2').removeClass('col-md-3');
     $('.row:nth-child(n+2) .col-md-4').addClass('col-md-2').removeClass('col-md-4');
     $('.row:nth-child(n+2) .col-md-6').addClass('col-md-2').removeClass('col-md-6');
+    $('#schema div').removeClass("selectedLayout");
+    $('#id-col-md-2').addClass("selectedLayout");
+    $("#SelectedLayout").val("col-md-2");
 }
 
 function original() {
     $('.row:nth-child(n+2) .col-md-2').addClass('col-md-3').removeClass('col-md-2');
     $('.row:nth-child(n+2) .col-md-4').addClass('col-md-3').removeClass('col-md-4');
     $('.row:nth-child(n+2) .col-md-6').addClass('col-md-3').removeClass('col-md-6');
+    $('#schema div').removeClass("selectedLayout");
+    $('#id-col-md-3').addClass("selectedLayout");
+    $("#SelectedLayout").val("col-md-3");
 }
 
 function threecols() {
     $('.row:nth-child(n+2) .col-md-2').addClass('col-md-4').removeClass('col-md-2');
     $('.row:nth-child(n+2) .col-md-3').addClass('col-md-4').removeClass('col-md-3');
     $('.row:nth-child(n+2) .col-md-6').addClass('col-md-4').removeClass('col-md-6');
+    $('#schema div').removeClass("selectedLayout");
+    $('#id-col-md-4').addClass("selectedLayout");
+    $("#SelectedLayout").val("col-md-4");
 }
 function twocols() {
     $('.row:nth-child(n+2) .col-md-2').addClass('col-md-6').removeClass('col-md-2');
     $('.row:nth-child(n+2) .col-md-3').addClass('col-md-6').removeClass('col-md-3');
     $('.row:nth-child(n+2) .col-md-4').addClass('col-md-6').removeClass('col-md-4');
+    $('#schema div').removeClass("selectedLayout");
+    $('#id-col-md-6').addClass("selectedLayout");
+    $("#SelectedLayout").val("col-md-6");
 }
+//CHANGE THIS TO CLASS
 $(function () {
     $('#schema').on("click", "div", function () {
         $('#schema div').css('border','none');
@@ -280,7 +304,13 @@ $(function () {
         }else{
             $(this).css('border', 'none')
         }
-
+        // $('#schema div').removeClass("selectedLayout");
+        // if($(this).class)
+        // {
+        //
+        // }else{
+        //     $(this).css('border', 'none')
+        // }
     });
 });
 // .modal-backdrop classes

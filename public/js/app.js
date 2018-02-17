@@ -171,7 +171,21 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
     }
 
 
-    $scope.searchParam = ""
+    $scope.searchParam = "";
+    var SelLayout = "";
+    if((localStorage.getItem("SelectedLayout")) && (localStorage.getItem("SelectedLayout") != "")){
+        SelLayout = localStorage.getItem("SelectedLayout");
+        //apply selected class to which ever
+        $('#schema div').removeClass("selectedLayout");
+        $('#id-'+SelLayout).addClass("selectedLayout");
+    }
+    else {
+        SelLayout = "col-md-3";
+        //apply selected class to typical 4col
+        $('#schema div').removeClass("selectedLayout");
+        $('#id-col-md-3').addClass("selectedLayout");
+    }
+    $scope.SelectedLayout = SelLayout;
     $scope.emailArticleToFriend = function(event){
         var str = event.target.id.split("_")[1];
         if(str <= 2){
@@ -257,6 +271,7 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
         //alert(searchKey)
         // console.log(searchKey);
         // console.log($scope.searchParam);
+        $("#resourceLoadMore").hide(); //CHECK this
         if($scope.searchParam == "" || $scope.searchParam == "Articles"){
 
             $http.post("/searchSample", {name: searchKey }).success(function(res) {
@@ -387,6 +402,9 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
     $scope.logOutProfile = function(){
         //alert("sdfsdjfn");
         localStorage.setItem("uName", "");
+        localStorage.setItem("articleTopics", "");
+        localStorage.setItem("SelectedLayout", "");
+        localStorage.setItem("organisation","");
         $window.location.href = "/logout";
     }
 
@@ -459,22 +477,41 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
     //      });
 //	}
     $scope.getCustomizedArticles = function(){
+        var SelectedLayout = $("#SelectedLayout").val();
+        localStorage.setItem("SelectedLayout",SelectedLayout);
+        $scope.SelectedLayout = SelectedLayout;
         if($(".selected-topics .tag").text().length > 0){
             var selectedStr=$(".selected-topics .tag").text().substr(1);
             selectedStr = selectedStr.replace(/x  /g,',');
             var test = new cAlert("Your customized values are save.", "success",20);
             test.alert();
-            localStorage.setItem("articleTopics",selectedStr)
+            localStorage.setItem("articleTopics",selectedStr);
+            // $http.post('/api/setPersonalize',{username : localStorage.getItem("uName"),selectedlayout : SelectedLayout,selectedtopics : selectedStr}).success(function(res){
+            //     console.log(res)
+            // });
             getFeaturedArticles($scope);
         } else{
             var test = new cAlert("No Articles selected.", "danger",20);
             test.alert();
+            localStorage.setItem("articleTopics","");
+            // $http.post('/api/setPersonalize',{username : localStorage.getItem("uName"),selectedlayout : SelectedLayout,selectedtopics : ""}).success(function(res){
+            //     console.log(res)
+            // });
         }
     }
     $scope.resetCustomized = function(){
+        //update local storage default MAY BE REMOVED IF USING PERSISTENT STORAGE
+        localStorage.setItem("articleTopics","");
+        localStorage.setItem("SelectedLayout","col-md-3");
+        $scope.SelectedLayout = "col-md-3";
+
         localStorage.setItem("articleTopics","");
         var test = new cAlert("Your topic selection has been cleared.", "danger",20);
         test.alert();
+        // //update Db for restoring to default
+        // $http.post('/api/setPersonalize',{username : localStorage.getItem("uName"),selectedlayout : "col-md-3",selectedtopics : ""}).success(function(res){
+        //     console.log(res)
+        // });
         getFeaturedArticles($scope);
     }
 
@@ -650,10 +687,21 @@ if(($scope.uName != undefined) && ($scope.uName != "")) {
     $scope.formData = {};
 
     $http.get('/resources.json').success(function (data){
-        $scope.resources = data;
+        $scope.allresources = data;
+        $scope.resources = $scope.allresources.splice(0,11); //8 should be made dynamic
         $scope.resourcesBackup = $scope.resources;
     });
     console.log($scope.resources);
+
+    $scope.loadMoreResources = function(){
+        //var arr = $scope.totalRes.splice(0,9);
+        var arrResources = ($scope.allresources.length >= 8 ? $scope.allresources.splice(0,8) : $scope.allresources.splice(0,$scope.allresources.length));
+        console.log($scope.allresources.length);
+        for(var i=0;i < arrResources.length;i++){
+            $scope.resources.push(arrResources[i]);
+        }
+        ($scope.allresources.length == 0 ? $scope.hideShowMoreResources = !$scope.hideShowMoreResources : "");
+    }
 
     // when landing on the page, get all todos and show them
     $http.get("/api/todos")

@@ -111,6 +111,10 @@ nav.shrink .top-search-bar{
     background-color: #8CC63F;
 }
 
+.selectedLayout{
+    border:3px solid rgb(80, 198, 63);
+}
+
 .footer {
     padding: 10px 0px 0px 0px;
 }

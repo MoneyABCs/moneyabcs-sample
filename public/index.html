@@ -594,7 +594,7 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
             </div>
         </div>
         <div class="row vdivide" id="sub_news"> <span ng-repeat="articleObj in article">
-                    <div class="col-md-3" style="margin-bottom:5%;">
+                    <div class={{SelectedLayout}} style="margin-bottom:5%;">
                        <div class="sidebar_icons">
                            <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleObj.iframeLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
                             <img data-toggle="modal" id="email_{{$index+3}}" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
@@ -654,6 +654,7 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
 <!-- Mailer End -->
 <!-- Modal fullscreen -->
 <div class="modal modal-fullscreen" id="customize-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <input id="SelectedLayout" hidden />
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -683,10 +684,10 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
                 <div class="customize_columns">
                     <h4 id="customize">Choose your preferred display.</h4>
                     <div class="row customize-column" id="schema" style="text-align:center">
-                        <div onclick="sixcols();" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/6col.jpg'); background-size:cover;"><p style="padding: 70px;color:#8CC63F;">Six Column</p></div>
-                        <div onclick="original();" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/4col.jpg'); background-size:cover;border:3px solid rgb(80, 198, 63);"> <p style="padding: 70px;color:#8CC63F;">Four Column</p></div>
-                        <div onclick="threecols();" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/3col.jpg'); background-size:cover;"><p style="padding: 70px;color:#8CC63F;">Three Column</p></div>
-                        <div onclick="twocols();" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/2col.jpg'); background-size:cover;"><p style="padding: 70px;color:#8CC63F;">Two Column</p></div>
+                        <div onclick="sixcols();" id ="id-col-md-2" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/6col.jpg'); background-size:cover;"><p style="padding: 70px;color:#8CC63F;">Six Column</p></div>
+                        <div onclick="original();" id ="id-col-md-3" class="selectedLayout" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/4col.jpg'); background-size:cover;"> <p style="padding: 70px;color:#8CC63F;">Four Column</p></div>
+                        <div onclick="threecols();" id ="id-col-md-4" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/3col.jpg'); background-size:cover;"><p style="padding: 70px;color:#8CC63F;">Three Column</p></div>
+                        <div onclick="twocols();" id ="id-col-md-6" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/2col.jpg'); background-size:cover;"><p style="padding: 70px;color:#8CC63F;">Two Column</p></div>
                     </div>
                 </div>
 
@@ -714,39 +715,41 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
                 </h4>
                 <div class="customize_button" id="customize"> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#customize-modal" style="display: block; width: 100%;">Personalize</a> </div>
             </div>
-            <span ng-repeat="resourcesObj in resources">
-                <div class="col-md-3" style="margin-bottom:5%;">
-                        <div class=" sidebar_icons"> <!---->
-                            <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourcesObj.webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
-                             <img data-toggle="modal" id="resourceEmail_{{$index+1}}" data-ng-click="emailArticlesToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                            <img src="images/add.png" id={{$index+1}} data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
-                        </div>
-                    <div class="thumbnail"  data-toggle="modal" data-target="#resources">
-                        <img class="thumb" alt="ALT NAME" ng-src="{{resourcesObj.thumbnailLink}}" imageonload>
-                        <div class="type">
-                            <img alt="ALT NAME" ng-src="{{resourcesObj.type}}" imageonload>
-                        </div>
+            <div class="row vdivide">
+                <span ng-repeat="resourcesObj in resources">
+                    <div class={{SelectedLayout}} style="margin-bottom:5%;">
+                            <div class=" sidebar_icons"> <!---->
+                                <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourcesObj.webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
+                                 <img data-toggle="modal" id="resourceEmail_{{$index+1}}" data-ng-click="emailArticlesToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                                <img src="images/add.png" id={{$index+1}} data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
+                            </div>
+                        <div class="thumbnail"  data-toggle="modal" data-target="#resources">
+                            <img class="thumb" alt="ALT NAME" ng-src="{{resourcesObj.thumbnailLink}}" imageonload>
+                            <div class="type">
+                                <img alt="ALT NAME" ng-src="{{resourcesObj.type}}" imageonload>
+                            </div>
 
-                       <!-- <div class="rating">
-                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                        <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
-                        </div>-->
+                           <!-- <div class="rating">
+                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                            <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
+                            </div>-->
 
-                        <div class="caption">
-                            <p class="embedUrl" style="display:none;">{{resourcesObj.embedUrl}}</p>
-                            <h4 class="resourceTitle">{{resourcesObj.name}}</h4>
-                            <p>{{resourcesObj.description}}</p>
+                            <div class="caption">
+                                <p class="embedUrl" style="display:none;">{{resourcesObj.embedUrl}}</p>
+                                <h4 class="resourceTitle">{{resourcesObj.name}}</h4>
+                                <p>{{resourcesObj.description}}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </span>
+            </div>
         </div>
         <hr>
-        <!-- <div class="row">
+        <div class="row">
              <div class="col-md-12">
-                 <button class="btn btn-primary btn-round" ng-click="loadMore()" ng-hide="hideShowMore" style="display: block; width: 100%;">Show More ▼</button>
+                 <button id="resourceLoadMore" class="btn btn-primary btn-round" ng-click="loadMoreResources()" ng-hide="hideShowMoreResources" style="display: block; width: 100%;">Show More ▼</button>
              </div>
-         </div> -->
+         </div>
     </div>
 </section>
 <!-- Resources -->
