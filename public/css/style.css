@@ -799,6 +799,7 @@ padding-right: 20px;
 }
 
 .partners{
+    text-align: center;
     padding-top: 2%;
     background-image: url("../images/partners/partners.jpg");
 }
