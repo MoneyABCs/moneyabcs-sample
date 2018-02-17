@@ -99,7 +99,7 @@ OneDrive.open(odOptions);
                 <li class=""><a showpage="educator" ng-click="showpagefunc($event)">Educator</a></li>
                 <li><a showpage="supportflp" ng-click="showpagefunc($event)">Support FLP</a></li>
                 <li ng-if="(uName != undefined) && (uName != '')"><a href="/dashboard">Dashboard</a></li>
-
+		<li class=""><a ng-click="showpage='partners'">Partners</a></li>
             </ul>
             <!--<form class="navbar-form navbar-left nav-money">
               <div class="form-group">
@@ -336,6 +336,28 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
     </div>
 </div>
 
+<div ng-show="showpage =='partners'"  class="container-fluid margin5Auto partners">
+
+    <div class="col-sm-4">
+        <a href="https://www.wellsfargo.com/"> <img class="partner-logo img-thumbnail" src="images/partners/1024px-Wells_Fargo_Bank.svg.png" /></a>
+        <a href="https://www.woodforest.com/"> <img class="partner-logo img-thumbnail" src="images/partners/woodforestbank.png"/></a>
+        <img class="partner-logo img-thumbnail" src="images/partners/grandbankoftexas.png" />
+
+    </div>
+    <div class="col-sm-4">
+        <img  class="partner-logo img-thumbnail"src="images/partners/fidelitybank.png" />
+        <img  class="partner-logo img-thumbnail"src="images/partners/frbdallas_logo.png" />
+        <img class="partner-logo img-thumbnail" src="images/partners/frost-bank-logo.png" />
+    </div>
+    <div class="col-sm-4">
+        <img class="partner-logo img-thumbnail" src="images/partners/2000px-US-FDIC-Logo.svg.png"/>
+        <a href="https://www.bankozarks.com/">  <img  class="partner-logo img-thumbnail "src="images/partners/Bank-Ozarks-Logo.png" /></a>
+        <img class="partner-logo img-thumbnail" src="images/partners/Iberiabank.png" />
+        <img class="partner-logo img-thumbnail" src="images/partners/Regions+Logo.png" />
+
+    </div>
+
+</div>
 <div ng-show="showpage =='aboutUS'"  style="margin-top: 3%; text-align: center;" >
  <div class="main">
     <div class="main-top">
