@@ -63,6 +63,9 @@ nav.shrink .top-search-bar{
 /*.top-search-bar{
     width: 40%;
 }*/
+.btn-danger{
+    background-color: #c9302c !important;
+}
 .btn-info {
     border-radius: 0px;
     width: 120px;
