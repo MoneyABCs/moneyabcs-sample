@@ -162,9 +162,10 @@ OneDrive.open(odOptions);
 <div ng-view>
 -->
 <section ng-show="showpage =='default'" class="main-banner " style="padding-top:42px;">
-	<div class="alert-success col-xs-3" style="padding:10px;float: right;position: absolute;z-index: 100; right: 10px;margin-top: 10px; text-align: center  ">
-        <strong>Are you new here? Click here to take a tour!!
-        <a class="btn" onclick="hopscotch.startTour(homepage);">Start Tour</a></strong>
+	<div class="alert-success col-xs-3" ng-show="showTour" style="padding:10px;float: right;position: absolute;z-index: 100; right: 10px;margin-top: 10px; text-align: center  ">
+        <strong>Are you new here? Click here to take a tour!!<br>
+        <a class="btn" onclick="hopscotch.startTour(homepage);">Start Tour</a>
+	<a class="btn btn-danger" ng-click="showTour=false;">Close</a>	</strong>
     </div>
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
