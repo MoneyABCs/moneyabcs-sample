@@ -118,6 +118,7 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
     $scope.uName = localStorage.getItem("uName");
     $scope.email = localStorage.getItem("email");
     $scope.showpage = "default";
+    $scope.showTour = true;	
 	// tab link fix
 	$scope.changeShowPage = function changeShowPage(value){
         $window.location.href = '/index.html';
