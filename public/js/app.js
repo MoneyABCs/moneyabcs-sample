@@ -389,7 +389,7 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
         // console.log($scope.totalRes === res);
         // console.log("---------------");
         $scope.articleFeatured = $scope.totalRes.splice(0,3);
-        $scope.article = $scope.totalRes.splice(0,8);
+        $scope.article = $scope.totalRes.splice(0,12);
         console.log($scope.articleFeatured);
         console.log($scope.article);
         /*for(var i=0;i<8;i++){
@@ -637,8 +637,8 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
             console.log(bb);
             return bb - aa;
         });
-        $scope.articleFeatured = res.splice(0,2);
-        $scope.article = res.splice(0,8);
+        $scope.articleFeatured = res.splice(0,3);
+        $scope.article = res.splice(0,12);
     }
 
     getFeaturedArticles($scope);
@@ -677,7 +677,7 @@ if(($scope.uName != undefined) && ($scope.uName != "")) {
     //getgoogleDrive();
     $scope.loadMore = function(){
         //var arr = $scope.totalRes.splice(0,9);
-        var arr = ($scope.totalRes.length >= 8 ? $scope.totalRes.splice(0,8) : $scope.totalRes.splice(0,$scope.totalRes.length));
+        var arr = ($scope.totalRes.length >= 12 ? $scope.totalRes.splice(0,12) : $scope.totalRes.splice(0,$scope.totalRes.length));
         console.log($scope.totalRes.length);
         for(var i=0;i < arr.length;i++){
             $scope.article.push(arr[i]);
@@ -688,14 +688,15 @@ if(($scope.uName != undefined) && ($scope.uName != "")) {
 
     $http.get('/resources.json').success(function (data){
         $scope.allresources = data;
-        $scope.resources = $scope.allresources.splice(0,11); //8 should be made dynamic
+        $scope.resourceFeatured = $scope.allresources.splice(0,3);
+        $scope.resources = ($scope.allresources.length >= 12 ? $scope.allresources.splice(0,12) : $scope.allresources.splice(0,$scope.allresources.length)); 
         $scope.resourcesBackup = $scope.resources;
     });
     console.log($scope.resources);
 
     $scope.loadMoreResources = function(){
         //var arr = $scope.totalRes.splice(0,9);
-        var arrResources = ($scope.allresources.length >= 8 ? $scope.allresources.splice(0,8) : $scope.allresources.splice(0,$scope.allresources.length));
+        var arrResources = ($scope.allresources.length >= 12 ? $scope.allresources.splice(0,12) : $scope.allresources.splice(0,$scope.allresources.length));
         console.log($scope.allresources.length);
         for(var i=0;i < arrResources.length;i++){
             $scope.resources.push(arrResources[i]);

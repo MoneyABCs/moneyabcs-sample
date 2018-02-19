@@ -715,34 +715,91 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
                 </h4>
                 <div class="customize_button" id="customize"> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#customize-modal" style="display: block; width: 100%;">Personalize</a> </div>
             </div>
-            <div class="row vdivide">
-                <span ng-repeat="resourcesObj in resources">
-                    <div class={{SelectedLayout}} style="margin-bottom:5%;">
-                            <div class=" sidebar_icons"> <!---->
-                                <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourcesObj.webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
-                                 <img data-toggle="modal" id="resourceEmail_{{$index+1}}" data-ng-click="emailArticlesToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                                <img src="images/add.png" id={{$index+1}} data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
-                            </div>
-                        <div class="thumbnail"  data-toggle="modal" data-target="#resources">
-                            <img class="thumb" alt="ALT NAME" ng-src="{{resourcesObj.thumbnailLink}}" imageonload>
-                            <div class="type">
-                                <img alt="ALT NAME" ng-src="{{resourcesObj.type}}" imageonload>
-                            </div>
+            <div class="col-md-3 col-lg-3" id="first_result_resource">
+                <div class="sidebar_icons">
+                    <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[0].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
+                    <img data-toggle="modal" id="resourceEmail_1" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                    <img src="images/add.png" id="1" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
+                </div>
+                <div class="thumbnail">
+                    <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[0].thumbnailLink}}" imageonload>
+                    <div class="type">
+                        <img alt="ALT NAME" ng-src="{{resourceFeatured[0].type}}" imageonload>
+                    </div>
 
-                           <!-- <div class="rating">
-                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                            <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
-                            </div>-->
+                    <div class="caption">
+                        <p class="embedUrl" style="display:none;">{{resourceFeatured[0].embedUrl}}</p>
+                        <h4 class="resourceTitle">{{resourceFeatured[0].name}}</h4>
+                        <p>{{resourceFeatured[0].description}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3"  id="second_result_resource">
+                <div class="sidebar_icons">
+                    <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[1].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
+                    <img data-toggle="modal" id="resourceEmail_2" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                    <img src="images/add.png" id="2" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
+                </div>
+                <div class="thumbnail">
+                    <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[1].thumbnailLink}}" imageonload>
+                    <div class="type">
+                        <img alt="ALT NAME" ng-src="{{resourceFeatured[1].type}}" imageonload>
+                    </div>
 
-                            <div class="caption">
-                                <p class="embedUrl" style="display:none;">{{resourcesObj.embedUrl}}</p>
-                                <h4 class="resourceTitle">{{resourcesObj.name}}</h4>
-                                <p>{{resourcesObj.description}}</p>
-                            </div>
+                    <div class="caption">
+                        <p class="embedUrl" style="display:none;">{{resourceFeatured[1].embedUrl}}</p>
+                        <h4 class="resourceTitle">{{resourceFeatured[1].name}}</h4>
+                        <p>{{resourceFeatured[1].description}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3" id="third_result_resource">
+                <div class="sidebar_icons">
+                    <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[2].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
+                    <img data-toggle="modal" id="resourceEmail_3" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                    <img src="images/add.png" id="3" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
+                </div>
+                <div class="thumbnail">
+                    <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[2].thumbnailLink}}" imageonload>
+                    <div class="type">
+                        <img alt="ALT NAME" ng-src="{{resourceFeatured[2].type}}" imageonload>
+                    </div>
+
+                    <div class="caption">
+                        <p class="embedUrl" style="display:none;">{{resourceFeatured[2].embedUrl}}</p>
+                        <h4 class="resourceTitle">{{resourceFeatured[2].name}}</h4>
+                        <p>{{resourceFeatured[2].description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row vdivide">
+            <span ng-repeat="resourcesObj in resources">
+                <div class={{SelectedLayout}} style="margin-bottom:5%;">
+                        <div class=" sidebar_icons"> <!---->
+                            <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourcesObj.webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
+                             <img data-toggle="modal" id="resourceEmail_{{$index+1}}" data-ng-click="emailArticlesToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                            <img src="images/add.png" id={{$index+1}} data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
+                        </div>
+                    <div class="thumbnail"  data-toggle="modal" data-target="#resources">
+                        <img class="thumb" alt="ALT NAME" ng-src="{{resourcesObj.thumbnailLink}}" imageonload>
+                        <div class="type">
+                            <img alt="ALT NAME" ng-src="{{resourcesObj.type}}" imageonload>
+                        </div>
+
+                       <!-- <div class="rating">
+                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                        <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
+                        </div>-->
+
+                        <div class="caption">
+                            <p class="embedUrl" style="display:none;">{{resourcesObj.embedUrl}}</p>
+                            <h4 class="resourceTitle">{{resourcesObj.name}}</h4>
+                            <p>{{resourcesObj.description}}</p>
                         </div>
                     </div>
-                </span>
-            </div>
+                </div>
+            </span>
         </div>
         <hr>
         <div class="row">
