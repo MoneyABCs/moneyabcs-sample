@@ -63,6 +63,9 @@ nav.shrink .top-search-bar{
 /*.top-search-bar{
     width: 40%;
 }*/
+.btn-danger{
+    background-color: #c9302c !important;
+}
 .btn-info {
     border-radius: 0px;
     width: 120px;
@@ -782,13 +785,30 @@ padding-right: 20px;
 
 @media screen and (max-width: 1440px) and (min-width: 1367px) {
 .searchMedia{
-    width: 200px!important;}
+    width: 100px!important;}
 }
 @media screen and (max-width: 1550px) and (min-width: 1441px) {
 .searchMedia{
-    width: 345px!important;}
+    width: 250px!important;}
 }
 @media screen (min-width: 1551px) {
 .searchMedia{
-    width: 500px!important;}
+    width: 400px!important;}
+}
+
+.partner-logo{
+    height: 60%; width: 70%;
+    margin: 15px;
+}
+
+.partner-logo:hover{
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1);
+}
+
+.partners{
+    text-align: center;
+    padding-top: 2%;
+    background-image: url("../images/partners/partners.jpg");
 }

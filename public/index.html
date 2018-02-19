@@ -99,7 +99,7 @@ OneDrive.open(odOptions);
                 <li class=""><a showpage="educator" ng-click="showpagefunc($event)">Educator</a></li>
                 <li><a showpage="supportflp" ng-click="showpagefunc($event)">Support FLP</a></li>
                 <li ng-if="(uName != undefined) && (uName != '')"><a href="/dashboard">Dashboard</a></li>
-
+		<li class=""><a ng-click="showpage='partners'">Partners</a></li>
             </ul>
             <!--<form class="navbar-form navbar-left nav-money">
               <div class="form-group">
@@ -162,9 +162,10 @@ OneDrive.open(odOptions);
 <div ng-view>
 -->
 <section ng-show="showpage =='default'" class="main-banner " style="padding-top:42px;">
-	<div class="alert-success col-xs-3" style="padding:10px;float: right;position: absolute;z-index: 100; right: 10px;margin-top: 10px; text-align: center  ">
-        <strong>Are you new here? Click here to take a tour!!
-        <a class="btn" onclick="hopscotch.startTour(homepage);">Start Tour</a></strong>
+	<div class="alert-success col-xs-3" ng-show="showTour" style="padding:10px;float: right;position: absolute;z-index: 100; right: 10px;margin-top: 10px; text-align: center  ">
+        <strong>Are you new here? Click here to take a tour!!<br>
+        <a class="btn" onclick="hopscotch.startTour(homepage);">Start Tour</a>
+	<a class="btn btn-danger" style="background-color: #c9302c !important;" ng-click="showTour=false;">Close</a>	</strong>
     </div>
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -336,6 +337,28 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
     </div>
 </div>
 
+<div ng-show="showpage =='partners'"  class="container-fluid margin5Auto partners">
+
+      <div class="col-sm-4">
+        <a href="https://www.wellsfargo.com/"> <img class="partner-logo img-thumbnail" src="images/partners/1024px-Wells_Fargo_Bank.svg.png" /></a>
+        <a href="https://www.woodforest.com/"> <img class="partner-logo img-thumbnail" src="images/partners/woodforestbank.png"/></a>
+        <a href="https://www.grandbankoftexas.com/"><img class="partner-logo img-thumbnail" src="images/partners/grandbankoftexas.png" /> </a>
+
+    </div>
+    <div class="col-sm-4">
+        <a href="https://www.bankwithfidelity.com/" ><img  class="partner-logo img-thumbnail"src="images/partners/fidelitybank.png" /></a>
+        <a href="https://www.dallasfed.org/"><img  class="partner-logo img-thumbnail"src="images/partners/frbdallas_logo.png" /></a>
+        <a href="https://www.frostbank.com/"><img class="partner-logo img-thumbnail" src="images/partners/frost-bank-logo.png" /></a>
+    </div>
+    <div class="col-sm-4">
+       <a href="https://www.fdic.gov/"> <img class="partner-logo img-thumbnail" src="images/partners/2000px-US-FDIC-Logo.svg.png"/></a>
+        <a href="https://www.bankozarks.com/">  <img  class="partner-logo img-thumbnail "src="images/partners/Bank-Ozarks-Logo.png" /></a>
+       <a href="https://www.iberiabank.com/personal/"> <img class="partner-logo img-thumbnail" src="images/partners/Iberiabank.png" /></a>
+       <a href="https://www.regions.com/"> <img class="partner-logo img-thumbnail" src="images/partners/Regions+Logo.png" /></a>
+
+    </div>
+
+</div>
 <div ng-show="showpage =='aboutUS'"  style="margin-top: 3%; text-align: center;" >
  <div class="main">
     <div class="main-top">
