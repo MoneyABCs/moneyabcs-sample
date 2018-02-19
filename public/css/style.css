@@ -743,8 +743,15 @@ a, a:hover, a:active, a:visited{
     padding: 20px;
 }
 .marginMain{
-    margin-left:5%;
-    margin-right:5%;
+    margin-left:1%;
+    margin-right:1%;
+    border-radius: 10px;
+}
+.showMore {
+    display: block;
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
 }
 
 /***********************************************************************************/
