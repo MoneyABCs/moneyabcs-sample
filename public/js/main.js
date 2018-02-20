@@ -213,9 +213,23 @@ $(function () {
 });
 
 $(function () {
+    $('#resourceHolderTop').on("click", "div", function () {
+        var iframeLink = $(this).find('.embedUrl').text();
+        var resourceTitle = $(this).find('.resourceTitle').text();
+        // console.log("top");
+        // console.log(iframeLink);
+        // console.log(resourceTitle);
+        $('.resourcesSpace').html(iframeLink);
+        $('#modal_header').html('<p>'+resourceTitle+'</p>');
+    });
+});
+
+$(function () {
     $('#resourceHolder').on("click", "div", function () {
         var iframeLink = $(this).find('.embedUrl').text();
         var resourceTitle = $(this).find('.resourceTitle').text();
+        // console.log(iframeLink);
+        // console.log(resourceTitle);
         $('.resourcesSpace').html(iframeLink);
         $('#modal_header').html('<p>'+resourceTitle+'</p>');
     });

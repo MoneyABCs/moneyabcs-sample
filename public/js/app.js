@@ -730,7 +730,7 @@ $scope.refreshData = function(){
 if(($scope.uName != undefined) && ($scope.uName != "")) {
         // console.log($scope.uName);
         $http.post('/api/getProfile', {emailId: $scope.uName }).success(function (res) {
-            console.log("Response "+res[0])
+            console.log("Response "+res[0]);
             $scope.saved_articles = res[0];
         });
         // $scope.profile

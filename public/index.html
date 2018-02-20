@@ -698,8 +698,8 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
         <div id="resourcesSearchHead" style="display:none;font-size: 20px; border-radius: 60px 60px 60px 60px; background-color: #8CC63F !important; background-color: white; margin-bottom: 15px;">
             <span style="margin-left: 20px;">Resources</span>
         </div>
-        <div class="row vdivide" id="resourceHolder">
-            <div class="col-md-3">
+        <div class="row vdivide searchHide" id="resourceHolderTop">
+            <div class="col-md-3 col-lg-3">
                 <img src="images/Forma-1.png">
                 <h3>TEACH ME ABOUT MONEY</h3>
                 <h4 class="subheading">
@@ -713,7 +713,7 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
                     <img data-toggle="modal" id="resourceEmail_1" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
                     <img src="images/add.png" id="1" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
                 </div>
-                <div class="thumbnail">
+                <div class="thumbnail" data-toggle="modal" data-target="#resources">
                     <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[0].thumbnailLink}}" imageonload>
                     <div class="type">
                         <img alt="ALT NAME" ng-src="{{resourceFeatured[0].type}}" imageonload>
@@ -726,13 +726,13 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-lg-3"  id="second_result_resource">
+            <div class="col-md-3 col-lg-3" id="second_result_resource">
                 <div class="sidebar_icons">
                     <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[1].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
                     <img data-toggle="modal" id="resourceEmail_2" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
                     <img src="images/add.png" id="2" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
                 </div>
-                <div class="thumbnail">
+                <div class="thumbnail" data-toggle="modal" data-target="#resources">
                     <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[1].thumbnailLink}}" imageonload>
                     <div class="type">
                         <img alt="ALT NAME" ng-src="{{resourceFeatured[1].type}}" imageonload>
@@ -751,7 +751,7 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
                     <img data-toggle="modal" id="resourceEmail_3" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
                     <img src="images/add.png" id="3" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
                 </div>
-                <div class="thumbnail">
+                <div class="thumbnail" data-toggle="modal" data-target="#resources">
                     <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[2].thumbnailLink}}" imageonload>
                     <div class="type">
                         <img alt="ALT NAME" ng-src="{{resourceFeatured[2].type}}" imageonload>
@@ -765,9 +765,9 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
                 </div>
             </div>
         </div>
-        <div class="row vdivide">
+        <div class="row vdivide" id="resourceHolder">
             <span ng-repeat="resourcesObj in resources">
-                <div class={{SelectedLayout}} style="margin-bottom:5%;">
+                <div class={{SelectedLayout}} >
                         <div class=" sidebar_icons"> <!---->
                             <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourcesObj.webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
                              <img data-toggle="modal" id="resourceEmail_{{$index+1}}" data-ng-click="emailArticlesToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
