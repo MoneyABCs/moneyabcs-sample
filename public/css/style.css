@@ -819,3 +819,15 @@ padding-right: 20px;
     padding-top: 2%;
     background-image: url("../images/partners/partners.jpg");
 }
+.aboutus{
+    font-size: large;
+    font-weight: 600;
+    text-align:justify;
+    color: #fff;
+    padding-top: 3%;
+    background-image: url("../images/partners/partners.jpg");
+}
+.aboutus1{
+
+text-align:justify;
+}
