@@ -36,7 +36,7 @@ app.use(morgan('combined'))
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
-    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL, // || 'mongodb://localhost/moneyabcsdb',
+    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL, // || 'mongodb://localhost:27017/moneyabcsdb',
     mongoURLLabel = "";
 
 if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
@@ -357,20 +357,21 @@ var searchSample = function(searchKeyword,res){
 	var i=0;
 
 	var myVar  = setInterval(function () {
+		// console.log("printing i ="+i);
 		if(i < arr.length) {
-			var data = ArticleSearchResult.find({"title": new RegExp('^' + arr[i])},function(err,data){
+			var data = ArticleSearchResult.find({"title": new RegExp('^.* ' + arr[i] + '.*$')},function(err,data){
 				if(data.length > 0){
 					for(var l = 0 ;l < data.length;l++){
 						finalData.push(data[l]);
 					}
 				}
-				var data = ArticleSearchResult.find({"topicName": new RegExp('^' + arr[i])},function(err,data){
+				var data = ArticleSearchResult.find({"topicName": new RegExp('^.* ' + arr[i] + '.*$')},function(err,data){
 					if(data.length > 0){
 						for(var l = 0 ;l < data.length;l++){
 							johnRemoved = finalData.filter(function(el) {
 								return el.title !== data[l].title;
 							});
-							johnRemoved.push(data[l])
+							johnRemoved.push(data[l]);
 							finalData = johnRemoved;
 						}
 					}
@@ -378,24 +379,24 @@ var searchSample = function(searchKeyword,res){
 			});
 			i++;
 		} else {
-			var data = ArticleSearchResult.find({"title": new RegExp('^' + searchKeyword)},function(err,data){
+			var data = ArticleSearchResult.find({"title": new RegExp('^.* ' + searchKeyword + '.*$')},function(err,data){
 				if(data.length > 0){
 					for(var l = 0 ;l < data.length;l++){
 						johnRemoved = finalData.filter(function(el) {
 							return el.title !== data[l].title;
 						});
-						johnRemoved.push(data[l])
+						johnRemoved.push(data[l]);
 						finalData = johnRemoved;
 					}
 				}
-				srcKey = srcKey.trim().replace(/ /g,"%20");;
-				var data = ArticleSearchResult.find({"topicName": new RegExp('^' + srcKey)},function(err,data){
+				srcKey = srcKey.trim().replace(/ /g,"%20");
+				var data = ArticleSearchResult.find({"topicName": new RegExp('^.* ' + srcKey + '.*$')},function(err,data){
 					if(data.length > 0){
 						for(var l = 0 ;l < data.length;l++){
 							johnRemoved = finalData.filter(function(el) {
 								return el.title !== data[l].title;
 							});
-							johnRemoved.push(data[l])
+							johnRemoved.push(data[l]);
 							finalData = johnRemoved;
 						}
 					}
@@ -505,7 +506,7 @@ var Todo = mongoose.model('Todo', {
 
             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
             if (err)
-                res.send(err)
+                res.send(err);
 
             res.json(todos); // return all todos in JSON format
         });

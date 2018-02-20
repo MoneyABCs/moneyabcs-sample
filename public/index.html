@@ -138,14 +138,14 @@ OneDrive.open(odOptions);
                 <div class="top-search-bar">
                     <div class="input-group" id = "group-key">
                         <div class="input-group-btn search-panel" ng-init="searchType='All'">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Search: {{searchType}}<span class="caret"></span></button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Search: </button>
+                            <!--{{searchType}}<span class="caret"></span>-->
+                            <!--<ul class="dropdown-menu" role="menu">-->
 
-                            <ul class="dropdown-menu" role="menu">
-
-                                <li ng-click="setSearch('Articles'); searchType='Articles'"><a href="#id" ><i class="fa fa-angle-double-right"></i>Articles</a></li>
-                                <li ng-click="setSearch('Presentation');searchType='Presentations'"><a href="#name" ><i class="fa fa-angle-double-right"></i>Presentations</a></li>
-                                <li ng-click="setSearch('Video'); searchType='Videos'"><a href="#videos" ><i class="fa fa-angle-double-right"></i>Videos</a></li>
-                            </ul>
+                                <!--<li ng-click="setSearch('Articles'); searchType='Articles'"><a href="#id" ><i class="fa fa-angle-double-right"></i>Articles</a></li>-->
+                                <!--<li ng-click="setSearch('Presentation');searchType='Presentations'"><a href="#name" ><i class="fa fa-angle-double-right"></i>Presentations</a></li>-->
+                                <!--<li ng-click="setSearch('Video'); searchType='Videos'"><a href="#videos" ><i class="fa fa-angle-double-right"></i>Videos</a></li>-->
+                            <!--</ul>-->
                         </div>
                         <input type="hidden" name="search_param" value="name" id="search_param">
                         <input type="text" id="search-key" class="form-control search1 searchMedia"       title="What are you looking for? (e.g. Credit Scores)" placeholder="What are you looking for? (e.g. Credit Scores) " autocomplete="off">
@@ -536,6 +536,9 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
 </section>
 <section ng-show="showpage =='default'" class="news pad20px" style="margin-top: 25px;" id="news-section">
     <div class="container-fluid bgColorWhite pad20px marginMain ">
+        <div id="articlesSearchHead" style="display:none; font-size: 20px; border-radius: 60px 60px 60px 60px; background-color: #8CC63F !important; background-color: white; margin-bottom: 15px;">
+            <span style="margin-left: 20px;">Articles</span>
+        </div>
         <div class="row vdivide searchHide"  style="margin-bottom: 3%;">
             <div class="search_results" id="search_results"></div>
             <div class="col-md-3 col-lg-3"> <img src="images/whats_hot.png">
@@ -729,6 +732,9 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
 </div>
 <section class="resources pad20px " id="sub_resources" ng-show="showpage =='default'">
     <div class="container-fluid pad20px bgColorWhite marginMain ">
+        <div id="resourcesSearchHead" style="display:none;font-size: 20px; border-radius: 60px 60px 60px 60px; background-color: #8CC63F !important; background-color: white; margin-bottom: 15px;">
+            <span style="margin-left: 20px;">Resources</span>
+        </div>
         <div class="row vdivide" id="resourceHolder">
             <div class="col-md-3">
                 <img src="images/Forma-1.png">

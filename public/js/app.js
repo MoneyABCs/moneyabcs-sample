@@ -273,77 +273,159 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
         // console.log(searchKey);
         // console.log($scope.searchParam);
         $("#resourceLoadMore").hide(); //CHECK this
-        if($scope.searchParam == "" || $scope.searchParam == "Articles"){
 
-            $http.post("/searchSample", {name: searchKey }).success(function(res) {
-            	//alert(res)
-                if(res.data.length > 0){
-                    var uniqueNames = [];
-                    $.each(res.data, function(i, el){
-                        if($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
-                    });
-                    res.data = uniqueNames;
-                    $(".searchHide").hide();
-                    $("#articleLoadMore").hide();
-                    $("#news-section").css("display","block");
-                    if($scope.searchParam == ""){
-                        $("#sub_resources").css("display","block");
-                    } else {
-                        $("#sub_resources").css("display","none");
-                    }
-                    for(var i=0;i<res.data.length;i++){
-                        res.data[i].indexTopic = res.data[i].topicName;
-                    }
-                    $scope.totalRes = res.data;
-
-                    $scope.article = $scope.totalRes.splice(0,res.data.length);
-                    for(var i=0;i<res.data.length;i++){
-                        url = $scope.article[i].iframeLink;
-                        $scope.article[i].iframeLink = $sce.trustAsResourceUrl(url);
-                        $scope.article[i].indexTopic = res.data[i].topicName;
-                    }
-
-                    console.log($scope.article)
-                } else {
-                    //print error message that data is not found
-                    //$scope.err = res.errMsg;
-                    try{
-                        var test = new cAlert("No search results found for articles!", "success",3);
-                        test.alert();
-                    }catch(e){
-                        console.log(e)
-                    }
+        $http.post("/searchSample", {name: searchKey }).success(function(res) {
+            //alert(res)
+            // debugger;
+            if(res.data.length > 0){
+                var uniqueNames = [];
+                $.each(res.data, function(i, el){
+                    if($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
+                });
+                res.data = uniqueNames;
+                $(".searchHide").hide();
+                $("#articleLoadMore").hide();
+                $("#news-section").css("display","block");
+                $("#articlesSearchHead").css("display","block");
+                // if($scope.searchParam == ""){
+                //     $("#sub_resources").css("display","block");
+                // } else {
+                //     $("#sub_resources").css("display","none");
+                // }
+                for(var i=0;i<res.data.length;i++){
+                    res.data[i].indexTopic = res.data[i].topicName;
                 }
-            });
-        } else {
-            var data = [];
-            $scope.resources = $scope.resourcesBackup;
-            $scope.resources.filter(function(el) {
-                var categories = el.category.split(",");
-                for(var i=0;i<categories.length;i++){
-                    categories[i] = categories[i].trim();
-                    //alert(el.type.split("/")[1] +" "+  $scope.searchParam.toLowerCase()+".png");
-                    if(searchKey.trim() == categories[i].trim() && el.type.split("/")[1] == $scope.searchParam.toLowerCase()+".png"){
-                        data.push(el)
-                    }
+                $scope.totalRes = res.data;
+
+                $scope.article = $scope.totalRes.splice(0,res.data.length);
+                for(var i=0;i<res.data.length;i++){
+                    url = $scope.article[i].iframeLink;
+                    $scope.article[i].iframeLink = $sce.trustAsResourceUrl(url);
+                    $scope.article[i].indexTopic = res.data[i].topicName;
                 }
-            });
-            console.log(data);
-            if(data.length > 0){
-                $("#sub_resources").css("display","block");
-                $("#news-section").css("display","none");
-                console.log($scope.resources)
-                $scope.resources = data;
+
+                console.log($scope.article)
             } else {
+                //print error message that data is not found
+                //$scope.err = res.errMsg;
                 try{
-                    var test = new cAlert("No search results found for resources!", "success",3);
+                    var test = new cAlert("No search results found for articles!", "success",3);
                     test.alert();
+                    var tempbackup = $scope.backUp;
+                    $scope.article = tempbackup.splice(0,12);
                 }catch(e){
                     console.log(e)
                 }
             }
+        });
 
+        var resourcedata = [];
+        $scope.resources = $scope.resourcesBackup;
+        $scope.resources.filter(function(el) {
+            var categories = el.category.split(",");
+            for(var i=0;i<categories.length;i++){
+                categories[i] = categories[i].trim();
+                //alert(el.type.split("/")[1] +" "+  $scope.searchParam.toLowerCase()+".png");
+                console.log(searchKey.trim()+" == "+categories[i].trim());
+                if(searchKey.trim() == categories[i].trim()) // && el.type.split("/")[1] == $scope.searchParam.toLowerCase()+".png") IGNORED SINCE WE ARE REMOVING SEARCH BY ARTICLE/PRESENTATION/VIDEO
+                {
+                    resourcedata.push(el)
+                }
+            }
+        });
+        //console.log("resourcedata");
+        //console.log(resourcedata);
+        if(resourcedata.length > 0){
+
+            $("#resourceHolder").hide();
+            $("#sub_resources").css("display","block");
+            $("#resourcesSearchHead").css("display","block");
+            // $("#news-section").css("display","none");
+            //console.log($scope.resources);
+            $scope.resources = resourcedata;
+        } else {
+            try{
+                var test = new cAlert("No search results found for resources!", "success",3);
+                test.alert();
+                var tempbackup = $scope.resourcesBackup;
+                $scope.resources = tempbackup.splice(0,12);
+            }catch(e){
+                console.log(e)
+            }
         }
+
+
+        // if($scope.searchParam == "" || $scope.searchParam == "Articles"){
+        //
+        //     $http.post("/searchSample", {name: searchKey }).success(function(res) {
+        //     	//alert(res)
+        //         if(res.data.length > 0){
+        //             var uniqueNames = [];
+        //             $.each(res.data, function(i, el){
+        //                 if($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
+        //             });
+        //             res.data = uniqueNames;
+        //             $(".searchHide").hide();
+        //             $("#articleLoadMore").hide();
+        //             $("#news-section").css("display","block");
+        //             if($scope.searchParam == ""){
+        //                 $("#sub_resources").css("display","block");
+        //             } else {
+        //                 $("#sub_resources").css("display","none");
+        //             }
+        //             for(var i=0;i<res.data.length;i++){
+        //                 res.data[i].indexTopic = res.data[i].topicName;
+        //             }
+        //             $scope.totalRes = res.data;
+        //
+        //             $scope.article = $scope.totalRes.splice(0,res.data.length);
+        //             for(var i=0;i<res.data.length;i++){
+        //                 url = $scope.article[i].iframeLink;
+        //                 $scope.article[i].iframeLink = $sce.trustAsResourceUrl(url);
+        //                 $scope.article[i].indexTopic = res.data[i].topicName;
+        //             }
+        //
+        //             console.log($scope.article)
+        //         } else {
+        //             //print error message that data is not found
+        //             //$scope.err = res.errMsg;
+        //             try{
+        //                 var test = new cAlert("No search results found for articles!", "success",3);
+        //                 test.alert();
+        //             }catch(e){
+        //                 console.log(e)
+        //             }
+        //         }
+        //     });
+        // } else {
+        //     var data = [];
+        //     $scope.resources = $scope.resourcesBackup;
+        //     $scope.resources.filter(function(el) {
+        //         var categories = el.category.split(",");
+        //         for(var i=0;i<categories.length;i++){
+        //             categories[i] = categories[i].trim();
+        //             //alert(el.type.split("/")[1] +" "+  $scope.searchParam.toLowerCase()+".png");
+        //             if(searchKey.trim() == categories[i].trim() && el.type.split("/")[1] == $scope.searchParam.toLowerCase()+".png"){
+        //                 data.push(el)
+        //             }
+        //         }
+        //     });
+        //     console.log(data);
+        //     if(data.length > 0){
+        //         $("#sub_resources").css("display","block");
+        //         $("#news-section").css("display","none");
+        //         console.log($scope.resources)
+        //         $scope.resources = data;
+        //     } else {
+        //         try{
+        //             var test = new cAlert("No search results found for resources!", "success",3);
+        //             test.alert();
+        //         }catch(e){
+        //             console.log(e)
+        //         }
+        //     }
+        //
+        // }
 
     }
     var setData = function(res,sort_type){
@@ -691,7 +773,7 @@ if(($scope.uName != undefined) && ($scope.uName != "")) {
         $scope.allresources = data;
         $scope.resourceFeatured = $scope.allresources.splice(0,3);
         $scope.resources = ($scope.allresources.length >= 12 ? $scope.allresources.splice(0,12) : $scope.allresources.splice(0,$scope.allresources.length)); 
-        $scope.resourcesBackup = $scope.resources;
+        $scope.resourcesBackup = $scope.allresources;
     });
     console.log($scope.resources);
 
