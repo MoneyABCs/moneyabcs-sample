@@ -872,4 +872,17 @@ app.controller('dashboardController', function($scope,$compile) {
 
 	
 
+/*Dashboard Code Start*/
+$(function() {
+    $('#navTabs div').click(function() {
+        $('#navTabs div').removeClass('active');
+        $(this).addClass('active');
+        $('.tabclass').hide();
+        var id = this.id+1;
+        $('#'+id).toggle();
+        $("#myCarousel5").carousel();
+    });
+});
+/*Dashboard Code End*/
+
 
