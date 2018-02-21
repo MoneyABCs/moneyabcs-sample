@@ -885,6 +885,21 @@ $(function() {
 
 });
 
+$(function () {
+    $('.carousel slide').carousel({
+        interval:2000,
+        pause: "false"
+    });
+    $('.glyphicon-play').click(function () {
+        var parid = $(this).parent().parent().parent().attr('id');
+        $('#'+parid).carousel('cycle');
+    });
+    $('.glyphicon-pause').click(function () {
+        var parid = $(this).parent().parent().parent().attr('id');
+        $('#'+parid).carousel('pause');
+    });
+});
+
 /*Dashboard Code End*/
 
 
