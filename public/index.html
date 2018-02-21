@@ -493,8 +493,9 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
     <p style="margin: 7px 5px 5px 10px;color: white;">Sort By </p>
     <select ng-model="newssortby" style="width: 80px;margin: 7px 5px 5px 5px;border-radius: inherit;" ng-change="onNewsSortChange(newssortby)" >
         <!--<option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>-->
-    <option selected="selected" value='Rank'>Rank</option>
-    <option value='Date'>Date</option>
+        <option selected="selected" value='Date'>Date</option>
+        <option value='Rank'>Rank</option>
+
 </select>
 </section>
 <section ng-show="showpage =='default'" class="news pad20px" style="margin-top: 25px;" id="news-section">

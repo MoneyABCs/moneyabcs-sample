@@ -634,13 +634,13 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
                                     return el.title !== result.data[0].title;
                                 });
                                 articlesdata.unshift(result.data[0]);
-                                setData(articlesdata);
+                                setData(articlesdata,"Date");
                                 localStorage.setItem("fromEmailArticle","")
                             }
                         })
                     } else {
                         if(res.length > 0){
-                            setData(res);
+                            setData(res,"Date");
                         } else {
                             try{
                                 var test = new cAlert("There are no articles for your chosen topic!", "success",3);
@@ -671,14 +671,14 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
                                 });
                                 console.log(articlesdata);
                                 articlesdata.unshift(res.data[0]);
-                                setData(articlesdata);
+                                setData(articlesdata,"Date");
                                 localStorage.setItem("fromEmailArticle","")
                             }
                         })
                     } else {
                         console.log("inside featured");
                         console.log(res.splice(0,11));
-                        setData(res);
+                        setData(res,"Date");
                     }
                 });
             }
@@ -832,7 +832,7 @@ if(($scope.uName != undefined) && ($scope.uName != "")) {
             });
     };
 
-    $scope.newssortby = "Rank";
+    $scope.newssortby = "Date";
     $scope.onNewsSortChange = function(sortby){
         console.log(sortby);
         $http.get("/article/featured").success(function(res){
