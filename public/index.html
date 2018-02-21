@@ -22,6 +22,79 @@
     <script type="text/javascript" src="https://js.live.net/v7.0/OneDrive.js"></script>
 
 
+	
+	 <style>
+        .dashCarousel > .item > img,
+        .dashCarousel > .item > a > img {
+            width: 70%;
+            margin: auto;
+        }
+
+        .dashCarousel p, .dashCarousel ul {
+            font-size: 20px !important;
+            font-weight: 500 !important;
+            color:#fff !important;
+            background-color:black;
+            z-index:0;
+            opacity:0.5;
+            /*text-align: justify;
+            text-justify: inter-word;*/
+        }
+
+        .dashCarousel h3 {
+            background-color:black;
+            z-index:0;
+            opacity:0.5;
+            font-weight: 500;
+            font-size: 30px;
+        }
+        .dashCarousel img{
+            /*filter: grayscale(100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+            opacity: 0.8;*/
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+/*
+            background-color: rgba(0,0,0,0.8);
+*/
+        }
+
+        .navbar #nav > .active > a {
+            color: #fff;
+            background-color: #8cc63f;
+        }
+
+        .active{
+            color: #fff !important;
+            background-color: #8cc63f !important;
+        }
+    </style>
+	
+	
+	
     <!-- //for-mobile-apps -->
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
@@ -98,7 +171,7 @@ OneDrive.open(odOptions);
                 <li class=""><a showpage="student" ng-click="showpagefunc($event)">Student</a></li>
                 <li class=""><a showpage="educator" ng-click="showpagefunc($event)">Educator</a></li>
                 <li><a showpage="supportflp" ng-click="showpagefunc($event)">Donate</a></li>
-                <li ng-if="(uName != undefined) && (uName != '')"><a href="/dashboard">Dashboard</a></li>
+                <li ng-if="(uName != undefined) && (uName != '')"><a showpage="dashboard" ng-click="showpagefunc($event)">Dashboard</a></li>
 		<li class=""><a ng-click="showpage='partners'">Partners</a></li>
             </ul>
             <!--<form class="navbar-form navbar-left nav-money">
@@ -124,10 +197,7 @@ OneDrive.open(odOptions);
                                data-toggle="dropdown">{{uName}}
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/dashboard">Dashboard</a></li>
-                                <li><a showpage="profile" ng-click="showpagefunc($event)">Profile</a></li>
-                                <li><a showpage="saved articles" ng-click="showpagefunc($event)">Saved Articles</a></li>
-                                <li class="divider"></li>
+                                
                                 <li><a ng-click="logOutProfile()">Sign Out</a></li>
                             </ul>
                         </div>
@@ -235,107 +305,7 @@ OneDrive.open(odOptions);
     </div>-->
 </section>
 
-<div ng-show="showpage =='profile'" style="margin-top: 3%;">
 
-
-    <div class="col-sm-6 col-sm-offset-3">
-        <h1><span></span> <center>Profile</center></h1>
-        <form action="/api/editprofile"  name="myprofile" method="post">
-            <label style="font-weight:bold">
-                Prefix/Title: </label>
-            <div class="prefix" tooltip="Please enter a Prefix/Title that suits you">
-                <select  ng-bind={{profile.title}} name="title" id="title">
-                    <option value="Mr."> Mr.</option>
-                    <option value="Mrs."> Mrs.</option>
-                    <option value="Miss"> Miss</option>
-                    <option value="Ms."> Ms.</option>
-                    <option value="Dr."> Dr.</option>
-                </select>
-            </div>
-
-            <br>
-            <div class="form-group " tooltip="Please enter your Firstname">
-
-                Firstname: <input  type="text" class="form-control" name="username" id="username" tabindex="1"  ng-model="profile.username">
-
-            </div>
-            <div class="form-group" tooltip="Please enter your Lastname">
-
-                Lastname: <input type="text"  class="form-control" name="lastname" id="lastname" tabindex="1"   ng-model="profile.lastname">
-            </div>
-            <div class="form-group" tooltip="Please enter your Email-Address">
-
-                Email Address: <input type="email" class="form-control" name="email" id="email" tabindex="1" class="form-control"  ng-model="profile.email">
-            </div>
-            <div class="form-group" tooltip="Please enter your Address here">
-
-                Address line1: <input type="address" name="address1" id="address1" tabindex="1"  class="form-control" ng-model="profile.address1">
-            </div>
-            <div class="form-group" tooltip="Please enter your Address here">
-
-                Address line2: <input type="address" name="address2" id="address2" tabindex="1" class="form-control" ng-model="profile.address2">
-            </div>
-            <div class="form-group" tooltip="Please select your Country here">
-
-                Country: <input type="countries" name="countries" id="countries"  class="form-control" ng-model="profile.countries">
-                <!--<select name="countries" id="countries"  class="form-control" ng-model="profile.countries"></select>-->
-            </div>
-            <div class="form-group" tooltip="Please select your State here">
-
-                States: <input type="states" name="states" id="states"  class="form-control" ng-model="profile.states">
-                <!--<select name="states" id="states" class="form-control" ng-model="profile.states">-->
-                <!--</select>-->
-            </div>
-            <div class="form-group" tooltip="Please enter your City here">
-                City: <input type="city" name="city" id="city"  class="form-control" ng-model="profile.city">
-            </div>
-            <div class="form-group" tooltip="Please enter your Zipcode here">
-                Zip code: <input type="zipcode" name="zipcode" id="zipcode"  tabindex="1" class="form-control" ng-model="profile.zipcode">
-            </div>
-            <div class="form-group" tooltip="Please enter your Phone-number here">
-
-                Phone: <input type="text" class="form-control "  tabindex="1"  data-country="countries" ng-model="profile.Phone">
-            </div>
-            <!--Organisation: <select ng-model="nonprofit">-->
-            <div class="form-group"tooltip="Please select the Type of Organisation">
-                Type of Organisation: <input type="text" class="form-control" ng-model="profile.nonprofit">
-            </div>
-            <div class="form-group" tooltip="Please type your Name of Organization here">
-                Name of Organization: <input type="nameoforganisation" name="nameoforganisation" id="nameoforganisation" tabindex="1"  class="form-control"  ng-model="profile.nameoforganisation">
-            </div>
-
-            <div class="form-group" tooltip="Please type your Role in an  Organization here">
-                Role in Organization: <input type="roleinorganisation" name="roleinorganisation" id="roleinorganisation" tabindex="1"  class="form-control" ng-model="profile.roleinorganisation">
-            </div>
-            <div class="form-group" tooltip="Please enter the URL to institution">
-                URL to institution: <input type="url2" name="url2" id="url2" tabindex="1"  class="form-control" ng-model="profile.url2">
-            </div>
-            <div class="form-group" tooltip="Please enter the URL to profile">
-                URL to Profile: <input type="url1" name="url1" id="url1" tabindex="1"  class="form-control" ng-model="profile.url1">
-            </div>
-            <button type="submit" name="edit-submit" id="edit-submit" style="background-color: #008000;border: none;
-color: white;
-padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</button>
-        </form>
-    </div>
-</div>
-<div ng-show="showpage =='saved articles'" ng-init="refreshData()" style="margin-top: 3%;" >
-    <h3 class="col-sm-8 col-sm-offset-2">Your saved articles </h3>
-    <div class="col-sm-8 col-sm-offset-2"  ng-repeat="articleObj in saved_articles.title">
-        <div class="row marketing">
-            <div class="col-lg-6">
-                <p> <img alt="ALT NAME" ng-src="{{articleObj.imgUrl}}" imageonload  align="left"> </p>
-            </div>
-            <div class="col-lg-6">
-                <a href="{{articleObj.iframeLink}}" target="_blank">{{articleObj.title}}</a>
-                <span class="glyphicon glyphicon-remove" ng-click="deleteSavedArticlesfunc($index)" style="float: right;"></span>
-                <!--<button type="button" class="close" aria-hidden="true" style="float: right;" ng-click="deleteSavedArticlesfunc($index)">&times;</button>-->
-                <p>{{articleObj.snippet}}</p>
-            </div>
-        </div>
-        <hr>
-    </div>
-</div>
 
 <div ng-show="showpage =='partners'"  class="container-fluid margin5Auto partners">
 
@@ -620,6 +590,894 @@ learning materials on many financial topics of interest. </p>
 	
 	
 </div>
+	
+
+	
+	<!--Dashboard Code Start-->
+<div class="container-fluid" ng-show="showpage =='dashboard'">
+
+    <div id="navTabs" class="row nav nav-tabs" style="margin-top: 4%; ">
+        <div class="col-sm-2 col-md-2 col-lg-2">
+        <div id="networkid" class="zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+            <span data-toggle="tab" href="#networkic" class="fa fa-users" aria-hidden="true" style="font-size:50px;margin-left:3px;margin-top:23px"></span>
+        </div>
+            </div>
+        <div id="shareid" class="col-sm-1 col-md-1 col-lg-1 zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+            <span data-toggle="tab" href="#shareic" class="fa fa-share-alt" style="font-size:50px;margin-left:6px;margin-top:20px"></span>
+        </div>
+        <div id="searchid" class="col-sm-2 col-md-2 col-lg-2 zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+            <span data-toggle="tab" href="#searchic" class="fa fa-search fa-lg" aria-hidden="true" style="font-size:50px;margin-left:7px;margin-top:25px"></span>
+        </div>
+        <div id="suitcaseid" class="col-sm-2 col-md-2 col-lg-2 zoom active" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+            <span data-toggle="tab" href="#suitcaseic" class="fa fa-briefcase fa-lg" style="font-size:50px;margin-left:4px;margin-top:29px"></span>
+        </div>
+        <div id="schoolid" class="col-sm-1 col-md-1 col-lg-1 zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+            <span data-toggle="tab" href="#schoolic" class="fa fa-desktop" style="font-size:50px;margin-left:1px;margin-top:25px"></span>
+        </div>
+        <div id= "financeid" class="col-sm-2 col-md-2 col-lg-2 zoom " style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+            <span data-toggle="tab" href="#financeic" class="fa fa-dollar fa-lg" style="font-size:50px;margin-left:13px;margin-top:26px"></span>
+        </div>
+        <div id= "profileid" class="col-sm-2 col-md-2 col-lg-2 zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+            <span data-toggle="tab" href="#profileic" class="fa fa-user fa-lg" aria-hidden="true" style="font-size:50px;margin-left:8px;margin-top:24px"></span>
+        </div>
+        <i class="" aria-hidden="true"></i>
+    </div>
+
+    <div id="tabcontent" style="margin-bottom:5%">
+        <div class="tabclass" id="financeid1" style="display: none;">
+            <h3>Funding</h3>
+            <div class="container">
+                <div id="myCarousel1" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel1" data-slide-to="1"></li>
+                        <li data-target="#myCarousel1" data-slide-to="2"></li>
+                        <li data-target="#myCarousel1" data-slide-to="3"></li>
+                        <li data-target="#myCarousel1" data-slide-to="4"></li>
+                        <li data-target="#myCarousel1" data-slide-to="5"></li>
+                        <li data-target="#myCarousel1" data-slide-to="6"></li>
+                        <li data-target="#myCarousel1" data-slide-to="7"></li>
+                        <li data-target="#myCarousel1" data-slide-to="8"></li>
+                        <li data-target="#myCarousel1" data-slide-to="9"></li>
+                        <li data-target="#myCarousel1" data-slide-to="10"></li>
+                        <li data-target="#myCarousel1" data-slide-to="11"></li>
+                        <li data-target="#myCarousel1" data-slide-to="12"></li>
+                        <li data-target="#myCarousel1" data-slide-to="13"></li>
+                        <li data-target="#myCarousel1" data-slide-to="14"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner dashCarousel">
+
+                        <div class="item active">
+                            <img src="images/dashboardSlides/Slide7.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>Under Construction!</h3>
+                                <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
+                                <p>Unfortunately, many K-College instructors, community volunteers, and non-for-profits
+                                    often times struggle financially to be able to carry on with their educational
+                                    missions. They know that their constituents need the information they can provide,
+                                    but they do not have the funds to make it happen.</p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide8.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
+                                <ul>
+                                    <li>Ironically, there are many foundations, governmental agencies, corporations, and
+                                        financial institutions who have resources to support financial literacy that
+                                        sometimes go unused. The reasons behind this mismatch include lack of awareness
+                                        from the community about the available funds, communication barriers between the
+                                        users and providers of funds, limited outreach capacity by some of these parties,
+                                        etc.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide9.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
+                                <ul>
+                                    <li>
+                                        MoneyABCs.org will help bridge this gap by providing various services to its members,
+                                        including the ability to find each other with the use of intuitive browsing and
+                                        search engines that will allow all of them to search by a very diverse set of
+                                        criteria, like educational objective, target audience, type of institution,
+                                        geographical area, etc.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide10.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>For those in need of funds:</h3>
+                                <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
+                                <ul>
+                                    <li>Educators, researchers, and non-for-profits (with a diligent prior
+                                        background check) will be able to set up a temporary, on online crowdfunding
+                                        facility to either secure financing for individual programs, or to secure an
+                                        operating budget for their various programs for a specific period in time.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide11.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>For those in need of funds:</h3>
+                                <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
+                                <ul>
+                                    <li>These crowdfunding facilities will allow these activists to raise the
+                                        desired funds from either a small number of parties making large
+                                        contributions, or through many supporters making small contributions.
+                                    </li>
+                                    <li>The interested parties will be able submit their financial contributions over
+                                        electronic wire, electronic check, or via a personal or corporate credit card.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide12.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>For those in need of funds:</h3>
+                                <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
+                                <ul>
+                                    <li>
+                                        The recipients of funds will have the option of getting the funds wired to
+                                        them once the fund-raising campaign is over, or to have UTA mail them a check
+                                        when it is finished.
+                                    </li>
+                                    <li>
+                                        If the fund-raising campaign fails to raise enough funds to fulfill the
+                                        intended objective of the program, the funds will be automatically reimbursed to
+                                        the supporters of the campaign.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide13.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>For those in need of funds:</h3>
+                                <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
+                                <ul>
+                                    <li>
+                                        The raised funds should only be used for the purposes outlined in the
+                                        fund-raising page, and the recipients of the funds agree to submit an ex-post
+                                        report of their program and activities, with pictures, numbers, and feedback
+                                        from the individuals they served. This report will be posted in the platform so
+                                        their supporters can be reassured that their money was put to good use.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide14.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>For those in need of funds:</h3>
+                                <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
+                                <ul>
+                                    <li>
+                                        By the same token, the recipients of the funds agree to provide scanned
+                                        receipts and other reasonable proof of their expenses to the platform for
+                                        archival and accountability purposes. These receipts will not be made public,
+                                        but will remain on file as an internal control and to attest to the
+                                        accountability and transparency of the funds used.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide15.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>For those in need of funds:</h3>
+                                <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
+                                <ul>
+                                    <li>
+                                        The recipients of funds will indicate upfront their willingness to comply with
+                                        any additional reporting requirements the funder may have, like submitting
+                                        any additional reports some depository institutions may need for receiving
+                                        CRA credit in exchange for their financial support. When that happens, the
+                                        platform will automatically facilitate the exchange of all necessary
+                                        documentation between the sponsoring institution and the recipients of funds.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide16.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>For those in need of funds:</h3>
+                                <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
+                                <ul>
+                                    <li>
+                                        The platform will make it easy for those agents in needs of funds to advertise
+                                        their fund raising campaign on social media, like Facebook, LinkedIn, Twitter,
+                                        or Instagram. The press of a button will be all that is needed to post the
+                                        campaign to these popular, social-media outlets.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide17.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>For those with available funds:</h3>
+                                <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
+                                <ul>
+                                    <li>
+                                        Those foundations, governmental agencies, corporations, and financial
+                                        institutions who have the resources to support financial literacy will be able
+                                        to set up a fund-granting facility through the platform.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide18.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>For those with available funds:</h3>
+                                <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
+                                <ul>
+                                    <li>
+                                        This facility will allow them to promote within the platform their willingness
+                                        to support other agents’ financial literacy programs, to indicate what types of
+                                        programs they are willing to support, what are the requirements and standards
+                                        for financial literacy activist to qualify for their grants, and what evidence
+                                        of use of funds they will expect once the grant is given.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide1.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>For those with available funds:</h3>
+                                <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
+                                <ul>
+                                    <li>Those offering funds will have three options for their facility once the basic
+                                        grant information is provided to the interested parties:
+                                        <ul>
+                                            <li>
+                                                They can send interested parties to their own website to submit their applications there
+                                            </li>
+                                            <li>They can make available in the platform a paper application that
+                                                interested parties can print, complete, and mail over regular post, or
+                                            </li>
+                                            <li>They can create an electronic form that will allow those interested in
+                                                funds to submit their application directly through the MoneyABCs
+                                                platform.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide2.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>For those with available funds:</h3>
+                                <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
+                                <ul>
+                                    <li>
+                                        Once an applicant is granted funding, the funders will be able send the
+                                        recipient the money electronically, or via a personal or corporate check.
+                                    </li>
+                                    <li>
+                                        The platform will automatically facilitate the exchange of all necessary
+                                        documentation between the sponsoring institution and the recipients of funds to
+                                        prove appropriate usage of funds.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide3.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>For those with available funds:</h3>
+                                <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
+                                <ul>
+                                    <li>
+                                        The platform will make it easy for those offering financial support to
+                                        promote their grants on social media, like Facebook, LinkedIn, Twitter, or
+                                        Instagram. The press of a button will be all that is needed to promote these
+                                        grants in these popular, social-media outlets.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel1" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel1" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="tabclass" id="profileid1" style="display: none;">
+            <h3>Profile</h3>
+            <div>
+                <div class="col-sm-6 col-sm-offset-3">
+                    <form action="/api/editprofile"  name="myprofile" method="post">
+                        <label style="font-weight:bold">
+                            Prefix/Title: </label>
+                        <div class="prefix" tooltip="Please enter a Prefix/Title that suits you">
+                            <select  ng-bind={{profile.title}} name="title" id="title">
+                                <option value="Mr."> Mr.</option>
+                                <option value="Mrs."> Mrs.</option>
+                                <option value="Miss"> Miss</option>
+                                <option value="Ms."> Ms.</option>
+                                <option value="Dr."> Dr.</option>
+                            </select>
+                        </div>
+
+                        <br>
+                        <div class="form-group " tooltip="Please enter your Firstname">
+
+                            Firstname: <input  type="text" class="form-control" name="username" id="username" tabindex="1"  ng-model="profile.username">
+
+                        </div>
+                        <div class="form-group" tooltip="Please enter your Lastname">
+
+                            Lastname: <input type="text"  class="form-control" name="lastname" id="lastname" tabindex="1"   ng-model="profile.lastname">
+                        </div>
+                        <div class="form-group" tooltip="Please enter your Email-Address">
+
+                            Email Address: <input type="email" class="form-control" name="email" id="email" tabindex="1" class="form-control"  ng-model="profile.email">
+                        </div>
+                        <div class="form-group" tooltip="Please enter your Address here">
+
+                            Address line1: <input type="address" name="address1" id="address1" tabindex="1"  class="form-control" ng-model="profile.address1">
+                        </div>
+                        <div class="form-group" tooltip="Please enter your Address here">
+
+                            Address line2: <input type="address" name="address2" id="address2" tabindex="1" class="form-control" ng-model="profile.address2">
+                        </div>
+                        <div class="form-group" tooltip="Please select your Country here">
+
+                            Country: <input type="countries" name="countries" id="countries"  class="form-control" ng-model="profile.countries">
+                            <!--<select name="countries" id="countries"  class="form-control" ng-model="profile.countries"></select>-->
+                        </div>
+                        <div class="form-group" tooltip="Please select your State here">
+
+                            States: <input type="states" name="states" id="states"  class="form-control" ng-model="profile.states">
+                            <!--<select name="states" id="states" class="form-control" ng-model="profile.states">-->
+                            <!--</select>-->
+                        </div>
+                        <div class="form-group" tooltip="Please enter your City here">
+                            City: <input type="city" name="city" id="city"  class="form-control" ng-model="profile.city">
+                        </div>
+                        <div class="form-group" tooltip="Please enter your Zipcode here">
+                            Zip code: <input type="zipcode" name="zipcode" id="zipcode"  tabindex="1" class="form-control" ng-model="profile.zipcode">
+                        </div>
+                        <div class="form-group" tooltip="Please enter your Phone-number here">
+
+                            Phone: <input type="text" class="form-control "  tabindex="1"  data-country="countries" ng-model="profile.Phone">
+                        </div>
+                        <!--Organisation: <select ng-model="nonprofit">-->
+                        <div class="form-group"tooltip="Please select the Type of Organisation">
+                            Type of Organisation: <input type="text" class="form-control" ng-model="profile.nonprofit">
+                        </div>
+                        <div class="form-group" tooltip="Please type your Name of Organization here">
+                            Name of Organization: <input type="nameoforganisation" name="nameoforganisation" id="nameoforganisation" tabindex="1"  class="form-control"  ng-model="profile.nameoforganisation">
+                        </div>
+
+                        <div class="form-group" tooltip="Please type your Role in an  Organization here">
+                            Role in Organization: <input type="roleinorganisation" name="roleinorganisation" id="roleinorganisation" tabindex="1"  class="form-control" ng-model="profile.roleinorganisation">
+                        </div>
+                        <div class="form-group" tooltip="Please enter the URL to institution">
+                            URL to institution: <input type="url2" name="url2" id="url2" tabindex="1"  class="form-control" ng-model="profile.url2">
+                        </div>
+                        <div class="form-group" tooltip="Please enter the URL to profile">
+                            URL to Profile: <input type="url1" name="url1" id="url1" tabindex="1"  class="form-control" ng-model="profile.url1">
+                        </div>
+                        <button type="submit" name="edit-submit" id="edit-submit" style="background-color: #008000;border: none;
+color: white;
+padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</button>
+                    </form>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="tabclass" id="searchid1" style="display: none;">
+            <h3>Search</h3>
+            <div class="container">
+                <div id="myCarousel3" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel3" data-slide-to="1"></li>
+                        <li data-target="#myCarousel3" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner dashCarousel">
+                        <div class="item active">
+                            <img src="images/dashboardSlides/Slide13.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>Under Construction!</h3>
+                                <p>This section of the platform will contain the advance search engine users will be
+                                    able to use to find the research paper or pedagogic materials they need.
+                                    They will be able to conduct an advance search for resources within the website
+                                    using the following filtering criteria</p>
+                                <ul>
+                                    <li>Topic or keyword (i.e. Income Taxes,credit scores, etc.)</li>
+                                    <li>File format (i.e. video, webinar, PowerPoint, PDF, podcast, etc.) </li>
+                                    <li>Duration or length of the resource (i.e. in minutes of video or audio,
+                                        number of slides in the presentation, estimated time of the workshop, number
+                                        of pages of the paper, etc.)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide14.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <p> More criteria</p>
+                                <ul>
+                                    <li>Language of the resource (i.e. English, Spanish, Vietnamese, etc.)</li>
+                                    <li>Intended audience (i.e. age, age group, grade level, etc.)</li>
+                                    <li>Availability of supplemental materials (i.e. teaching notes, quizzes, handouts,
+                                        etc.)</li>
+                                    <li>Type of audience engagement (i.e. passive audience, interactive audience,
+                                        hands on activities, games or songs involved, etc.)</li>
+                                    <li>Profile of the poster (i.e. educator, academic, financial institution,
+                                        government agency, etc.)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide15.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <p>You will be able to find out what other members of the network who share profile
+                                    attributes with you are doing to learn from their experience. For instance, if you
+                                    are a fourth grade teacher, you can find out what individual videos,
+                                    PowerPoint presentations, and webinars other fourth-grade teachers
+                                    in your district, city, state, or across the nation are using in their classrooms</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel3" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel3" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="tabclass" id="suitcaseid1" style="display: block;">
+            <h3>Briefcase </h3>
+            <div ng-show="showpage =='saved articles'" ng-init="refreshData()" >
+                <h3 class="col-sm-8 col-sm-offset-2">Your saved articles </h3>
+                <div class="col-sm-8 col-sm-offset-2"  ng-repeat="articleObj in saved_articles.title">
+                    <div class="row marketing">
+                        <div class="col-lg-6">
+                            <p> <img alt="ALT NAME" ng-src="{{articleObj.imgUrl}}" imageonload  align="left"> </p>
+                        </div>
+                        <div class="col-lg-6">
+                            <a href="{{articleObj.iframeLink}}" target="_blank">{{articleObj.title}}</a>
+                            <span class="glyphicon glyphicon-remove" ng-click="deleteSavedArticlesfunc($index)" style="float: right;"></span>
+                            <!--<button type="button" class="close" aria-hidden="true" style="float: right;" ng-click="deleteSavedArticlesfunc($index)">&times;</button>-->
+                            <p>{{articleObj.snippet}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="tabclass" id="networkid1" style="display: none;">
+            <h3>Network</h3>
+            <div class="container">
+                <div id="myCarousel5" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel5" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel5" data-slide-to="1"></li>
+                        <li data-target="#myCarousel5" data-slide-to="2"></li>
+                        <li data-target="#myCarousel5" data-slide-to="3"></li>
+                        <li data-target="#myCarousel5" data-slide-to="4"></li>
+                        <li data-target="#myCarousel5" data-slide-to="5"></li>
+                        <li data-target="#myCarousel5" data-slide-to="6"></li>
+                        <li data-target="#myCarousel5" data-slide-to="7"></li>
+                        <li data-target="#myCarousel5" data-slide-to="8"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner dashCarousel">
+                        <div class="item active">
+                            <img src="images/dashboardSlides/Slide1.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>Under Construction!</h3>
+                                <p>You will be able to find out what other members of the network who share profile
+                                    attributes with you are doing to learn from their experience. For instance, if you
+                                    are a fourth grade teacher, you can find out what individual videos,
+                                    PowerPoint presentations, and webinars other fourth-grade teachers
+                                    in your district, city, state, or across the nation are using in their classrooms</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide2.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <p>Similarly, if you are a financial literacy volunteer at a non-for-profit, if you are
+                                    a community advocate, or a social security worker, you will be able to find out what
+                                    other activists like you are doing in their communities and what pedagogic resources
+                                    they are using.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide3.JPG" alt="Moneyabcs">
+                            <div class="carousel-caption">
+                                <p>You can also see the comments and feedback these users have left on specific
+                                    videos or presentations they have used, and you can instant message them if they are
+                                    online, leave a short message in their inbox, or email them directly to inquire about
+                                    their experience with the main materials or with any the supplementary materials
+                                    they have used (like teaching notes, or quizzes). </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide4.JPG" alt="Moneyabcs">
+                            <div class="carousel-caption">
+                                <p>Aside from stand-alone materials, you will also be able to browse the virtual
+                                    classrooms of users who have constructed such facilities within the platform.
+                                    If after browsing the content and structure of their course you would like to
+                                    replicate it for yourself, you will be able to do so simply with the click of a
+                                    button.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide5.JPG" alt="Moneyabcs">
+                            <div class="carousel-caption">
+                                <p>By entering a specific area of expertise, license, certification,
+                                    or background-check status, you will be able get a listing of the members of the
+                                    community who meet such profile criteria so you can ask them for advise, or you
+                                    can invite them to support your educational programs.  For instance, if you are
+                                    interested in finding a Certified Financial Planner who has a recent FBI clearance
+                                    certificate on file with MoneyABCs.org to work with children within 20 miles of your
+                                    elementary school’s address, you will be able to do so.  </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide6.JPG" alt="Moenyabcs">
+                            <div class="carousel-caption">
+                                <p>In this section of the dashboard you will be able to enhance your profile within
+                                    the platform, to include your professional certifications, licenses, academic
+                                    degrees, security clearance status, and your areas of expertise within the field
+                                    of financial literacy. For instance, you can self-identify as a specialist in
+                                    personal income taxes, in life insurance, or in investments. By the same token, you
+                                    will be able to indicate whether you are willing to collaborate with others in your
+                                    area, whether by travelling to the site of the event or by hosting people in your
+                                    organization’s facilities.   </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide7.JPG" alt="Moneyabcs">
+                            <div class="carousel-caption">
+                                <p>To indicate your willingness to travel within your community, you will have the
+                                    option of indicating which cities or zip codes you are willing to drive to. You can
+                                    also just indicate how many miles around your contact address you are willing to
+                                    travel, or manually draw, directly on the computer screen, over what area you are
+                                    willing to travel within a map of your city. </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide8.JPG" alt="New york">
+                            <div class="carousel-caption">
+                                <p>You will also be able to share your daily, weekly, and monthly availability
+                                    with others, so that they can see when they can count on your help for
+                                    specific events they may be planning. If you chose to, you can also share
+                                    your calendar of upcoming events with the community as a means to advertise
+                                    them and get more attendance. </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide9.JPG" alt="New york">
+                            <div class="carousel-caption">
+                                <p>Finally, this is the section of the platform where you will be able to see
+                                    any messages other members of the community have sent you through your platform.
+                                    While some messages will be stored in your mailbox, you will also have the option
+                                    to chat live with others if they are online at the same time as you. Eventually,
+                                    users will be able to link their profiles to their smart phone, so they can get
+                                    message notifications in real time directly to their smart phones, so they can
+                                    stay better connected with others. </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel5" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel5" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="tabclass" id="shareid1" style="display: none;">
+            <h3>Share</h3>
+            <div class="container">
+                <div id="myCarousel6" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel6" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel6" data-slide-to="1"></li>
+                        <li data-target="#myCarousel6" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner dashCarousel">
+
+                        <div class="item active">
+                            <img src="images/dashboardSlides/Slide10.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>Under Construction!</h3>
+                                <p> Do you want to share your white research paper, presentation slides, video, podcast,
+                                    or webinar with other members of the community? Upload it to the platform using this
+                                    form. Do not forget to also attach any supplementary resources that should accompany
+                                    your file, like teaching notes, quiz questions, infographics, or handouts. </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide11.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <p>Upon receiving your files, one of MoneyABCs specialists will confirm that your
+                                    materials are appropriate for our community and will approve them or get back to
+                                    you with any concerns about the content. Once your materials are approved, they
+                                    will be available for everyone to see and use. </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide12.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <p>Resources like videos and webinars will be available to the general public via the
+                                    front page of the platform, while supplemental materials, like teaching notes and
+                                    quizzes will only be available to the pre-approved members of the community. </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel6" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel6" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <br>
+            <p><iframe src='https://docs.google.com/forms/d/e/1FAIpQLSefqodRV5ZgCYJUsxQbt2RrQZ9QYlyRDqotiADJv4acvKj8dw/viewform?usp=sf_link'
+                       frameborder='0' width='100%' height='300px' allowfullscreen='true'
+                       mozallowfullscreen='true' webkitallowfullscreen='true'></iframe>
+            </p>
+        </div>
+        <div class="tabclass" id="schoolid1" style="display: none;">
+            <h3>Virtual Classroom</h3>
+            <div class="container">
+                <div id="myCarousel7" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel7" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel7" data-slide-to="1"></li>
+                        <li data-target="#myCarousel7" data-slide-to="2"></li>
+                        <li data-target="#myCarousel7" data-slide-to="3"></li>
+                        <li data-target="#myCarousel7" data-slide-to="4"></li>
+                        <li data-target="#myCarousel7" data-slide-to="5"></li>
+                        <li data-target="#myCarousel7" data-slide-to="6"></li>
+                        <li data-target="#myCarousel7" data-slide-to="7"></li>
+                        <li data-target="#myCarousel7" data-slide-to="8"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner dashCarousel">
+                        <div class="item active">
+                            <img src="images/dashboardSlides/Slide16.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <h3>Under Construction!</h3>
+                                <p>Are you a K-College Instructor and would like to make some educational resources
+                                    available online for your students to supplement what you are teaching in the
+                                    classroom? Do you want to put together a self-contained course for your class
+                                    that is delivered completely online? Are you a non-for-profit volunteer who would
+                                    like to set up a series of online workshops for the community you serve?
+                                    In MoneyABCs.org you will be able to do that and more. Here are some of the features
+                                    our virtual classrooms will have.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide17.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <ul>
+                                    <li>You will be able construct your virtual classroom with a set of mixed
+                                        educational resources (i.e. videos, webinars, podcasts, etc.) that your students can
+                                        complete in a prescribed order or as they please.</li>
+                                    <li>For those courses with a
+                                        prescribed order, your students will only be able to proceed to the next module
+                                        after completing every aspect of one module (presentation, exercises, quizzes,
+                                        etc.)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide18.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <ul><li>The modules can have an expiration date or be open for the students to complete
+                                    at their leisure.</li>
+                                    <li>Your virtual classroom will be able to provide you with a
+                                        universal username and password for all your students in case you do not wish
+                                        to track your students’ progress or performance on an individual basis.
+                                        However, you will also have the ability to provide each one of your students a
+                                        unique username and password.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide1.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <ul>
+                                    <li>Usernames and passwords can be easily customized to be age appropriate, with
+                                        visual passwords for small children and regular text-passwords for older students.
+                                    </li>
+                                    <li>Your students’ privacy and security while participating in the platform will be
+                                        safe-guarded by a master roster that you will be able to easily generate with the
+                                        click of a button and store safely on your own computer. With no personally
+                                        identifying data from your students ever uploaded onto our servers, you can
+                                        rest assured that any potential malicious attacks on our servers will never
+                                        comprise your students’ privacy or safety in any way.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide2.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <ul><li>You will have the opportunity to create exercises and quizzes (with follow-up essay
+                                    questions, problems, or multiple-choice questions) that your students can complete
+                                    and submit electronically.</li>
+                                    <li>To generate the exercises and quizzes on your virtual
+                                        classroom, you will be able to use some of the existing questions in the
+                                        platform’s exercise and test banks, but you will also be able to write
+                                        your own exercises, problems, and quiz questions.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide3.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <ul><li>While the platform can grade problems and multiple-choice questions
+                                    automatically, as the instructor you will have the opportunity to grade their
+                                    essays on screen before the final grade of an exercise or quiz is generated.</li>
+                                    <li>You will have the option of deciding which
+                                        exercises or quizzes will affect your student’s overall grade and which
+                                        ones will serve just as practice runs or review.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide4.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <ul><li>Your students will be able to rate and leave comments on any or all the
+                                    elements of your course, so you can use their feedback to judge which resources
+                                    were most useful to them, and which resources were ineffective. Thus, with their
+                                    feedback you will be able to improve your courses over time.</li>
+                                    <li>Your students will have the ability to send
+                                        you questions, which you can answer privately over the platform, or you
+                                        can publish on a digital billboard for everyone’s benefit. Thus, you will
+                                        be able to create a FAQs section for your modules easily and in no time.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide5.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <ul><li>You will be able to customize the look of your virtual classroom, so that
+                                    it reflects your institution’s colors, name, and even display your logo.
+                                    Thus, your virtual classroom will feel like a part of your organization,
+                                    rather than a facility provided by a third party. This feature should be
+                                    somewhat reassuring for parents of small children who may have reservations
+                                    about allowing their little ones interact with a third-party platform.</li>
+                                    <li>Your classroom will be assigned a URL that
+                                        you can distribute to your students to allow them to access the virtual
+                                        classroom directly without having to go through the front page of our website.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/dashboardSlides/Slide6.JPG" alt="Moneyabcs" >
+                            <div class="carousel-caption">
+                                <ul><li>You will be able to maintain multiple courses at once in case you have
+                                    different cohorts in an academic period, and you can replicate an entire course
+                                    (or import just parts of it) easily with the click of a button.</li>
+                                    <li>You will have the option of sharing the
+                                        courses you design with other educators in the network, or keep it private
+                                        while you are beta-testing it.
+                                    </li>
+                                    <li style="display: block;">You will be able to access our customer support
+                                        free of charge if you ever encounter technical problems with your
+                                        virtual classroom or if you are just learning how to use it.</li>                                        </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel7" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel7" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <br>
+        </div>
+
+    </div>
+</div>
+<!--Dashboard Code End-->
+	
+	
+	
+	
+	
+	
 	
 	
 	
