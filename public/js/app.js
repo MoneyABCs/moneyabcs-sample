@@ -312,6 +312,8 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
                     var test = new cAlert("No search results found for articles!", "success",3);
                     test.alert();
                     var tempbackup = $scope.backUp;
+                    $("#news-section").css("display","block");
+                    $("#articlesSearchHead").css("display","block");
                     $scope.article = tempbackup.splice(0,12);
                 }catch(e){
                     console.log(e)
@@ -322,22 +324,24 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
         var resourcedata = [];
         $scope.resources = $scope.resourcesBackup;
         $scope.resources.filter(function(el) {
-            var categories = el.category.split(",");
-            for(var i=0;i<categories.length;i++){
-                categories[i] = categories[i].trim();
-                //alert(el.type.split("/")[1] +" "+  $scope.searchParam.toLowerCase()+".png");
-                console.log(searchKey.trim()+" == "+categories[i].trim());
-                if(searchKey.trim() == categories[i].trim()) // && el.type.split("/")[1] == $scope.searchParam.toLowerCase()+".png") IGNORED SINCE WE ARE REMOVING SEARCH BY ARTICLE/PRESENTATION/VIDEO
-                {
-                    resourcedata.push(el)
+            if(el.category) {
+                var categories = el.category.split(",");
+                for (var i = 0; i < categories.length; i++) {
+                    categories[i] = categories[i].trim();
+                    //alert(el.type.split("/")[1] +" "+  $scope.searchParam.toLowerCase()+".png");
+                    console.log(searchKey.trim() + " == " + categories[i].trim());
+                    if (searchKey.trim() == categories[i].trim()) // && el.type.split("/")[1] == $scope.searchParam.toLowerCase()+".png") IGNORED SINCE WE ARE REMOVING SEARCH BY ARTICLE/PRESENTATION/VIDEO
+                    {
+                        resourcedata.push(el)
+                    }
                 }
             }
         });
         //console.log("resourcedata");
-        //console.log(resourcedata);
+        // console.log(resourcedata.length);
         if(resourcedata.length > 0){
 
-            $("#resourceHolder").hide();
+            // $("#resourceHolder").hide();
             $("#sub_resources").css("display","block");
             $("#resourcesSearchHead").css("display","block");
             // $("#news-section").css("display","none");
@@ -348,6 +352,8 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
                 var test = new cAlert("No search results found for resources!", "success",3);
                 test.alert();
                 var tempbackup = $scope.resourcesBackup;
+                $("#sub_resources").css("display","block");
+                $("#resourcesSearchHead").css("display","block");
                 $scope.resources = tempbackup.splice(0,12);
             }catch(e){
                 console.log(e)
