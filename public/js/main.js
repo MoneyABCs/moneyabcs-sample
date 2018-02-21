@@ -329,24 +329,52 @@ $(function () {
 });
 // .modal-backdrop classes
 
+
 $(".modal-transparent").on('show.bs.modal', function () {
+    console.log("how.bs.modal");
     setTimeout(function () {
         $(".modal-backdrop").addClass("modal-backdrop-transparent");
     }, 0);
 });
 $(".modal-transparent").on('hidden.bs.modal', function () {
+    console.log("hid.bs.modal");
     $(".modal-backdrop").addClass("modal-backdrop-transparent");
 });
 
 $(".modal-fullscreen").on('show.bs.modal', function () {
+    console.log("show.bs.modal");
     setTimeout(function () {
         $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
     }, 0);
 });
 $(".modal-fullscreen").on('hidden.bs.modal', function () {
+    console.log("hidden.bs.modal");
     $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
 });
 
+
+$(function () {
+    $('#resources').on('hide.bs.modal', function () {
+        // console.log("123_hide.bs.modal");
+        $('.resourcesSpace').html('null');
+    });
+
+    // $('#resources').on('hidden.bs.modal', function () {
+    //     console.log("123_hidden.bs.modal");
+    // });
+
+    // $('#resources').on('show.bs.modal', function () {
+    //     console.log("123_show.bs.modal");
+    // });
+
+    // $('#resources').on('shown.bs.modal', function () {
+    //     console.log("123_shown.bs.modal");
+    // });
+
+    // $('#resources').on('loaded.bs.modal', function () {
+    //     console.log("123_loaded.bs.modal");
+    // });
+});
 
 var alertQueue = [];
 var alerts = [];
