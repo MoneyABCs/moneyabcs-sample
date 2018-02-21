@@ -596,32 +596,44 @@ learning materials on many financial topics of interest. </p>
 	<!--Dashboard Code Start-->
 <div class="container-fluid" ng-show="showpage =='dashboard'">
 
-    <div id="navTabs" class="row nav nav-tabs" style="margin-top: 4%; ">
-        <div class="col-sm-2 col-md-2 col-lg-2">
+<div id="navTabs" class="row nav nav-tabs" style="margin-left: 5%;margin-right: -48%;margin-top: 4%">
+    <div class="col-sm-1 col-md-1 col-lg-1">
         <div id="networkid" class="zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
-            <span data-toggle="tab" href="#networkic" class="fa fa-users" aria-hidden="true" style="font-size:50px;margin-left:3px;margin-top:23px"></span>
+          <span data-toggle="tab" href="#networkic" class="fa fa-users" aria-hidden="true" style="font-size:50px;margin-left:14px;margin-top:23px"></span>
         </div>
-            </div>
-        <div id="shareid" class="col-sm-1 col-md-1 col-lg-1 zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
-            <span data-toggle="tab" href="#shareic" class="fa fa-share-alt" style="font-size:50px;margin-left:6px;margin-top:20px"></span>
-        </div>
-        <div id="searchid" class="col-sm-2 col-md-2 col-lg-2 zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
-            <span data-toggle="tab" href="#searchic" class="fa fa-search fa-lg" aria-hidden="true" style="font-size:50px;margin-left:7px;margin-top:25px"></span>
-        </div>
-        <div id="suitcaseid" class="col-sm-2 col-md-2 col-lg-2 zoom active" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
-            <span data-toggle="tab" href="#suitcaseic" class="fa fa-briefcase fa-lg" style="font-size:50px;margin-left:4px;margin-top:29px"></span>
-        </div>
-        <div id="schoolid" class="col-sm-1 col-md-1 col-lg-1 zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
-            <span data-toggle="tab" href="#schoolic" class="fa fa-desktop" style="font-size:50px;margin-left:1px;margin-top:25px"></span>
-        </div>
-        <div id= "financeid" class="col-sm-2 col-md-2 col-lg-2 zoom " style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
-            <span data-toggle="tab" href="#financeic" class="fa fa-dollar fa-lg" style="font-size:50px;margin-left:13px;margin-top:26px"></span>
-        </div>
-        <div id= "profileid" class="col-sm-2 col-md-2 col-lg-2 zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
-            <span data-toggle="tab" href="#profileic" class="fa fa-user fa-lg" aria-hidden="true" style="font-size:50px;margin-left:8px;margin-top:24px"></span>
-        </div>
-        <i class="" aria-hidden="true"></i>
     </div>
+    <div class="col-sm-1 col-md-1 col-lg-1 ">
+        <div id="shareid"  class="zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+            <span data-toggle="tab" href="#shareic" class="fa fa-share-alt" style="font-size:50px;margin-left:17px;margin-top:20px"></span>
+        </div>
+    </div>
+    <div class="col-sm-1 col-md-1 col-lg-1 ">
+        <div id="searchid" class="zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+             <span data-toggle="tab" href="#searchic" class="fa fa-search fa-lg" aria-hidden="true" style="font-size:50px;margin-left:20px;margin-top:25px"></span>
+        </div>
+    </div>
+    <div class="col-sm-1 col-md-1 col-lg-1 ">
+        <div id="suitcaseid"  class="zoom active" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+            <span data-toggle="tab" href="#suitcaseic" class="fa fa-briefcase fa-lg" style="font-size:50px;margin-left:17px;margin-top:29px"></span>
+        </div>
+    </div>
+    <div class="col-sm-1 col-md-1 col-lg-1 ">
+         <div id="schoolid"  class="zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+            <span data-toggle="tab" href="#schoolic" class="fa fa-desktop" style="font-size:50px;margin-left:16px;margin-top:25px"></span>
+        </div>
+    </div>
+    <div class="col-sm-1 col-md-1 col-lg-1 ">
+        <div id= "financeid"  class="zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+            <span data-toggle="tab" href="#financeic" class="fa fa-dollar fa-lg" style="font-size:50px;margin-left:27px;margin-top:26px"></span>
+         </div>
+    </div>
+    <div class="col-sm-1 col-md-1 col-lg-1">
+        <div id= "profileid"  class="zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+            <span data-toggle="tab" href="#profileic" class="fa fa-user fa-lg" aria-hidden="true" style="font-size:50px;margin-left:22px;margin-top:24px"></span>
+        </div>
+    </div>
+    <i class="" aria-hidden="true"></i>
+</div>
 
     <div id="tabcontent" style="margin-bottom:5%">
         <div class="tabclass" id="financeid1" style="display: none;">
