@@ -13,7 +13,8 @@ function moneyController($scope,$http,$sce,$window){
         // console.log($scope.uName);
         $http.post('/api/getProfile', {emailId: $scope.uName }).success(function (res) {
 
-            $scope.saved_articles = res[0];
+            $scope.saved_articles = res[0].title;
+            $scope.saved_resources = res[0].restitle;
         });
         // $scope.profile
         $http.post('/api/getUserProfile', {username: $scope.uName}).success(function (res) {
@@ -25,10 +26,21 @@ function moneyController($scope,$http,$sce,$window){
             // console.log("Clicked..........");
             // console.log(index);
             // console.log($scope.saved_articles.title[index].title);
-            var id = $scope.saved_articles.title[index]._id;
+            var id = $scope.saved_articles[index]._id;
             if (confirm("Confirm Deletion")) {
-                $scope.saved_articles.title.splice(index, 1);
+                $scope.saved_articles.splice(index, 1);
                 $.post("/api/deleteProfile", {emailId: $scope.uName, id: id})
+                    .done(function (data) {
+                        console.log("Deleted: " + data);
+                    });
+            }
+        }
+        $scope.deleteSavedResourcesfunc = function (index) {
+
+            var id = $scope.saved_resources[index]._id;
+            if (confirm("Confirm Deletion")) {
+                $scope.saved_resources.splice(index, 1);
+                $.post("/api/deleteResourceProfile", {emailId: $scope.uName, id: id})
                     .done(function (data) {
                         console.log("Deleted: " + data);
                     });

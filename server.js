@@ -36,9 +36,10 @@ app.use(morgan('combined'))
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
-    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL, // || 'mongodb://localhost:27017/moneyabcsdb',
+    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
-
+//|| 'mongodb://flpf:emmanuel2015@localhost:27017/moneyabcsdb'
+// || 'mongodb://localhost:27017/moneyabcsdb'
 if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
   var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
       mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
@@ -146,9 +147,13 @@ var ArticleSchemaFake = new mongoose.Schema({
 },{collection : 'articleResFake'}); //override default collection name as web
 var ArticleFakeResult = mongoose.model('ArticleFakeResult',ArticleSchemaFake);
 
+
+
+//START///////////////PROFILE SECTION//////////////// Saved Article & Saved Resources
 var profile2 = new mongoose.Schema({
 		emailId:String,
-		title:[{}]
+		title:[{}],
+        restitle:[{}]
 
 },{collection:'profile2'});
 var profileRes = mongoose.model('profileRes',profile2);
@@ -156,8 +161,10 @@ var profileRes = mongoose.model('profileRes',profile2);
 app.post('/api/profile',function(req,res){
 	console.log("inside post cal");
     console.log(req.body.newObj[0].emailId);
-    console.log(req.body.newObj[0].title)
+    console.log(req.body.newObj[0].title);
 
+    //Currntly remove and new entry get added
+	//EXPECTED: updatewith new title (to do)
 	profileRes.find({ emailId:req.body.newObj[0].emailId }).remove().exec(function(err, data) {
 		var newData = new profileRes({
 			emailId:req.body.newObj[0].emailId,
@@ -182,6 +189,38 @@ app.post('/api/profile',function(req,res){
 
 });
 
+app.post("/api/updateProfileArticle", function(req, res){
+    console.log(req.body.emailId);
+    profileRes.update({"emailId": req.body.emailId}, {
+        $push: {title: req.body.articles}
+    }, function (err, numberAffected, rawResponse) {
+        //handle it
+        if(err){
+            console.log("Failed to update Saved Article")
+        }
+        else
+        {
+            console.log("Updated Saved Artcile");
+        }
+    });
+});
+
+app.post("/api/updateProfileResource", function(req, res){
+    console.log(req.body.emailId);
+    profileRes.update({"emailId": req.body.emailId}, {
+        $push: {restitle: req.body.resources}
+    }, function (err, numberAffected, rawResponse) {
+        //handle it
+        if(err){
+            console.log("Failed to update Saved resource")
+        }
+        else
+        {
+            console.log("Updated Saved resource");
+        }
+    });
+});
+
 app.post("/api/getProfile", function (req,res){
 	console.log(req.body.emailId);
 	var data = profileRes.find({"emailId": req.body.emailId},function(err,data){
@@ -190,7 +229,7 @@ app.post("/api/getProfile", function (req,res){
 	});
 });
 
-app.post("/api/deleteProfile", function (req,res){
+app.post("/api/deleteArticleProfile", function (req,res){
     console.log(req.body.emailId);
     profileRes.find({"emailId": req.body.emailId},function(err,data){
         console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
@@ -213,6 +252,27 @@ app.post("/api/deleteProfile", function (req,res){
     });
 
 });
+
+app.post("/api/deleteResourceProfile", function (req,res){
+    console.log(req.body.emailId);
+    profileRes.find({"emailId": req.body.emailId},function(err,data){
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        var ans = data[0];
+        //console.log(ans.title.length);
+        for(i in ans.restitle)
+        {
+            if(ans.restitle[i]._id == req.body.id)
+            {
+                ans.restitle.splice(i, 1)
+            }
+        }
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        ans.save();
+        res.json(ans);
+    });
+
+});
+//END///////////////PROFILE SECTION//////////////// Saved Article & Saved Resources
 
 var profile = new mongoose.Schema({
 
@@ -485,6 +545,41 @@ app.post("/article/chosenTopics", function (req,res){
 	console.log(req.body.articleTopics);
 	searchChosenArticles(req.body.articleTopics,res);
 });
+
+var ResourcesList = new mongoose.Schema({
+    _id : { '$oid' : ''},
+    topic : String,
+    type_material : String,
+    name: String,
+    thumbnailLink : String,
+    description : String,
+    webUrl : String,
+    embedUrl : String,
+    category :  String,
+    type : String,
+    language :  String,
+    age : String,
+    age_category :  String,
+    school : String,
+    createdAt: Date,
+    '__v' : ''
+
+},{timestamps: true, collection : 'resourcesList'});
+var ResourcesListResult = mongoose.model('ResourcesListResult',ResourcesList);
+
+
+/** resourcesList **/
+app.get('/resourcesList', function(req, res) {
+    ResourcesListResult.find(function(err, todos) {
+        if (err)
+            res.send(err);
+
+        res.json(todos);
+    });
+});
+
+/** resourcesList **/
+
 
 
 /** Processing comment **/

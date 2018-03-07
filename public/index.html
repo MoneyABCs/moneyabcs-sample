@@ -1137,20 +1137,38 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
         <div class="tabclass" id="suitcaseid1" style="display: block;">
             <div class="tabContentLabel" ><label>Briefcase</label></div>
             <div ng-init="refreshData()" >
-                <h3 class="col-sm-8 col-sm-offset-2">Your saved articles </h3>
-                <div class="col-sm-8 col-sm-offset-2"  ng-repeat="articleObj in saved_articles.title">
-                    <div class="row marketing">
-                        <div class="col-lg-6">
-                            <p> <img alt="ALT NAME" ng-src="{{articleObj.imgUrl}}" imageonload  align="left"> </p>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <h3 class="col-sm-10 col-sm-offset-1">Your saved articles </h3>
+                    <div class="col-sm-10 col-sm-offset-1"  ng-repeat="articleObj in saved_articles">
+                        <div class="row marketing">
+                            <div class="col-lg-6">
+                                <p> <img alt="ALT NAME" ng-src="{{articleObj.imgUrl}}" imageonload  align="left"> </p>
+                            </div>
+                            <div class="col-lg-6">
+                                <a href="{{articleObj.iframeLink}}" target="_blank">{{articleObj.title}}</a>
+                                <span class="glyphicon glyphicon-remove" ng-click="deleteSavedArticlesfunc($index)" style="float: right;"></span>
+                                <!--<button type="button" class="close" aria-hidden="true" style="float: right;" ng-click="deleteSavedArticlesfunc($index)">&times;</button>-->
+                                <p>{{articleObj.snippet}}</p>
+                            </div>
                         </div>
-                        <div class="col-lg-6">
-                            <a href="{{articleObj.iframeLink}}" target="_blank">{{articleObj.title}}</a>
-                            <span class="glyphicon glyphicon-remove" ng-click="deleteSavedArticlesfunc($index)" style="float: right;"></span>
-                            <!--<button type="button" class="close" aria-hidden="true" style="float: right;" ng-click="deleteSavedArticlesfunc($index)">&times;</button>-->
-                            <p>{{articleObj.snippet}}</p>
-                        </div>
+                        <hr>
                     </div>
-                    <hr>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <h3 class="col-sm-10 col-sm-offset-1">Your saved resources </h3>
+                    <div class="col-sm-10 col-sm-offset-1"  ng-repeat="resourceObj in saved_resources">
+                        <div class="row marketing">
+                            <div class="col-lg-6">
+                                <p> <img alt="ALT NAME" ng-src="{{resourceObj.thumbnailLink}}" imageonload  align="left"> </p>
+                            </div>
+                            <div class="col-lg-6">
+                                <a href="{{resourceObj.embedUrl}}" target="_blank">{{resourceObj.name}}</a>
+                                <span class="glyphicon glyphicon-remove" ng-click="deleteSavedResourcesfunc($index)" style="float: right;"></span>
+                                <p>{{resourceObj.description}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
                 </div>
             </div>
             <br>
@@ -1874,7 +1892,7 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
                 <div class="sidebar_icons">
                     <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleFeatured[0].displayLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
                     <img data-toggle="modal" id="email_1" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                    <img src="images/add.png" id="1" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
+                    <img src="images/add.png" id="1" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
                 </div>
                 <div class="thumbnail">
                     <a href="{{articleFeatured[0].iframeLink}}" target="_blank"> <img  class ="newsImg"topic="{{articleFeatured[0].indexTopic}}" set="no" alt="ALT NAME" ng-src="{{articleFeatured[0].imgUrl}}" imageonload>
@@ -1897,7 +1915,7 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
                 <div class="sidebar_icons">
                     <a class="fb-xfbml-parse-ignore"   data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleFeatured[1].displayLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
                     <img data-toggle="modal" id="email_2" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                    <img src="images/add.png" id="2" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
+                    <img src="images/add.png" id="2" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
                 </div>
                 <div class="thumbnail">
                     <a href="{{articleFeatured[1].iframeLink}}" target="_blank"> <img class ="newsImg" set="no" topic="{{articleFeatured[1].indexTopic}}" alt="ALT NAME" ng-src="{{articleFeatured[1].imgUrl}}" imageonload>
@@ -1921,7 +1939,7 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
                     <img data-toggle="modal" id="email_3"
                          data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
                     <img src="images/add.png" id="3"
-                         data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
+                         data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
                 </div>
                 <div class="thumbnail">
                     <a href="{{articleFeatured[2].iframeLink}}"
@@ -1945,8 +1963,8 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
                     <div class={{SelectedLayout}} style="margin-bottom:5%;">
                        <div class="sidebar_icons">
                            <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleObj.iframeLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
-                            <img data-toggle="modal" id="email_{{$index+3}}" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                            <img src="images/add.png" id={{$index+3}} data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
+                            <img data-toggle="modal" id="email_{{$index+4}}" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                            <img src="images/add.png" id={{$index+4}} data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
 
                         </div>
 
@@ -2070,7 +2088,7 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
                 <div class="sidebar_icons">
                     <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[0].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
                     <img data-toggle="modal" id="resourceEmail_1" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                    <img src="images/add.png" id="1" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
+                    <img src="images/add.png" id="1" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
                 </div>
                 <div class="thumbnail" data-toggle="modal" data-target="#resources">
                     <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[0].thumbnailLink}}" imageonload>
@@ -2089,7 +2107,7 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
                 <div class="sidebar_icons">
                     <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[1].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
                     <img data-toggle="modal" id="resourceEmail_2" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                    <img src="images/add.png" id="2" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
+                    <img src="images/add.png" id="2" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
                 </div>
                 <div class="thumbnail" data-toggle="modal" data-target="#resources">
                     <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[1].thumbnailLink}}" imageonload>
@@ -2108,7 +2126,7 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
                 <div class="sidebar_icons">
                     <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[2].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
                     <img data-toggle="modal" id="resourceEmail_3" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                    <img src="images/add.png" id="3" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
+                    <img src="images/add.png" id="3" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
                 </div>
                 <div class="thumbnail" data-toggle="modal" data-target="#resources">
                     <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[2].thumbnailLink}}" imageonload>
@@ -2129,8 +2147,8 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
                 <div class={{SelectedLayout}} >
                         <div class=" sidebar_icons"> <!---->
                             <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourcesObj.webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
-                             <img data-toggle="modal" id="resourceEmail_{{$index+1}}" data-ng-click="emailArticlesToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                            <img src="images/add.png" id={{$index+1}} data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" title="add">
+                             <img data-toggle="modal" id="resourceEmail_{{$index+4}}" data-ng-click="emailArticlesToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                            <img src="images/add.png" id={{$index+4}} data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
                         </div>
                     <div class="thumbnail"  data-toggle="modal" data-target="#resources">
                         <img class="thumb" alt="ALT NAME" ng-src="{{resourcesObj.thumbnailLink}}" imageonload>

@@ -148,7 +148,8 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
         // console.log($scope.uName);
         $http.post('/api/getProfile', {emailId: $scope.uName }).success(function (res) {
 
-            $scope.saved_articles = res[0];
+            $scope.saved_articles = res[0].title;
+            $scope.saved_resources = res[0].restitle;
         });
         // $scope.profile
         $http.post('/api/getUserProfile', {username: $scope.uName}).success(function (res) {
@@ -160,10 +161,22 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
             // console.log("Clicked..........");
             // console.log(index);
             // console.log($scope.saved_articles.title[index].title);
-            var id = $scope.saved_articles.title[index]._id;
+            var id = $scope.saved_articles[index]._id;
             if (confirm("Confirm Deletion")) {
-                $scope.saved_articles.title.splice(index, 1);
+                $scope.saved_articles.splice(index, 1);
                 $.post("/api/deleteProfile", {emailId: $scope.uName, id: id})
+                    .done(function (data) {
+                        console.log("Deleted: " + data);
+                    });
+            }
+        }
+
+        $scope.deleteSavedResourcesfunc = function (index) {
+
+            var id = $scope.saved_resources[index]._id;
+            if (confirm("Confirm Deletion")) {
+                $scope.saved_resources.splice(index, 1);
+                $.post("/api/deleteResourceProfile", {emailId: $scope.uName, id: id})
                     .done(function (data) {
                         console.log("Deleted: " + data);
                     });
@@ -497,67 +510,181 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
         $window.location.href = "/logout";
     }
 
-    var checkDuplicateObj = function() {
-        console.log($scope.loginProfile[0].title.length);
-        console.log("--");
-        console.log($scope.loginProfile[0].title[0].title);
-        console.log("--");
-        console.log($scope.profiles.title);
-        for (i = 0; i < $scope.loginProfile[0].title.length; i++) {
-            if ($scope.loginProfile[0].title[i].title === $scope.profiles.title) {
-                return true;
+    var checkDuplicateObj = function(str) {
+        debugger;
+        if(str === "Articles")
+        {
+            // console.log($scope.loginProfile[0].title.length);
+            // console.log("--");
+            // console.log($scope.profiles.title);
+            for (var i = 0; i < $scope.loginProfile[0].title.length; i++) {
+                if ($scope.loginProfile[0].title[i].title === $scope.profiles.title) {
+                    return true;
+                }
             }
+            return false;
         }
-        return false;
+        else if(str === "Resources")
+        {
+            // console.log($scope.loginProfile[0].restitle.length);
+            // console.log("--");
+            // console.log($scope.resprofiles.title);
+            for (var i = 0; i < $scope.loginProfile[0].restitle.length; i++) {
+                if ($scope.loginProfile[0].restitle[i].title === $scope.resprofiles.title) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        else
+        {
+            console.log("Invalid Arguments");
+        }
+
+
     }
 
     $scope.addme = function(event){
         var test = new cAlert("Article has been added to your profile", "success",20);
         test.alert();
-        //var self1 = $selff
+
+
         $scope.profiles={};
+        $scope.resprofiles={};
         event.preventDefault();
         //alert(event.target.id);
-        if(event.target.id <= 2){
-            var profile = $scope.articleFeatured[event.target.id-1];
-        } else {
-            var profile = $scope.article[event.target.id-3];
-        }
 
-        console.log(profile);
-        $scope.profiles = profile;
-        //profile=$scope.profiles;
-        //compare and see if selected article is present in $scope.loginProfile
-        //if its there, dont do anything, else add to existing list
-        console.log("$scope.loginProfile ============")
-        console.log($scope.loginProfile)
-        if($scope.loginProfile.length > 0){
-            //check if duplicates are there
-            //alert("hi")
-            var boolVal = checkDuplicateObj();
-            if(!boolVal){
-                console.log("new article is being appended to collection")
-                $scope.loginProfile[0].title.push($scope.profiles);
-                var newObj = $scope.loginProfile;
-                //$scope.loginProfile = newObj;
+        //articleFeatured = top row 3
+        //artcile rest of row
 
-                console.log(newObj);
+        // console.log(event.target);
+        // console.log(event.target.attributes.sectype.value);
+        if(event.target.attributes.sectype.value === "article")
+        {
+            var selectedArticleMyProfile;
+            if(event.target.id <= 3){
+                selectedArticleMyProfile = $scope.articleFeatured[event.target.id-1];
             } else {
-                console.log("duplicate found!!!!!!!!!!")
-                return;
+                selectedArticleMyProfile = $scope.article[event.target.id-4];
             }
-        } else {
-            var newObj = [{
-                emailId:$window.localStorage.getItem("uName"),
-                title:[$scope.profiles]
-            }];
-            $scope.loginProfile = newObj;
+
+            console.log(selectedArticleMyProfile);
+            $scope.profiles = selectedArticleMyProfile;
+            //profile=$scope.profiles;
+            //compare and see if selected article is present in $scope.loginProfile
+            //if its there, dont do anything, else add to existing list
+            console.log("$scope.loginProfile ============");
+            console.log($scope.loginProfile);
+
+
+            //Check  for duplicate
+
+
+            //add to scope variable
+            var newObj;
+            if($scope.loginProfile.length > 0){
+                //check if duplicates are there
+                var boolVal = checkDuplicateObj("Articles");
+                if(!boolVal){
+                    console.log("new article is being appended to collection");
+                    $scope.loginProfile[0].title.push($scope.profiles);
+                    newObj = $scope.loginProfile;
+                    //$scope.loginProfile = newObj;
+
+                    console.log(newObj);
+                } else {
+                    console.log("duplicate found!!!!!!!!!!");
+                    return;
+                }
+            } else {
+                newObj = [{
+                    emailId:$window.localStorage.getItem("uName"),
+                    title:[$scope.profiles],
+                    restitle: []
+                }];
+                $scope.loginProfile = newObj;
+            }
+            console.log(newObj);
+
+            //updating Saved_articles
+            if($scope.saved_articles)
+            {
+                $scope.saved_articles.push($scope.profiles);
+            }
+
+            //update DB
+            $http.post('/api/updateProfileArticle',{emailId: $scope.loginProfile[0].emailId, articles: $scope.profiles}).success(function(res){
+                console.log("pushing new article to db - profile collection");
+                console.log(res);
+                // var result = res;
+            });
+
+
+
+
+
         }
-        console.log(newObj);
-        $http.post('/api/profile',{newObj}).success(function(res){
-            console.log("pushing new article to db - profile collection");
-            var result = res;
-        });
+        else if(event.target.attributes.sectype.value === "resource")
+        {
+            var selectedResourceMyProfile;
+            if(event.target.id <= 3){
+                selectedResourceMyProfile = $scope.resourceFeatured[event.target.id-1];
+            } else {
+                selectedResourceMyProfile = $scope.resources[event.target.id-4];
+            }
+
+            console.log(selectedResourceMyProfile);
+            $scope.resprofiles = selectedResourceMyProfile;
+            console.log("$scope.loginProfile ============");
+            console.log($scope.loginProfile);
+
+
+            //Check  for duplicate
+            //add to scope variable
+            var newObj;
+            if($scope.loginProfile.length > 0){
+                //check if duplicates are there
+                var boolVal = checkDuplicateObj("Resource");
+                if(!boolVal){
+                    console.log("new article is being appended to collection");
+                    $scope.loginProfile[0].restitle.push($scope.resprofiles);
+                    newObj = $scope.loginProfile;
+                    console.log(newObj);
+                } else {
+                    console.log("duplicate found!!!!!!!!!!");
+                    return;
+                }
+            } else {
+                newObj = [{
+                    emailId:$window.localStorage.getItem("uName"),
+                    title: [],
+                    restitle:[$scope.resprofiles]
+
+                }];
+                $scope.loginProfile = newObj;
+            }
+            console.log(newObj);
+
+            //updating scope of saved_resources
+            if($scope.saved_resources)
+            {
+                $scope.saved_resources.push($scope.resprofiles);
+            }
+
+            //update DB
+            $http.post('/api/updateProfileResource',{emailId: $scope.loginProfile[0].emailId, resources: $scope.resprofiles}).success(function(res){
+                console.log("pushing new article to db - profile collection");
+                console.log(res);
+            });
+
+        }
+        else
+        {
+            console.log("Unknown sectype from page");
+        }
+
+
+
     }
     //var getgoogleDrive = function(){
 //		$http.get('/googleDrive')
@@ -733,34 +860,49 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
     getFeaturedArticles($scope);
 $scope.refreshData = function(){
 
-if(($scope.uName != undefined) && ($scope.uName != "")) {
-        // console.log($scope.uName);
-        $http.post('/api/getProfile', {emailId: $scope.uName }).success(function (res) {
-            console.log("Response "+res[0]);
-            $scope.saved_articles = res[0];
-        });
-        // $scope.profile
-        $http.post('/api/getUserProfile', {username: $scope.uName}).success(function (res) {
-            $scope.profile = res.local;
-        });
+    if(($scope.uName != undefined) && ($scope.uName != ""))
+    {
+            // console.log($scope.uName);
+            $http.post('/api/getProfile', {emailId: $scope.uName }).success(function (res) {
+                console.log("Response "+res[0]);
+                $scope.saved_articles = res[0].title;
+                console.log($scope.saved_articles);
+                $scope.saved_resources = res[0].restitle;
+            });
+
+            // $scope.profile
+            $http.post('/api/getUserProfile', {username: $scope.uName}).success(function (res) {
+                $scope.profile = res.local;
+            });
 
 
-        $scope.deleteSavedArticlesfunc = function (index) {
-            // console.log("Clicked..........");
-            // console.log(index);
-            // console.log($scope.saved_articles.title[index].title);
-            var id = $scope.saved_articles.title[index]._id;
-            if (confirm("Confirm Deletion")) {
-                $scope.saved_articles.title.splice(index, 1);
-                $.post("/api/deleteProfile", {emailId: $scope.uName, id: id})
-                    .done(function (data) {
-                        console.log("Deleted: " + data);
-                    });
+            $scope.deleteSavedArticlesfunc = function (index) {
+                // console.log("Clicked..........");
+                // console.log(index);
+                // console.log($scope.saved_articles.title[index].title);
+                var id = $scope.saved_articles[index]._id;
+                if (confirm("Confirm Deletion")) {
+                    $scope.saved_articles.splice(index, 1);
+                    $.post("/api/deleteArticleProfile", {emailId: $scope.uName, id: id})
+                        .done(function (data) {
+                            console.log("Deleted: " + data);
+                        });
+                }
             }
-        }
-    }
 
+            $scope.deleteSavedResourcesfunc = function (index) {
+
+                var id = $scope.saved_resources[index]._id;
+                if (confirm("Confirm Deletion")) {
+                    $scope.saved_resources.splice(index, 1);
+                    $.post("/api/deleteResourceProfile", {emailId: $scope.uName, id: id})
+                        .done(function (data) {
+                            console.log("Deleted: " + data);
+                        });
+                }
+            }
     }
+}
 
 
     //getgoogleDrive();
@@ -775,11 +917,15 @@ if(($scope.uName != undefined) && ($scope.uName != "")) {
     }
     $scope.formData = {};
 
-    $http.get('/resources.json').success(function (data){
+//$http.get('/resources.json').success(function (data){
+    $http.get('/resourcesList').success(function (data){
         $scope.allresources = data;
+        $scope.resourcesBackup = $scope.allresources;
         $scope.resourceFeatured = $scope.allresources.splice(0,3);
         $scope.resources = ($scope.allresources.length >= 12 ? $scope.allresources.splice(0,12) : $scope.allresources.splice(0,$scope.allresources.length)); 
-        $scope.resourcesBackup = $scope.allresources;
+
+    }).error(function(data) {
+        console.log('Error: ' + data);
     });
     console.log($scope.resources);
 
