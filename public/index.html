@@ -325,7 +325,7 @@ OneDrive.open(odOptions);
 
 
 
-<div ng-show="showpage =='partners'"  class="container-fluid margin5Auto partners">
+<div ng-if="showpage =='partners'"  class="container-fluid margin5Auto partners">
 
       
     <div class="col-sm-4">
@@ -351,7 +351,7 @@ OneDrive.open(odOptions);
 
     </div>
 </div>
-<div ng-show="showpage =='aboutUS'" class="container margin5Auto largeFont" >
+<div ng-if="showpage =='aboutUS'" class="container margin5Auto largeFont" >
         <h2 style="text-align: center; font-weight: 800" >About Us</h2>
       <div id="aboutus" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -408,7 +408,7 @@ OneDrive.open(odOptions);
 
 
 
-<div ng-show="showpage =='contactUS'"  style="margin-top: 5%;" >
+<div ng-if="showpage =='contactUS'"  style="margin-top: 5%;" >
     <div class="main">
     <div class="main-top">
         <div class="wrap" style="text-align: center; font-size: 21px;">
@@ -489,7 +489,7 @@ OneDrive.open(odOptions);
 
 
 
-<div ng-show="showpage =='student'" class="container margin5Auto largeFont">
+<div ng-if="showpage =='student'" class="container margin5Auto largeFont">
 
 	    <h2 style="text-align: center; font-weight: 800" >Students</h2>
       <div id="student" class="carousel slide" data-ride="carousel">
@@ -549,7 +549,7 @@ learning materials on many financial topics of interest. </p>
 	
 	
 </div>
-<div ng-show="showpage =='educator'" class="container margin5Auto largeFont">
+<div ng-if="showpage =='educator'" class="container margin5Auto largeFont">
 
 	
 	
@@ -616,7 +616,7 @@ learning materials on many financial topics of interest. </p>
 	
 <!--Dashboard Code Start-->
 	
-	<div class="container-fluid" ng-show="showpage =='dashboard'">
+	<div class="container-fluid" ng-if="showpage =='dashboard'">
     <div id="navTabs" class="row nav nav-tabs" style="margin-left: 5%;margin-right: -48%;margin-top: 4%">
         <div class="col-sm-1 col-md-1 col-lg-1">
             <div id="networkid" class="zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
@@ -1577,7 +1577,7 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
 	
 	
 	
-<div ng-show="showpage =='supportflp'" class="container margin5Auto largeFont" >
+<div ng-if="showpage =='supportflp'" class="container margin5Auto largeFont" >
 
    
 	
@@ -1865,7 +1865,7 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
 	
 	
 </div>
-<section ng-show="showpage =='default'"  style="display: -webkit-box;margin: 5px;width: 160px;border-radius: 36px;background-color: #8CC63F !important;float: right;">
+<section ng-if="showpage =='default'"  style="display: -webkit-box;margin: 5px;width: 160px;border-radius: 36px;background-color: #8CC63F !important;float: right;">
     <p style="margin: 7px 5px 5px 10px;color: white;">Sort By </p>
     <select ng-model="newssortby" style="width: 80px;margin: 7px 5px 5px 5px;border-radius: inherit;" ng-change="onNewsSortChange(newssortby)" >
         <!--<option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>-->
@@ -1874,7 +1874,7 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
 
 </select>
 </section>
-<section ng-show="showpage =='default'" class="news pad20px" style="margin-top: 25px;" id="news-section">
+<section ng-if="showpage =='default'" class="news pad20px" style="margin-top: 25px;" id="news-section">
     <div class="container-fluid bgColorWhite pad20px marginMain ">
         <div id="articlesSearchHead" style="display:none; font-size: 20px; border-radius: 60px 60px 60px 60px; background-color: #8CC63F !important; background-color: white; margin-bottom: 15px;">
             <span style="margin-left: 20px;">Articles</span>
