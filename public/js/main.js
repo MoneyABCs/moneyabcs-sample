@@ -27,11 +27,11 @@ $(function () {
   if ($(document).scrollTop() > 150) {
     $('nav').addClass('shrink');
     $('.mainPitch').fadeOut();
-    $('.top-search-bar').fadeIn();  
+    $('.top-search-bar').fadeIn();
   } else {
     $('nav').removeClass('shrink');
     $('.mainPitch').fadeIn();
-    $('.top-search-bar').hide(); 
+    $('.top-search-bar').hide();
   }
 });*/
 
@@ -176,7 +176,7 @@ $(function () {
              });
         }else{
             $(this).css('border', 'none')
-        }     
+        }
 
     });
 });
@@ -263,7 +263,7 @@ $(function(){
             class: 'tag',
             id: selectedTopic
         }));
-        
+
     });
 });
 $(function(){
@@ -274,7 +274,7 @@ $(function(){
 function test(){
     var test = new cAlert("Your customized values are save.", "success",3);
 			test.alert();
-} 
+}
 function sixcols() {
     $('.row:nth-child(n+2) .col-md-3').addClass('col-md-2').removeClass('col-md-3');
     $('.row:nth-child(n+2) .col-md-4').addClass('col-md-2').removeClass('col-md-4');
@@ -328,7 +328,24 @@ $(function () {
     });
 });
 // .modal-backdrop classes
-
+function showSelectionOrg(value)
+{
+  if(value === "school")
+  {
+    $("#hiddenDiv").show();
+    $("#hiddenDiv1").hide();
+  }
+  else if(value === "non-profit")
+  {
+    $("#hiddenDiv1").show();
+    $("#hiddenDiv").hide();
+  }
+  else {
+    //do nothing
+    $("#hiddenDiv").hide();
+    $("#hiddenDiv1").hide();
+  }
+}
 
 $(".modal-transparent").on('show.bs.modal', function () {
     console.log("how.bs.modal");
@@ -385,38 +402,38 @@ cAlert = function(body, type, icon = "bubble2", time = 2) {
 	this.type = type;
 	this.icon = icon;
 	this.time = time;
-	
+
 	// Add the alert to the list of all alerts
 	alerts.push(this);
-	
+
 	// _this is to refer to the correct cAlert class, we can't access "this" inside a private function
 	var _this = this;
-		
+
 	// Generate a random ID for the alert
 	this.id = generateUUID();
-	
+
 	// Create the element
 	this.elem = $('<div class="cAlert cAlert-'+this.type+'" type="alert" id="'+this.id+'" style="display: none"><i class="cIcon icon-'+this.icon+'" type="alert-type-icon"></i><div class="cAlert-content"><p>'+this.body+'</p></div><div class="cAlert-queue-count" id="qc-'+this.id+'"><span class="queue-count">0</span></div></div>');
-	
+
 	// Stores the ID of the timeout to dismiss the alert
 	this.hideTimeout = undefined;
-	
+
 	// Set click event
 	this.elem.on("click", function() { _this.click(); });
-	
+
 	this.alert = function() {
 		// Call onalert function
 		if(this.onalert() === false)
 		{
 			return;
 		}
-		
+
 		// Append the alert to the body, hidden
 		$("body").append(this.elem);
-		
+
 		// Set the position of the alert queue count box (The alert box height + 2, the border is 2px)
 		$("#qc-" + this.id).css("top", this.elem.height() + 2);
-		
+
 		// Set the alert visible and put it outside the screen
 		this.elem.css("display", "").css("top", 0 - this.elem.height() - $("#qc-" + this.id).height() - 20);
 
@@ -430,7 +447,7 @@ cAlert = function(body, type, icon = "bubble2", time = 2) {
 			hideTimeout = setTimeout(function () { _this.dismiss() }, this.time * 1000);
 		}
 	};
-	
+
 	this.queue = function() {
 		// Check if the current alert is in the queue already
 		var isInQueue = false;
@@ -442,20 +459,20 @@ cAlert = function(body, type, icon = "bubble2", time = 2) {
 				break;
 			}
 		}
-		
+
 		// If it's not in the queue we add the alert to the queue.
 		if(!isInQueue)
 		{
 			// Add the alert to the queue
 			alertQueue.push(this);
 		}
-		
+
 		if(alertQueue[0] === this)
 		{
 			// Launch alert on the alert on index 0
 			alertQueue[0].alert();
 		}
-		
+
 	};
 
 	this.dismiss = function() {
@@ -464,7 +481,7 @@ cAlert = function(body, type, icon = "bubble2", time = 2) {
 		{
 			return;
 		}
-	
+
 		// Make the alert go up and then we remove it
 		// We also call the ondismissed function
 		this.elem.stop().animate({top: 0 - this.elem.height() - $("#qc-" + this.id).height() - 20}, 500, function() { _this.ondismissed(); _this.remove(); });
@@ -485,13 +502,13 @@ cAlert = function(body, type, icon = "bubble2", time = 2) {
 				alertQueue[0].queue();
 			}
 		}
-		
+
 		// Call the onremove function
 		if(this.onremove() === false)
 		{
 			return;
 		}
-		
+
 		// Remove the element from the body
 		this.elem.remove();
 	}
@@ -502,18 +519,18 @@ cAlert = function(body, type, icon = "bubble2", time = 2) {
 		{
 			return;
 		}
-		
+
 		// If the alert has a timer until it is being removed
 		if(this.hideTimeout)
 		{
 			// Remove the timeout when we click the alert
 			clearTimeout(this.hideTimeout);
 		}
-		
+
 		// Call the remove function
 		this.remove();
 	}
-	
+
 	this.isInQueue = function() {
 		// Get the index of the alert in the alertQueue list (if it exists, otherwise it returns -1)
 		var index = getIndexAlertQueue(this.id);
@@ -544,7 +561,7 @@ cAlert = function(body, type, icon = "bubble2", time = 2) {
 
 	// When the alert box is clicked
 	this.onclick = function() {};
-	
+
 	// When the alert is removed
 	this.onremove = function() {};
 }
@@ -560,7 +577,7 @@ function getIndexAlertQueue(id)
 		}
 		index++;
 	}
-	
+
 	return -1;
 }
 
@@ -571,7 +588,7 @@ function generateUUID() {
         d = Math.floor(d/16);
         return (c=='x' ? r : (r&0x3|0x8)).toString(16);
     });
-    
+
     return uuid;
 };
 

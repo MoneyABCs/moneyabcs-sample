@@ -2,7 +2,7 @@
 var express = require('express'),
     app     = express(),
     morgan  = require('morgan');
- 
+
 
 ////////////////////////////////////
 
@@ -23,12 +23,12 @@ var engines = require('consolidate');
 var nodemailer = require("nodemailer");
 var smtpTransport = require("nodemailer-smtp-transport");
 var configDB = require('./config/database.js');
-var open = require('open');  
+var open = require('open');
 
 
 
 ////////////////////////////
-   
+
 Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
@@ -73,7 +73,7 @@ var initDb = function(callback) {
   console.log(mongoURL);
   mongoose.connect(mongoURL);
 };
-app.use(express.static(__dirname + '/public'));  
+app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));                                         // log every request to the console
 app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
 app.use(bodyParser.json());                                     // parse application/json
@@ -229,6 +229,7 @@ app.post("/api/getProfile", function (req,res){
 	});
 });
 
+
 app.post("/api/deleteArticleProfile", function (req,res){
     console.log(req.body.emailId);
     profileRes.find({"emailId": req.body.emailId},function(err,data){
@@ -275,14 +276,32 @@ app.post("/api/deleteResourceProfile", function (req,res){
 //END///////////////PROFILE SECTION//////////////// Saved Article & Saved Resources
 
 var profile = new mongoose.Schema({
+  "local.title":String,
+  "local.email":String,
+  "local.username":String,
+  "local.lastname":String,
+  "local.phonenumber":String,
+  "local.nameoforganisation":String,
+  "local.roleinorganisation":String,
+  "local.organization":String,
+  "local.nonprofit":String,
+  "local.school":String,
+  "local.url1":String,
+  "local.url2":String,
+  "local.address1":String,
+  "local.address2":String,
+  "local.city":String,
+  "local.states":String,
+  "local.zipcode":String,
+  "local.countries":String
 
 },{collection:'users'});
 var userProfile = mongoose.model('userProfile',profile);
 
 app.post("/api/getUserProfile", function (req,res){
-    console.log("============================");
+    console.log("=============getting user profile===============");
     console.log(req.body.username);
-    var data = userProfile.find({"local.username": req.body.username},'local.title local.nameoforganisation local..organization local.nonprofit local.address1 local.address2 local.city local.states local.zipcode local.countries local.email local.lastname local.username local.selectedlayout local.selectedtopics',function(err,prof){
+    var data = userProfile.find({"local.username": req.body.username},'local.title local.nameoforganisation local..organization local.nonprofit local.address1 local.address2 local.city local.states local.zipcode local.countries local.email local.lastname local.username local.phonenumber local.url1 local.url2 local.roleinorganisation local.selectedlayout local.selectedtopics',function(err,prof){
         console.log(prof);
         console.log(prof[0]);
         console.log("============================");
@@ -292,13 +311,58 @@ app.post("/api/getUserProfile", function (req,res){
 
 app.post("/api/editUserProfile", function (req,res){
     console.log("============================");
+    console.log(req.body.email);
+    console.log(req.body.title);
+    console.log(req.body.typeoforganisation);
+    console.log(req.body.nameoforganisation);
+    console.log(req.body.roleinorganisation);
+    console.log(req.body.url1);
+    console.log(req.body.url2);
+
     console.log(req.body.username);
-    var data = userProfile.find({"local.username": req.body.username},'local.title local.nameoforganisation local..organization local.nonprofit local.address1 local.address2 local.city local.states local.zipcode local.countries local.email local.lastname local.username local.selectedlayout local.selectedtopics',function(err,prof){
-        console.log(prof);
-        console.log(prof[0]);
-        console.log("============================");
-        res.json(prof[0]);
-    });
+    console.log(req.body.lastname);
+    console.log(req.body.phonenumber);
+    console.log(req.body.address1);
+    console.log(req.body.address2);
+    console.log(req.body.city);
+    console.log(req.body.states);
+    console.log(req.body.zipcode);
+    console.log(req.body.countries);
+
+
+    userProfile.update({"local.username": req.body.username},
+       { $set: { "local.title" : req.body.title,
+                "local.organization": req.body.typeoforganisation,
+                "local.nameoforganisation": req.body.nameoforganisation,
+                "local.roleinorganisation": req.body.roleinorganisation,
+                "local.url1": req.body.url1,
+                "local.url2": req.body.url2,
+                "local.address1": req.body.address1,
+                "local.address2": req.body.address2,
+                "local.city": req.body.city,
+                "local.states": req.body.states,
+                "local.zipcode": req.body.zipcode,
+                "local.countries": req.body.countries,
+                "local.lastname": req.body.lastname,
+                "local.username": req.body.username,
+                "local.phonenumber": req.body.phonenumber
+              } },
+              function (err, numberAffected, rawResponse) {
+                  //handle it
+                  if(err){
+                      console.log("Failed to update Saved resource")
+                      // res.json("Failure");
+                      res.end();
+                  }
+                  else
+                  {
+                      console.log("Updated Saved resource");
+                      // res.json("success");
+                      res.end();
+                  }
+              }
+    )
+
 });
 
 app.get("/article/featured", function (req,res){

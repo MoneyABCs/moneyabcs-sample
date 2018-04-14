@@ -22,7 +22,7 @@
     <script type="text/javascript" src="https://js.live.net/v7.0/OneDrive.js"></script>
 
 
-	
+
 	 <style>
         .dashCarousel > .item > img,
         .dashCarousel > .item > a > img {
@@ -110,9 +110,9 @@
             bottom: 2px;
         }
     </style>
-	
-	
-	
+
+
+
     <!-- //for-mobile-apps -->
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
@@ -215,7 +215,7 @@ OneDrive.open(odOptions);
                                data-toggle="dropdown">{{uName}}
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                
+
                                 <li><a ng-click="logOutProfile()">Sign Out</a></li>
                             </ul>
                         </div>
@@ -325,9 +325,9 @@ OneDrive.open(odOptions);
 
 
 
-<div ng-if="showpage =='partners'"  class="container-fluid margin5Auto partners">
+<div ng-show="showpage =='partners'"  class="container-fluid margin5Auto partners">
 
-      
+
     <div class="col-sm-4">
         <a href="https://www.dallasfed.org/"><img  class="partner-logo img-thumbnail"src="images/partners/frbdallas_logo.png" /></a>
 
@@ -351,7 +351,7 @@ OneDrive.open(odOptions);
 
     </div>
 </div>
-<div ng-if="showpage =='aboutUS'" class="container margin5Auto largeFont" >
+<div ng-show="showpage =='aboutUS'" class="container margin5Auto largeFont" >
         <h2 style="text-align: center; font-weight: 800" >About Us</h2>
       <div id="aboutus" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -408,7 +408,7 @@ OneDrive.open(odOptions);
 
 
 
-<div ng-if="showpage =='contactUS'"  style="margin-top: 5%;" >
+<div ng-show="showpage =='contactUS'"  style="margin-top: 5%;" >
     <div class="main">
     <div class="main-top">
         <div class="wrap" style="text-align: center; font-size: 21px;">
@@ -489,7 +489,7 @@ OneDrive.open(odOptions);
 
 
 
-<div ng-if="showpage =='student'" class="container margin5Auto largeFont">
+<div ng-show="showpage =='student'" class="container margin5Auto largeFont">
 
 	    <h2 style="text-align: center; font-weight: 800" >Students</h2>
       <div id="student" class="carousel slide" data-ride="carousel">
@@ -545,14 +545,14 @@ learning materials on many financial topics of interest. </p>
       <span class="sr-only">Next</span>
     </a>
   </div>
-	
-	
-	
-</div>
-<div ng-if="showpage =='educator'" class="container margin5Auto largeFont">
 
-	
-	
+
+
+</div>
+<div ng-show="showpage =='educator'" class="container margin5Auto largeFont">
+
+
+
 	    <h2 style="text-align: center; font-weight: 800" >Educators</h2>
       <div id="educator" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -604,19 +604,19 @@ learning materials on many financial topics of interest. </p>
       <span class="sr-only">Next</span>
     </a>
   </div>
-	
-	
-	
-</div>
-	
 
-	
-	
-	
-	
+
+
+</div>
+
+
+
+
+
+
 <!--Dashboard Code Start-->
-	
-	<div class="container-fluid" ng-if="showpage =='dashboard'">
+
+	<div class="container-fluid" ng-show="showpage =='dashboard'">
     <div id="navTabs" class="row nav nav-tabs" style="margin-left: 5%;margin-right: -48%;margin-top: 4%">
         <div class="col-sm-1 col-md-1 col-lg-1">
             <div id="networkid" class="zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
@@ -971,85 +971,152 @@ learning materials on many financial topics of interest. </p>
         <div class="tabclass" id="profileid1" style="display: none;">
             <div class="tabContentLabel" ><label>Profile</label></div>
             <div>
-                <div class="col-sm-6 col-sm-offset-3">
-                    <form action="/api/editprofile"  name="myprofile" method="post">
-                        <label style="font-weight:bold">
-                            Prefix/Title: </label>
-                        <div class="prefix" tooltip="Please enter a Prefix/Title that suits you">
-                            <select  ng-bind={{profile.title}} name="title" id="title">
-                                <option value="Mr."> Mr.</option>
-                                <option value="Mrs."> Mrs.</option>
-                                <option value="Miss"> Miss</option>
-                                <option value="Ms."> Ms.</option>
-                                <option value="Dr."> Dr.</option>
-                            </select>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6" style="background-color: #FCFBFA;border-radius: 5px; padding: 3%;">
+                    <form action="/api/editUserProfile"  name="myprofile" method="post">
+                        <label>Personal</label><br>
+                        <div class="well">
+                            Prefix/Title:
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="prefix" tooltip="Please enter a Prefix/Title that suits you">
+                                        <select name="title" id="title">  <!--ng-model={{profile.title}}-->
+                                            <option ng-selected={{profile.title}} == 'Mr.' value="Mr."> Mr.</option>
+                                            <option ng-selected={{profile.title}} == 'Mrs.' value="Mrs."> Mrs.</option>
+                                            <option ng-selected={{profile.title}} == 'Miss' value="Miss"> Miss</option>
+                                            <option ng-selected={{profile.title}} == 'Ms.' value="Ms."> Ms.</option>
+                                            <option ng-selected={{profile.title}} == 'Dr.' value="Dr."> Dr.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group " tooltip="Please enter your Firstname">
+
+                                        Firstname: <input  type="text" class="form-control" name="username" id="username" tabindex="1"  ng-model="profile.username">
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group" tooltip="Please enter your Lastname">
+
+                                        Lastname: <input type="text"  class="form-control" name="lastname" id="lastname" tabindex="1"   ng-model="profile.lastname">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group" tooltip="Please enter your Email-Address">
+
+                                        Email Address: <input type="email" class="form-control" name="email" id="email" tabindex="1" class="form-control"  ng-hide="true" ng-model="profile.email">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group" tooltip="Please enter your Phone-number here">
+
+                                        Phone: <input type="text" class="form-control "  tabindex="1"  name="phonenumber"  data-country="countries" ng-model="profile.phonenumber">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <label>Address</label>
+                        <div class="well">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group" tooltip="Please enter your Address here">
+
+                                        Address line1: <input type="address" name="address1" id="address1" tabindex="1"  class="form-control" ng-model="profile.address1">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group" tooltip="Please select your State here">
+
+                                        States: <input type="states" name="states" id="states"  class="form-control" ng-model="profile.states">
+                                        <!--<select name="states" id="states" class="form-control" ng-model="profile.states">-->
+                                        <!--</select>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group" tooltip="Please enter your Address here">
+
+                                        Address line2: <input type="address" name="address2" id="address2" tabindex="1" class="form-control" ng-model="profile.address2">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group" tooltip="Please enter your City here">
+                                        City: <input type="city" name="city" id="city"  class="form-control" ng-model="profile.city">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group" tooltip="Please select your Country here">
+
+                                        Country: <input type="countries" name="countries" id="countries"  class="form-control" ng-model="profile.countries">
+                                        <!--<select name="countries" id="countries"  class="form-control" ng-model="profile.countries"></select>-->
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group" tooltip="Please enter your Zipcode here">
+                                        Zip code: <input type="zipcode" name="zipcode" id="zipcode"  tabindex="1" class="form-control" ng-model="profile.zipcode">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <br>
-                        <div class="form-group " tooltip="Please enter your Firstname">
-
-                            Firstname: <input  type="text" class="form-control" name="username" id="username" tabindex="1"  ng-model="profile.username">
-
+                        <label>Organization</label>
+                        <div class="well">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <!--Organisation: <select ng-model="nonprofit">-->
+                                    <div class="form-group" tooltip="Please select the Type of Organisation">
+                                        Type of Organisation: <input type="text" class="form-control" name="typeoforganisation" ng-model="profile.organisation">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group" tooltip="Please type your Name of Organization here">
+                                        Name of Organization: <input type="nameoforganisation" name="nameoforganisation" id="nameoforganisation" tabindex="1"  class="form-control"  ng-model="profile.nameoforganisation">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group" tooltip="Please type your Role in an  Organization here">
+                                        Role in Organization: <input type="roleinorganisation" name="roleinorganisation" id="roleinorganisation" tabindex="1"  class="form-control" ng-model="profile.roleinorganisation">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group" tooltip="Please enter the URL to institution">
+                                        URL to institution: <input type="url2" name="url2" id="url2" tabindex="1"  class="form-control" ng-model="profile.url2">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group" tooltip="Please enter the URL to profile">
+                                        URL to Profile: <input type="url1" name="url1" id="url1" tabindex="1"  class="form-control" ng-model="profile.url1">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group" tooltip="Please enter your Lastname">
-
-                            Lastname: <input type="text"  class="form-control" name="lastname" id="lastname" tabindex="1"   ng-model="profile.lastname">
-                        </div>
-                        <div class="form-group" tooltip="Please enter your Email-Address">
-
-                            Email Address: <input type="email" class="form-control" name="email" id="email" tabindex="1" class="form-control"  ng-model="profile.email">
-                        </div>
-                        <div class="form-group" tooltip="Please enter your Address here">
-
-                            Address line1: <input type="address" name="address1" id="address1" tabindex="1"  class="form-control" ng-model="profile.address1">
-                        </div>
-                        <div class="form-group" tooltip="Please enter your Address here">
-
-                            Address line2: <input type="address" name="address2" id="address2" tabindex="1" class="form-control" ng-model="profile.address2">
-                        </div>
-                        <div class="form-group" tooltip="Please select your Country here">
-
-                            Country: <input type="countries" name="countries" id="countries"  class="form-control" ng-model="profile.countries">
-                            <!--<select name="countries" id="countries"  class="form-control" ng-model="profile.countries"></select>-->
-                        </div>
-                        <div class="form-group" tooltip="Please select your State here">
-
-                            States: <input type="states" name="states" id="states"  class="form-control" ng-model="profile.states">
-                            <!--<select name="states" id="states" class="form-control" ng-model="profile.states">-->
-                            <!--</select>-->
-                        </div>
-                        <div class="form-group" tooltip="Please enter your City here">
-                            City: <input type="city" name="city" id="city"  class="form-control" ng-model="profile.city">
-                        </div>
-                        <div class="form-group" tooltip="Please enter your Zipcode here">
-                            Zip code: <input type="zipcode" name="zipcode" id="zipcode"  tabindex="1" class="form-control" ng-model="profile.zipcode">
-                        </div>
-                        <div class="form-group" tooltip="Please enter your Phone-number here">
-
-                            Phone: <input type="text" class="form-control "  tabindex="1"  data-country="countries" ng-model="profile.Phone">
-                        </div>
-                        <!--Organisation: <select ng-model="nonprofit">-->
-                        <div class="form-group"tooltip="Please select the Type of Organisation">
-                            Type of Organisation: <input type="text" class="form-control" ng-model="profile.nonprofit">
-                        </div>
-                        <div class="form-group" tooltip="Please type your Name of Organization here">
-                            Name of Organization: <input type="nameoforganisation" name="nameoforganisation" id="nameoforganisation" tabindex="1"  class="form-control"  ng-model="profile.nameoforganisation">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-5">
+                                <button type="submit" name="edit-submit" id="edit-submit" class=""  style="background-color: #8CC63F !important;border: none;color: white;padding: 15px 32px;border-radius:18px;" ng-model="button" ng-disabled="!myprofile.$dirty">Update</button>
+                                <!--style="background-color: #008000;border: none;color: white;padding: 15px 32px;"-->
+                            </div>
                         </div>
 
-                        <div class="form-group" tooltip="Please type your Role in an  Organization here">
-                            Role in Organization: <input type="roleinorganisation" name="roleinorganisation" id="roleinorganisation" tabindex="1"  class="form-control" ng-model="profile.roleinorganisation">
-                        </div>
-                        <div class="form-group" tooltip="Please enter the URL to institution">
-                            URL to institution: <input type="url2" name="url2" id="url2" tabindex="1"  class="form-control" ng-model="profile.url2">
-                        </div>
-                        <div class="form-group" tooltip="Please enter the URL to profile">
-                            URL to Profile: <input type="url1" name="url1" id="url1" tabindex="1"  class="form-control" ng-model="profile.url1">
-                        </div>
-                        <button type="submit" name="edit-submit" id="edit-submit" style="background-color: #008000;border: none;
-color: white;
-padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</button>
                     </form>
                 </div>
+                <div class="col-sm-3"></div>
             </div>
             <br>
         </div>
@@ -1568,19 +1635,19 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
     </div>
 </div>
 <!--Dashboard Code End-->
-	
-	
-	
-	
-	
-	
-	
-	
-	
-<div ng-if="showpage =='supportflp'" class="container margin5Auto largeFont" >
 
-   
-	
+
+
+
+
+
+
+
+
+<div ng-show="showpage =='supportflp'" class="container margin5Auto largeFont" >
+
+
+
  <h2 style="text-align: center; font-weight: 800" >Donate</h2>
       <div id="donate" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -1861,11 +1928,11 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
 
 </form>
 
-</div>	
-	
-	
 </div>
-<section ng-if="showpage =='default'"  style="display: -webkit-box;margin: 5px;width: 160px;border-radius: 36px;background-color: #8CC63F !important;float: right;">
+
+
+</div>
+<section ng-show="showpage =='default'"  style="display: -webkit-box;margin: 5px;width: 160px;border-radius: 36px;background-color: #8CC63F !important;float: right;">
     <p style="margin: 7px 5px 5px 10px;color: white;">Sort By </p>
     <select ng-model="newssortby" style="width: 80px;margin: 7px 5px 5px 5px;border-radius: inherit;" ng-change="onNewsSortChange(newssortby)" >
         <!--<option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>-->
@@ -1874,7 +1941,7 @@ padding: 15px 32px; " ng-model="button" ng-disabled="!myprofile.$dirty">Update</
 
 </select>
 </section>
-<section ng-if="showpage =='default'" class="news pad20px" style="margin-top: 25px;" id="news-section">
+<section ng-show="showpage =='default'" class="news pad20px" style="margin-top: 25px;" id="news-section">
     <div class="container-fluid bgColorWhite pad20px marginMain ">
         <div id="articlesSearchHead" style="display:none; font-size: 20px; border-radius: 60px 60px 60px 60px; background-color: #8CC63F !important; background-color: white; margin-bottom: 15px;">
             <span style="margin-left: 20px;">Articles</span>

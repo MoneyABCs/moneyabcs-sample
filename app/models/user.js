@@ -5,7 +5,7 @@ var app=express();
 var userSchema = mongoose.Schema({
     local: {
         username:String,
-        lastname:String,         
+        lastname:String,
         email:String,
         address1:String,
         address2:String,
@@ -18,11 +18,15 @@ var userSchema = mongoose.Schema({
         zipcode:String,
         organization:String,
         nameoforganisation:String,
+        roleinorganisation:String,
+        school:String,
         password:String,
         confirmpassword:String,
         url1:String,
-        url2:String
-        
+        url2:String,
+        selectedlayout:String,
+        selectedtopics:String
+
     },
     facebook: {
         id: String,
@@ -40,7 +44,3 @@ userSchema.methods.validPassword = function(password){
 }
 
 module.exports = mongoose.model('User',userSchema);
-
-
-
-    

@@ -12,21 +12,21 @@ var configAuth = require('./auth');
 var app = express();
 
    module.exports = function(passport){
-    
+
   passport.serializeUser(function(user, done){
-      
+
       done(null, user.id);
   });
-    
+
     passport.deserializeUser(function(id, done){
         User.findById(id, function(err, user){
             done(err, user);
         });
     });
-    
-       
-       app.use(flash()); 
-       
+
+
+       app.use(flash());
+
     passport.use('local-signup',new LocalStrategy({
         usernameField: 'email',
          //emailField: 'email',
@@ -35,37 +35,40 @@ var app = express();
         //confirmpasswordField:'confirmpassword',
         passReqToCallback: true
     },
-                                                   
+
  function(req, email,password, done){
         process.nextTick(function(){
             User.findOne({'local.email':email }, function(err, user){
-                
+
                 if(err)
                     return done(err);
                 if(user) {
      return done(null, false, req.flash('signupMessage','That email already taken'));
-            } 
+            }
         else {
             var newUser = new User();
             newUser.local.username =req.param('username');
             newUser.local.lastname = req.param('lastname');
             newUser.local.email = req.param('email');
+            newUser.local.phonenumber = req.param('phonenumber');
             newUser.local.address1 = req.param('address1');
             newUser.local.address2 = req.param ('address2');
             newUser.local.countries = req.param('countries');
             newUser.local.states = req.param('states');
             newUser.local.city = req.param('city');
             newUser.local.zipcode = req.param('zipcode');
+            newUser.local.school = req.param('school');
             newUser.local.nonprofit = req.param('non-profit');
             newUser.local.organization = req.param('organization');
             newUser.local.check = req.param('check');
             newUser.local.nameoforganisation = req.param('nameoforganisation');
+            newUser.local.roleinorganisation = req.param('roleinorganisation');
             newUser.local.title=req.param('title');
             //console.log(req.param('organization'));
             //console.log(req.param('nameoforganization'));
-            
+
             /*
-            
+
             email:String,
         address1:String,
         address2:String,
@@ -74,10 +77,10 @@ var app = express();
         nameoforganisation:String,
         password:String,
         confirmpassword:String
-            
-            
-            
-            
+
+
+
+
             */
             newUser.local.password = newUser.generateHash(password);
             newUser.local.url1 = req.param('url1');
@@ -88,62 +91,65 @@ var app = express();
                     throw err;
                 return done(null, newUser);
             });
-            
-            
+
+
             //res.redirect('/login');
-                       
-        
+
+
         }
-                         
+
             })
         });
-    
+
     }
-        
+
 ));
-     
+
       passport.use('local-login', new LocalStrategy({
            usernameField: 'email',
            passwordField: 'password',
            passReqToCallback: true
        },
             function(req, email, password, done){
-           
+
            process.nextTick(function(){
                User.findOne({'local.email': email},function(err, user){
                 if(err)
                    return done(err);
-                 
+
                    if(!user){
                        return done(null, false, req.flash('loginMessage', 'No User found'));
                    }
                    if(!user.validPassword(password))
-                       
+
                        return done(null, false, req.flash('loginMessage', 'invalid password'));
                     //localStorage.setItem('uname', JSON.stringify(username));
 				    /* Storing the username into server local storage - Start */
-					
+
 					var LocalStorage = require('node-localstorage').LocalStorage,
 					localStorage = new LocalStorage('./public/js/');
 					localStorage.setItem('uname.js', email);
-					
-					/* 
+          
+          // localStorage.setItem('uname', user.local.email);
+          // localStorage.setItem("email", user.local.username);
+
+					/*
 					global.localStorage = require('localStorage')
 					var store = require('store')
 					store.set('uname', username) */
-					
+
 					/* Storing the username into server local storage - Start */
 					return done(null, user);
-                   
-                   
-               
+
+
+
 
            })
-                           
+
        });
                             }
                                                     ))
-                    
+
    };
 
 
@@ -174,14 +180,14 @@ passport.use(new GoogleStrategy({
                             throw err;
                         return done(null, newUser);
                     })
-                   console.log(profile); 
+                   console.log(profile);
                 }
         });
     });
   //  });
   }
 ));
-    
+
 passport.use(new FacebookStrategy({
     clientID: configAuth.facebookAuth.clientID,
     clientSecret: configAuth.facebookAuth.clientSecret,
@@ -211,14 +217,14 @@ passport.use(new FacebookStrategy({
                             throw err;
                         return done(null, newUser);
                     })
-                  console.log(profile);  
+                  console.log(profile);
                 }
         });
    // });
   //  });
   }
 
-        
+
         //user is logged in already, and needs to be merged
         else{
             var user = req.user;
@@ -232,7 +238,7 @@ passport.use(new FacebookStrategy({
                     return done(null, user);
             })
         }
-       
+
     });
   //  });
   }
@@ -265,11 +271,10 @@ passport.use(new TwitterStrategy({
                             throw err;
                         return done(null, newUser);
                     })
-                    
+
                 }
         });
     });
   //  });
   }
 ));
-
