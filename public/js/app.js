@@ -118,7 +118,7 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
     $scope.uName = localStorage.getItem("uName");
     $scope.email = localStorage.getItem("email");
     $scope.showpage = "default";
-    $scope.showTour = true;	
+    $scope.showTour = true;
 	// tab link fix
 	$scope.changeShowPage = function changeShowPage(value){
         $window.location.href = '/index.html';
@@ -136,8 +136,8 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
         //console.log(localStorage.getItem('valuePage'));
         localStorage.setItem('valuePage', "default");
     }
-	//fix tab links 
-	
+	//fix tab links
+
     $scope.showpagefunc = function(obj){
 
         $scope.showpage = obj.target.attributes.showpage.value;
@@ -233,6 +233,14 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
         $scope.emailArticle = {title:" "};
         $scope.emailArticle.title = $scope.resources[str-1].webUrl;
         console.log($scope.emailArticle.title)
+    }
+
+    $scope.imgUrlSanitzation = function(index, url){
+        if(url.includes("s4.reutersmedia.net/resources_v2/images/rcom-default.png") || url.includes("assets.bwbx.io/images/izrptLrH5AWw/v1/320x180.jpg") || url.includes("wsj.net/mw5/content/logos/mw_logo_social.png") || (url == ""))
+        {
+          return "images/defaultImg/search_" + index + "/" + Math.ceil(Math.random()*5) + ".png"
+        }
+        return url;
     }
 
     //contact mail
@@ -922,7 +930,7 @@ $scope.refreshData = function(){
         $scope.allresources = data;
         $scope.resourcesBackup = $scope.allresources;
         $scope.resourceFeatured = $scope.allresources.splice(0,3);
-        $scope.resources = ($scope.allresources.length >= 12 ? $scope.allresources.splice(0,12) : $scope.allresources.splice(0,$scope.allresources.length)); 
+        $scope.resources = ($scope.allresources.length >= 12 ? $scope.allresources.splice(0,12) : $scope.allresources.splice(0,$scope.allresources.length));
 
     }).error(function(data) {
         console.log('Error: ' + data);
@@ -1008,7 +1016,7 @@ app.controller("MoneyController",function($http,$scope){
             $scope.user = data;
             console.log(data);
         });
-        
+
 });
 
 app.controller('dashboardController', function($scope,$compile) {
@@ -1016,7 +1024,7 @@ app.controller('dashboardController', function($scope,$compile) {
     //$scope.message = 'Contact us! JK. This is just a demo.';
 });
 
-	
+
 
 /*Dashboard Code Start*/
 $(function() {
@@ -1047,5 +1055,3 @@ $(function () {
 });
 
 /*Dashboard Code End*/
-
-
