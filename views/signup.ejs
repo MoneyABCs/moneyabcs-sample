@@ -115,8 +115,11 @@
                 </li>
                 <li class=""><a ng-click="changeShowPage('student')">Student</a></li>
                 <li class=""><a ng-click="changeShowPage('educator')">Educator</a></li>
-                <li><a ng-click="changeShowPage('supportflp')">Support FLP</a></li>
-                <li ng-if="(uName != undefined) && (uName != '')"><a href="/dashboard">Dashboard</a></li>
+                <li><a ng-click="changeShowPage('supportflp')">Donate</a></li>
+                <li ng-if="(uName != undefined) && (uName != '')"><a showpage="dashboard" ng-click="changeShowPage('dashboard')">Dashboard</a></li>
+                <li class=""><a ng-click="changeShowPage('partners')">Partners</a></li>
+               
+                
 
             </ul>
             <!--<form class="navbar-form navbar-left nav-money ">
