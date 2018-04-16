@@ -119,11 +119,13 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
     $scope.email = localStorage.getItem("email");
     $scope.showpage = "default";
     $scope.showTour = true;
+    $scope.donarSuccess = false;
 	// tab link fix
 	$scope.changeShowPage = function changeShowPage(value){
         $window.location.href = '/index.html';
         localStorage.setItem('valuePage', value);
         $scope.showpage = value;
+	$scope.donarSuccess = false;
         //alert(value);
 
 
@@ -186,7 +188,14 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
     //store donar information
     $scope.donar_master = {};
     $scope.update_donar = function(donar) {
+
        $scope.donar_master = angular.copy(donar);
+       $http.post("/addDonation", $scope.donar_master).success(function(res) {
+            if(res.status==200){
+                $scope.donarSuccess = true;
+            }
+
+        });
        console.log($scope.donar_master);
     };
 
