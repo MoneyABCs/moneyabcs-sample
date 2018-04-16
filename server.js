@@ -440,7 +440,7 @@ app.post('/addDonation', function(req, res) {
       comment: req.body.comment
     },
     function(err, donation) {
-        if (err)
+        if (err){
             res.send(err);
           }
           else {
@@ -451,6 +451,7 @@ app.post('/addDonation', function(req, res) {
             }
             res.json(donation);
           }
+    }
         );
   });
 
