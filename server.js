@@ -447,7 +447,7 @@ app.post('/addDonation', function(req, res) {
             console.log(donation);
             var result = {
               "data" : donation,
-              "status" : 500
+              "status" : 200
             }
             res.json(donation);
           }
