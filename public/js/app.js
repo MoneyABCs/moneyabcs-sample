@@ -183,7 +183,12 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
             }
         }
     }
-
+    //store donar information
+    $scope.donar_master = {};
+    $scope.update_donar = function(donar) {
+       $scope.donar_master = angular.copy(donar);
+       console.log($scope.donar_master);
+    };
 
     $scope.searchParam = "";
     var SelLayout = "";
