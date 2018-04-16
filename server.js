@@ -546,41 +546,230 @@ var searchSample = function(searchKeyword,res){
 
 }
 
-//this is for email
-var searchArticle = function(searchKeyword,res){
-	searchKeyword = searchKeyword.trim();//.replace(/ /g,"%20");
-	console.log(searchKeyword)
-	console.log("-----------------------------------------------")
-	var data = ArticleSearchResult.find({"title": searchKeyword},function(err,data){
-		console.log(data);
-		if(data.length > 0){
-			var result = {
-				"data" : data,
-				"status" : 500
-			}
-			res.json(result);
-		} else {
-			var data = ArticleFeaturedResult.find({"title": searchKeyword},function(err,data){
-				console.log("inside 2nd");
-				console.log(data);
-				if(data.length > 0){
-					var result = {
-						"data" : data,
-						"status" : 500
-					}
-				} else {
-					var result = {
-						"data" : [],
-						"status" : 404,
-						"errMsg" : "No search results found."
-					}
-				}
-				res.json(result);
-			});
-		}
-
-	});
+var searchArticles = function(searchkeyword,res){
+  //console.log("----------------------------------------------"+searchkeyword);
+	var srcKey = searchkeyword;
+	searchKeyword = searchkeyword.trim();//.replace(/ /g,"%20");
+	var arr = searchKeyword.split(" ");
+	var finalData = [];
+	var i=0;
+  //console.log("----------------------------------------------");
+  var data = ArticleFeaturedResult.find({"$or": [{"title": new RegExp('^.* ' + searchKeyword + '.*$')},{"indexTopic": new RegExp('^.* ' + searchKeyword + '.*$')}]},function(err,data){
+    if(data.length > 0){
+      var result = {
+        "data" : data,
+        "status" : 500
+      }
+    } else {
+      var result = {
+        "data" : [],
+        "status" : 404,
+        "errMsg" : "No search results found."
+      }
+    }
+    res.json(result);
+  });
 }
+	// var myVar  = setInterval(function () {
+	// 	if(i < arr.length) {
+	// 		var data = ArticleFeaturedResult.find({"title": new RegExp('^.* ' + arr[i] + '.*$')},function(err,data){
+	// 			if(data.length > 0){
+	// 				for(var l = 0 ;l < data.length;l++){
+	// 					finalData.push(data[l]);
+	// 				}
+	// 			}
+	// 			var data = ArticleFeaturedResult.find({"indexTopic": new RegExp('^.* ' + arr[i] + '.*$')},function(err,data){
+	// 				if(data.length > 0){
+	// 					for(var l = 0 ;l < data.length;l++){
+	// 						johnRemoved = finalData.filter(function(el) {
+	// 							return el.title !== data[l].title;
+	// 						});
+	// 						johnRemoved.push(data[l]);
+	// 						finalData = johnRemoved;
+	// 					}
+	// 				}
+	// 			});
+	// 		});
+	// 		i++;
+	// 	} else {
+	// 		var data = ArticleFeaturedResult.find({"title": new RegExp('^.* ' + searchKeyword + '.*$')},function(err,data){
+	// 			if(data.length > 0){
+	// 				for(var l = 0 ;l < data.length;l++){
+	// 					johnRemoved = finalData.filter(function(el) {
+	// 						return el.title !== data[l].title;
+	// 					});
+	// 					johnRemoved.push(data[l]);
+	// 					finalData = johnRemoved;
+	// 				}
+	// 			}
+	// 			srcKey = srcKey.trim().replace(/ /g,"%20");
+	// 			var data = ArticleFeaturedResult.find({"indexTopic": new RegExp('^.* ' + srcKey + '.*$')},function(err,data){
+	// 				if(data.length > 0){
+	// 					for(var l = 0 ;l < data.length;l++){
+	// 						johnRemoved = finalData.filter(function(el) {
+	// 							return el.title !== data[l].title;
+	// 						});
+	// 						johnRemoved.push(data[l]);
+	// 						finalData = johnRemoved;
+	// 					}
+	// 				}
+	// 				clearInterval(myVar);
+	// 				if(finalData.length > 0){
+	// 					var result = {
+	// 						"data" : finalData,
+	// 						"status" : 500
+	// 					}
+	// 				} else {
+	// 					var result = {
+	// 						"data" : [],
+	// 						"status" : 404,
+	// 						"errMsg" : "No search results found."
+	// 					}
+	// 				}
+	// 				clearInterval(myVar);
+	// 				res.json(result);
+	// 			});
+	// 		});
+	// 	}
+	// },50);
+
+
+
+
+
+var searchResources = function(searchKeyword,filtertype, res){
+  //console.log("--------------------------------------"+searchKeyword);
+	var srcKey = searchKeyword;
+	searchKeyword = searchKeyword.trim();//.replace(/ /g,"%20");
+	var arr = searchKeyword.split(" ");
+	var typeHashMap = {
+    "articles": "images/article.png",
+    "presentations": "images/presentation.png",
+    "videos": "images/video.png"
+  };
+	var i=0;
+  //console.log("--------------------------------------"+filtertype);
+  if((filtertype == undefined) || (filtertype == ""))
+  {
+    var data = ResourcesListResult.find({"category": new RegExp('^.* ' + searchKeyword + '.*$')},function(err,data){
+      //console.log(data.length);
+      if(data.length > 0){
+          var result = {
+            "data" : data,
+            "status" : 500
+        }
+      }
+      else {
+          var result = {
+            "data" : [],
+            "status" : 404,
+            "errMsg" : "No search results found."
+          }
+        }
+        res.json(result);
+      });
+  }
+  else {
+    var data = ResourcesListResult.find({"category": new RegExp('^.* ' + searchKeyword + '.*$'),"type": typeHashMap[filtertype] },function(err,data){
+      //console.log("2");
+      //console.log(data.length);
+      if(data.length > 0){
+          var result = {
+            "data" : data,
+            "status" : 500
+        }
+      }
+      else {
+          var result = {
+            "data" : [],
+            "status" : 404,
+            "errMsg" : "No search results found."
+          }
+        }
+        res.json(result);
+      });
+  }
+}
+
+	// var myVar  = setInterval(function () {
+	// 	if(i < arr.length) {
+	// 		var data = ResourcesListResult.find({"category": new RegExp('^.* ' + arr[i] + '.*$'),"type": filtertype },function(err,data){
+	// 			if(data.length > 0){
+	// 				for(var l = 0 ;l < data.length;l++){
+	// 					finalData.push(data[l]);
+	// 				}
+	// 			}
+	// 		});
+	// 		i++;
+	// 	} else {
+	// 		var data = ResourcesListResult.find({"category": new RegExp('^.* ' + searchKeyword + '.*$'),"type": filtertype},function(err,data){
+	// 			if(data.length > 0){
+	// 				for(var l = 0 ;l < data.length;l++){
+	// 					johnRemoved = finalData.filter(function(el) {
+	// 						return el.title !== data[l].title;
+	// 					});
+	// 					johnRemoved.push(data[l]);
+	// 					finalData = johnRemoved;
+	// 				}
+	// 			}
+  //       clearInterval(myVar);
+  //       if(finalData.length > 0){
+  //         var result = {
+  //           "data" : finalData,
+  //           "status" : 500
+  //         }
+  //       } else {
+  //         var result = {
+  //           "data" : [],
+  //           "status" : 404,
+  //           "errMsg" : "No search results found."
+  //         }
+  //       }
+  //       clearInterval(myVar);
+  //       res.json(result);
+	// 		});
+	// 	}
+	// },50);
+
+
+
+
+
+//this is for email
+// var searchArticle = function(searchKeyword,res){
+// 	searchKeyword = searchKeyword.trim();//.replace(/ /g,"%20");
+// 	console.log(searchKeyword)
+// 	console.log("-----------------------------------------------")
+// 	var data = ArticleSearchResult.find({"title": searchKeyword},function(err,data){
+// 		console.log(data);
+// 		if(data.length > 0){
+// 			var result = {
+// 				"data" : data,
+// 				"status" : 500
+// 			}
+// 			res.json(result);
+// 		} else {
+// 			var data = ArticleFeaturedResult.find({"title": searchKeyword},function(err,data){
+// 				console.log("inside 2nd");
+// 				console.log(data);
+// 				if(data.length > 0){
+// 					var result = {
+// 						"data" : data,
+// 						"status" : 500
+// 					}
+// 				} else {
+// 					var result = {
+// 						"data" : [],
+// 						"status" : 404,
+// 						"errMsg" : "No search results found."
+// 					}
+// 				}
+// 				res.json(result);
+// 			});
+// 		}
+//
+// 	});
+// }
 
 app.post("/searchArticle", function (req,res){
 	console.log(req.body.name);
@@ -603,6 +792,18 @@ var searchChosenArticles = function(searchKeyword,res){
 app.post("/searchSample", function (req,res){
 	console.log(req.body.name);
 	searchSample(req.body.name,res);
+});
+
+app.post("/searchArticles", function (req,res){
+    //console.log(req.body.name);
+    searchArticles(req.body.name, res);
+    //res.json("heeeeeeeeeeeeee");
+});
+
+app.post("/searchResources", function (req,res){
+    //console.log(req.body.name);
+    searchResources(req.body.name, req.body.filterType, res);
+    //res.json("heeeeeeeeeeeeee");
 });
 
 app.post("/article/chosenTopics", function (req,res){
