@@ -1122,16 +1122,16 @@ learning materials on many financial topics of interest. </p>
         </div>
         <div class="tabclass" id="searchid1" style="display: none;">
             <div class="tabContentLabel" ><label>Search</label></div>
-            <div class="container">
+            <!--<div class="container">
                 <div id="myCarousel3" class="carousel slide" data-ride="carousel">
-                    <!-- Indicators -->
+                    &lt;!&ndash; Indicators &ndash;&gt;
                     <ol class="carousel-indicators">
                         <li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel3" data-slide-to="1"></li>
                         <li data-target="#myCarousel3" data-slide-to="2"></li>
                     </ol>
 
-                    <!-- Wrapper for slides -->
+                    &lt;!&ndash; Wrapper for slides &ndash;&gt;
                     <div class="carousel-inner dashCarousel">
                         <div class="item active">
                             <img src="images/dashboardSlides/Slide13.JPG" alt="Moneyabcs" >
@@ -1180,7 +1180,7 @@ learning materials on many financial topics of interest. </p>
                         </div>
                     </div>
 
-                    <!-- Left and right controls -->
+                    &lt;!&ndash; Left and right controls &ndash;&gt;
                     <a class="left carousel-control" href="#myCarousel3" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                         <span class="sr-only">Previous</span>
@@ -1198,7 +1198,289 @@ learning materials on many financial topics of interest. </p>
                         </button>
                     </div>
                 </div>
+            </div>-->
+
+            <!--Advanced Search-->
+            <div class="container" style="width: 100%; padding: 1% 5% !important;">
+                <form class="well form-horizontal"   id="search_form">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Advanced Search</legend>
+
+                        <!-- Text input-->
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Search Term</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                                    <input  name="first_name" placeholder="Search Term" class="form-control" ng-model="advSearch.searchTerm" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Content Type</label>
+                            <div class="col-md-4 selectContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                    <select name="state" class="form-control selectpicker" ng-model="advSearch.contentType">
+                                        <option value="" >Please select your option</option>
+                                        <option value="articles">Articles</option>
+                                        <option value="presentations">Presentations</option>
+                                        <option value="videos">Videos</option>
+                                        <option value="">Search all content</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4">
+                                <button ng-click="updateAdvSearchResult()" class="btn btn-warning" > Submit <span class="glyphicon glyphicon-send"></span></button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                </form>
+
+                <section class="news pad20px" style="margin-top: 25px;" id="news-section">
+                    <div class="container-fluid bgColorWhite pad20px marginMain ">
+                        <div id="articlesSearchHead" style="display:none; font-size: 20px; border-radius: 60px 60px 60px 60px; background-color: #8CC63F !important; background-color: white; margin-bottom: 15px;">
+                            <span style="margin-left: 20px;">Articles</span>
+                        </div>
+                      <!--  <div class="row vdivide searchHide"  style="margin-bottom: 3%;">
+                            <div class="search_results" id="search_results"></div>
+                            <div class="col-md-3 col-lg-3"> <img src="images/whats_hot.png">
+                                <h3>WHAT'S IN THE NEWS?</h3>
+                                <h4 class="subheading">
+                                    Here is what's trending in the news about personal finance and financial literacy.
+                                </h4>
+                                <div class="customize_button" id="customize"> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#customize-modal" style="display: block; width: 100%;">Personlize</a> </div>
+                            </div>
+                            <div class="col-md-3 col-lg-3" id="first_result">
+                                <div class="sidebar_icons">
+                                    <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleFeatured[0].displayLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
+                                    <img data-toggle="modal" id="email_1" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                                    <img src="images/add.png" id="1" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
+                                </div>
+                                <div class="thumbnail">
+                                    <a href="{{articleFeatured[0].iframeLink}}" target="_blank"> <img  class ="newsImg"topic="{{articleFeatured[0].indexTopic}}" set="no" alt="ALT NAME" ng-src="{{articleFeatured[0].imgUrl}}" imageonload>
+                                        <div class="type">
+                                            <img alt="ALT NAME" src="images/presentation.png" style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
+                                        </div>
+
+                                        &lt;!&ndash;<div class="rating">
+                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                        <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
+                                        </div>&ndash;&gt;
+                                        <div class="caption">
+                                            <h4>{{articleFeatured[0].title}}</h4>
+                                            <p>{{articleFeatured[0].snippet}}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-lg-3">
+                                <div class="sidebar_icons">
+                                    <a class="fb-xfbml-parse-ignore"   data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleFeatured[1].displayLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
+                                    <img data-toggle="modal" id="email_2" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                                    <img src="images/add.png" id="2" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
+                                </div>
+                                <div class="thumbnail">
+                                    <a href="{{articleFeatured[1].iframeLink}}" target="_blank"> <img class ="newsImg" set="no" topic="{{articleFeatured[1].indexTopic}}" alt="ALT NAME" ng-src="{{articleFeatured[1].imgUrl}}" imageonload>
+                                        <div class="type">
+                                            <img alt="ALT NAME" src="images/presentation.png" style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
+                                        </div>
+                                        &lt;!&ndash; <div class="rating">
+                                         <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                          <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
+                                         </div>&ndash;&gt;
+                                        <div class="caption">
+                                            <h4>{{articleFeatured[1].title}}</h4>
+                                            <p>{{articleFeatured[1].snippet}}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-lg-3">
+                                <div class="sidebar_icons">
+                                    <a class="fb-xfbml-parse-ignore"   data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleFeatured[1].displayLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
+                                    <img data-toggle="modal" id="email_3"
+                                         data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                                    <img src="images/add.png" id="3"
+                                         data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
+                                </div>
+                                <div class="thumbnail">
+                                    <a href="{{articleFeatured[2].iframeLink}}"
+                                       target="_blank"> <img  class ="newsImg" set="no" topic="{{articleFeatured[1].indexTopic}}" alt="ALT NAME" ng-src="{{articleFeatured[2].imgUrl}}" imageonload>
+                                        <div class="type">
+                                            <img alt="ALT NAME" src="images/presentation.png" style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
+                                        </div>
+                                        &lt;!&ndash; <div class="rating">
+                                         <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                         <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
+                                         </div>&ndash;&gt;
+                                        <div class="caption">
+                                            <h4>{{articleFeatured[2].title}}</h4>
+                                            <p style="font-size:15px; overflow: hidden">{{articleFeatured[2].snippet}}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>-->
+                        <div class="row vdivide" id="sub_news"> <span ng-repeat="articleObj in article">
+                    <div class={{SelectedLayout}} style="margin-bottom:5%;">
+                       <div class="sidebar_icons">
+                           <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleObj.iframeLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
+                            <img data-toggle="modal" id="email_{{$index+4}}" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                            <img src="images/add.png" id={{$index+4}} data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
+
+                        </div>
+
+                         <a href="{{articleObj.iframeLink}}" target="_blank">
+                        <div class="thumbnail"> <img  class ="newsImg" set="no" topic="{{articleObj.indexTopic}}" alt="ALT NAME" ng-src="{{articleObj.imgUrl}}" imageonload>
+                        <div class="type">
+                            <img alt="ALT NAME" src="images/presentation.png" style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
+                        </div>
+                            <!-- <div class="rating">
+                             <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                             <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
+                             </div>-->
+                            <div class="caption">
+                                <h4>{{articleObj.title}}</h4>
+                                <p>{{articleObj.snippet}}</p>
+                            </div>
+                        </div>
+
+                        </a>
+                    </div>
+                </span> </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button id="articleLoadMore" class="btn btn-primary btn-round showMore" ng-click="loadMore()" ng-hide="hideShowMore" >Show More ▼</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="resources pad20px " id="sub_resources">
+                    <div class="container-fluid pad20px bgColorWhite marginMain ">
+                        <div id="resourcesSearchHead" style="display:none;font-size: 20px; border-radius: 60px 60px 60px 60px; background-color: #8CC63F !important; background-color: white; margin-bottom: 15px;">
+                            <span style="margin-left: 20px;">Resources</span>
+                        </div>
+                        <!--<div class="row vdivide searchHide" id="resourceHolderTop">
+                            <div class="col-md-3 col-lg-3">
+                                <img src="images/Forma-1.png">
+                                <h3>TEACH ME ABOUT MONEY</h3>
+                                <h4 class="subheading">
+                                    Dig into our multiple instructional presentations, webinars, and videos.
+                                </h4>
+                                <div class="customize_button" id="customize"> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#customize-modal" style="display: block; width: 100%;">Personalize</a> </div>
+                            </div>
+                            <div class="col-md-3 col-lg-3" id="first_result_resource">
+                                <div class="sidebar_icons">
+                                    <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[0].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
+                                    <img data-toggle="modal" id="resourceEmail_1" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                                    <img src="images/add.png" id="1" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
+                                </div>
+                                <div class="thumbnail" data-toggle="modal" data-target="#resources">
+                                    <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[0].thumbnailLink}}" imageonload>
+                                    <div class="type">
+                                        <img alt="ALT NAME" ng-src="{{resourceFeatured[0].type}}" imageonload>
+                                    </div>
+
+                                    <div class="caption">
+                                        <p class="embedUrl" style="display:none;">{{resourceFeatured[0].embedUrl}}</p>
+                                        <h4 class="resourceTitle">{{resourceFeatured[0].name}}</h4>
+                                        <p>{{resourceFeatured[0].description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-lg-3" id="second_result_resource">
+                                <div class="sidebar_icons">
+                                    <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[1].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
+                                    <img data-toggle="modal" id="resourceEmail_2" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                                    <img src="images/add.png" id="2" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
+                                </div>
+                                <div class="thumbnail" data-toggle="modal" data-target="#resources">
+                                    <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[1].thumbnailLink}}" imageonload>
+                                    <div class="type">
+                                        <img alt="ALT NAME" ng-src="{{resourceFeatured[1].type}}" imageonload>
+                                    </div>
+
+                                    <div class="caption">
+                                        <p class="embedUrl" style="display:none;">{{resourceFeatured[1].embedUrl}}</p>
+                                        <h4 class="resourceTitle">{{resourceFeatured[1].name}}</h4>
+                                        <p>{{resourceFeatured[1].description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-lg-3" id="third_result_resource">
+                                <div class="sidebar_icons">
+                                    <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[2].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
+                                    <img data-toggle="modal" id="resourceEmail_3" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                                    <img src="images/add.png" id="3" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
+                                </div>
+                                <div class="thumbnail" data-toggle="modal" data-target="#resources">
+                                    <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[2].thumbnailLink}}" imageonload>
+                                    <div class="type">
+                                        <img alt="ALT NAME" ng-src="{{resourceFeatured[2].type}}" imageonload>
+                                    </div>
+
+                                    <div class="caption">
+                                        <p class="embedUrl" style="display:none;">{{resourceFeatured[2].embedUrl}}</p>
+                                        <h4 class="resourceTitle">{{resourceFeatured[2].name}}</h4>
+                                        <p>{{resourceFeatured[2].description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                        <div class="row vdivide" id="resourceHolder">
+            <span ng-repeat="resourcesObj in resources">
+                <div class={{SelectedLayout}} >
+                        <div class=" sidebar_icons"> <!---->
+                            <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourcesObj.webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
+                             <img data-toggle="modal" id="resourceEmail_{{$index+4}}" data-ng-click="emailArticlesToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                            <img src="images/add.png" id={{$index+4}} data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
+                        </div>
+                    <div class="thumbnail"  data-toggle="modal" data-target="#resources">
+                        <img class="thumb" alt="ALT NAME" ng-src="{{resourcesObj.thumbnailLink}}" imageonload>
+                        <div class="type">
+                            <img alt="ALT NAME" ng-src="{{resourcesObj.type}}" imageonload>
+                        </div>
+
+                        <!-- <div class="rating">
+                         <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                         <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
+                         </div>-->
+
+                        <div class="caption">
+                            <p class="embedUrl" style="display:none;">{{resourcesObj.embedUrl}}</p>
+                            <h4 class="resourceTitle">{{resourcesObj.name}}</h4>
+                            <p>{{resourcesObj.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </span>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button id="resourceLoadMore" class="btn btn-primary btn-round showMore" ng-click="loadMoreResources()" ng-hide="hideShowMoreResources" >Show More ▼</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
             </div>
+            <!---->
             <br>
         </div>
         <div class="tabclass" id="suitcaseid1" style="display: block;">
