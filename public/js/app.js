@@ -1066,6 +1066,88 @@ $scope.refreshData = function(){
         });
     }
 
+    $scope.advSearch = {};
+    $scope.updateAdvSearchResult = function () {
+        var searchKey = $scope.advSearch.searchTerm;
+        var contentType = $scope.advSearch.contentType;
+        //alert(searchKey)
+        // console.log(searchKey);
+        // console.log($scope.searchParam);
+        $("#resourceLoadMore").hide(); //CHECK this
+
+        $http.post("/searchArticles", {name: searchKey }).success(function(res) {
+            //alert(res)
+            // debugger;
+            if(res.data.length > 0){
+                var uniqueNames = [];
+                $.each(res.data, function(i, el){
+                    if($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
+                });
+                res.data = uniqueNames;
+                $(".searchHide").hide();
+                $("#articleLoadMore").hide();
+                $("#news-section").css("display","block");
+                $("#articlesSearchHead").css("display","block");
+                // if($scope.searchParam == ""){
+                //     $("#sub_resources").css("display","block");
+                // } else {
+                //     $("#sub_resources").css("display","none");
+                // }
+                for(var i=0;i<res.data.length;i++){
+                    res.data[i].indexTopic = res.data[i].topicName;
+                }
+                $scope.totalRes = res.data;
+
+                $scope.article = $scope.totalRes.splice(0,res.data.length);
+                for(var i=0;i<res.data.length;i++){
+                    url = $scope.article[i].iframeLink;
+                    $scope.article[i].iframeLink = $sce.trustAsResourceUrl(url);
+                    $scope.article[i].indexTopic = res.data[i].topicName;
+                }
+
+                console.log($scope.article)
+            } else {
+                //print error message that data is not found
+                //$scope.err = res.errMsg;
+                try{
+                    var test = new cAlert("No search results found for articles!", "success",3);
+                    test.alert();
+                    var tempbackup = $scope.backUp;
+                    $("#news-section").css("display","block");
+                    $("#articlesSearchHead").css("display","block");
+                    $scope.article = tempbackup.splice(0,12);
+                }catch(e){
+                    console.log(e)
+                }
+            }
+        });
+
+        $http.post("/searchResources", {name: searchKey,filterType:contentType }).success(function(res) {
+            //alert(res)
+            // debugger;
+            if(res.data.length > 0){
+                $scope.resources = res.data;
+                $("#sub_resources").css("display","block");
+                $("#resourcesSearchHead").css("display","block");
+                console.log("__________the data______________");
+                console.log($scope.resources );
+
+            } else {
+                //print error message that data is not found
+                //$scope.err = res.errMsg;
+                try{
+                    var test = new cAlert("No search results found for articles!", "success",3);
+                    test.alert();
+                    var tempbackup = $scope.resourcesBackup;
+                    $("#sub_resources").css("display","block");
+                    $("#resourcesSearchHead").css("display","block");
+                    $scope.resources = tempbackup.splice(0,12);
+                }catch(e){
+                    console.log(e)
+                }
+            }
+        });
+    };
 	/*moneyController($scope,$http,$sce,$window);*/
 });
 
