@@ -235,13 +235,17 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
         console.log($scope.emailArticle.title)
     }
 
-    $scope.imgUrlSanitzation = function(index, url){
-        if(url.includes("s4.reutersmedia.net/resources_v2/images/rcom-default.png") || url.includes("assets.bwbx.io/images/izrptLrH5AWw/v1/320x180.jpg") || url.includes("wsj.net/mw5/content/logos/mw_logo_social.png") || (url == ""))
-        {
-          return "images/defaultImg/search_" + index + "/" + Math.ceil(Math.random()*5) + ".png"
-        }
-        return url;
-    }
+    // $scope.imgUrlSanitzation = function(index, url){
+    //     // if((url == undefined) || (url.includes("s4.reutersmedia.net/resources_v2/images/rcom-default.png") || url.includes("assets.bwbx.io/images/izrptLrH5AWw/v1/320x180.jpg") || url.includes("wsj.net/mw5/content/logos/mw_logo_social.png") || (url == "")))
+    //     // {
+    //     //   if(index == undefined)
+    //     //   {
+    //     //     return "images/defaultImg/search_157/" + Math.ceil(Math.random()*5) + ".png"
+    //     //   }
+    //     //   return "images/defaultImg/search_" + index + "/" + Math.ceil(Math.random()*5) + ".png"
+    //     // }
+    //     return url;
+    // }
 
     //contact mail
     $scope.contactMail = function(){
@@ -493,11 +497,37 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
 
         }
         // console.log(res);
+        //imgUrlSanitzation
+        for(var i=0;i<res.length;i++)
+        {
+          if((res[i] != undefined) && (res[i].imgUrl.includes("s4.reutersmedia.net/resources_v2/images/rcom-default.png") || res[i].imgUrl.includes("assets.bwbx.io/images/izrptLrH5AWw/v1/320x180.jpg") || res[i].imgUrl.includes("wsj.net/mw5/content/logos/mw_logo_social.png") || (res[i].imgUrl == "")))
+          {
+            if(res[i].index == undefined)
+            {
+              res[i].imgUrl = "images/defaultImg/search_157/" + Math.ceil(Math.random()*5) + ".png"
+            }
+            else {
+              res[i].imgUrl = "images/defaultImg/search_" + res[i].index + "/" + Math.ceil(Math.random()*5) + ".png"
+            }
+
+          }
+        }
+
+        // if((url == undefined) || (url.includes("s4.reutersmedia.net/resources_v2/images/rcom-default.png") || url.includes("assets.bwbx.io/images/izrptLrH5AWw/v1/320x180.jpg") || url.includes("wsj.net/mw5/content/logos/mw_logo_social.png") || (url == "")))
+        // {
+        //   if(index == undefined)
+        //   {
+        //     return "images/defaultImg/search_157/" + Math.ceil(Math.random()*5) + ".png"
+        //   }
+        //   return "images/defaultImg/search_" + index + "/" + Math.ceil(Math.random()*5) + ".png"
+        // }
+
         $scope.backUp = res;
         $scope.totalRes = res;
         ($scope.totalRes.length > 11 ? "" : $scope.hideShowMore = !$scope.hideShowMore);
         // console.log($scope.totalRes === res);
         // console.log("---------------");
+
         $scope.articleFeatured = $scope.totalRes.splice(0,3);
         $scope.article = $scope.totalRes.splice(0,12);
         console.log($scope.articleFeatured);
@@ -818,7 +848,7 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
                         })
                     } else {
                         console.log("inside featured");
-                        console.log(res.splice(0,11));
+                        //console.log(res.splice(0,11));
                         setData(res,"Date");
                     }
                 });
@@ -861,6 +891,21 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
             console.log(bb);
             return bb - aa;
         });
+        //imgUrlSanitzation
+        for(var i=0;i<res.length;i++)
+        {
+          if((res[i] != undefined) && (res[i].imgUrl.includes("s4.reutersmedia.net/resources_v2/images/rcom-default.png") || res[i].imgUrl.includes("assets.bwbx.io/images/izrptLrH5AWw/v1/320x180.jpg") || res[i].imgUrl.includes("wsj.net/mw5/content/logos/mw_logo_social.png") || (res[i].imgUrl == "")))
+          {
+            if(res[i].index == undefined)
+            {
+              res[i].imgUrl = "images/defaultImg/search_157/" + Math.ceil(Math.random()*5) + ".png"
+            }
+            else {
+              res[i].imgUrl = "images/defaultImg/search_" + res[i].index + "/" + Math.ceil(Math.random()*5) + ".png"
+            }
+
+          }
+        }
         $scope.articleFeatured = res.splice(0,3);
         $scope.article = res.splice(0,12);
     }
