@@ -191,6 +191,7 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
 
        $scope.donar_master = angular.copy(donar);
        $http.post("/addDonation", $scope.donar_master).success(function(res) {
+	    $scope.donarSuccess = true;
             if(res.status==200){
                 $scope.donarSuccess = true;
             }
