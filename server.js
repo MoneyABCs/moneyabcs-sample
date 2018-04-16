@@ -148,6 +148,24 @@ var ArticleSchemaFake = new mongoose.Schema({
 var ArticleFakeResult = mongoose.model('ArticleFakeResult',ArticleSchemaFake);
 
 
+var donationsFormSchema = new mongoose.Schema({
+  first_name: String,
+  last_name: String,
+  email: String,
+  phone: String,
+  address: String,
+  city: String,
+  state: String,
+  zip: String,
+  corporate: Boolean,
+  CRAGift: Boolean,
+  individual:Boolean,
+  Anonymous:Boolean,
+  comment: String
+},{collection : 'donationsForm'}); // articleFeaturedRes
+var donationsFormModel = mongoose.model('donationsFormModel',donationsFormSchema);
+
+
 
 //START///////////////PROFILE SECTION//////////////// Saved Article & Saved Resources
 var profile2 = new mongoose.Schema({
@@ -402,6 +420,39 @@ app.get("/localVal", function (req,res){
 })
 
 
+app.post('/addDonation', function(req, res) {
+    //send mail
+
+    // create a todo, information comes from AJAX request from Angular
+    donationsFormModel.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      phone: req.body.phone,
+      address: req.body.address,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
+      corporate: req.body.corporate,
+      CRAGift: req.body.CRAGift,
+      individual:req.body.individual,
+      Anonymous:req.body.Anonymous,
+      comment: req.body.comment
+    },
+    function(err, donation) {
+        if (err)
+            res.send(err);
+          }
+          else {
+            console.log(donation);
+            var result = {
+              "data" : donation,
+              "status" : 500
+            }
+            res.json(donation);
+          }
+        );
+  });
 
 
 app.get("/process", function (req,res){
