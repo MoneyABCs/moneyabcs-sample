@@ -233,6 +233,14 @@ $(function () {
         $('.resourcesSpace').html(iframeLink);
         $('#modal_header').html('<p>'+resourceTitle+'</p>');
     });
+    $('#resourceHolderSearch').on("click", "div", function () {
+        var iframeLink = $(this).find('.embedUrl').text();
+        var resourceTitle = $(this).find('.resourceTitle').text();
+        // console.log(iframeLink);
+        // console.log(resourceTitle);
+        $('.resourcesSpace').html(iframeLink);
+        $('#modal_header').html('<p>'+resourceTitle+'</p>');
+    });
 });
 
 
