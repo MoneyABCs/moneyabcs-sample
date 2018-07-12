@@ -5,8 +5,8 @@
     <title>Money ABCs</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Money ABCs Financial literacy program" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Money ABCs Financial literacy program"/>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
     <script type="application/x-javascript">
@@ -22,8 +22,7 @@
     <script type="text/javascript" src="https://js.live.net/v7.0/OneDrive.js"></script>
 
 
-
-	 <style>
+    <style>
         .dashCarousel > .item > img,
         .dashCarousel > .item > a > img {
             width: 70%;
@@ -33,22 +32,23 @@
         .dashCarousel p, .dashCarousel ul {
             font-size: 20px !important;
             font-weight: 500 !important;
-            color:#fff !important;
-            background-color:black;
-            z-index:0;
-            opacity:0.5;
+            color: #fff !important;
+            background-color: black;
+            z-index: 0;
+            opacity: 0.5;
             /*text-align: justify;
             text-justify: inter-word;*/
         }
 
         .dashCarousel h3 {
-            background-color:black;
-            z-index:0;
-            opacity:0.5;
+            background-color: black;
+            z-index: 0;
+            opacity: 0.5;
             font-weight: 500;
             font-size: 30px;
         }
-        .dashCarousel img{
+
+        .dashCarousel img {
             /*filter: grayscale(100%);
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
             opacity: 0.8;*/
@@ -77,9 +77,9 @@
 
         /* On hover, add a black background color with a little bit see-through */
         .prev:hover, .next:hover {
-/*
-            background-color: rgba(0,0,0,0.8);
-*/
+            /*
+                        background-color: rgba(0,0,0,0.8);
+            */
         }
 
         .navbar #nav > .active > a {
@@ -87,23 +87,26 @@
             background-color: #8cc63f;
         }
 
-        .active{
+        .active {
             color: #fff !important;
             background-color: #8cc63f !important;
         }
-		 .tabLabel{
+
+        .tabLabel {
             text-align: center;
             margin-top: 30%;
             color: black;
         }
-        .tabContentLabel{
+
+        .tabContentLabel {
             text-align: center;
             color: #131313;
             background: #e0e0e0;
             margin-bottom: 1%;
             margin-top: 1%;
         }
-        .carouselButtons{
+
+        .carouselButtons {
             text-align: center;
             margin-left: 48%;
             position: absolute;
@@ -112,11 +115,10 @@
     </style>
 
 
-
     <!-- //for-mobile-apps -->
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap-tour.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -136,37 +138,43 @@
 
 <body ng-app="moneyabcs" ng-controller="moneycontroller" class="ng-cloak" style="overflow-x: hidden;">
 <script>
-    (function(d, s, id) {
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8&appId=728413860639319";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
 <script type="text/javascript">
-    function launchOneDrivePicker(){
+    function launchOneDrivePicker() {
         var odOptions = {
             clientId: "235ed9a9-b071-423e-81d2-abbfbe3c7ed1",
             action: "share | download | query",
             multiSelect: true,
             openInNewWindow: true,
-advanced: {},
-success: function(files) { console.log(files) },
-cancel: function() { /* cancel handler */ },
-error: function(e) { /* error handler */ }
-}
-OneDrive.open(odOptions);
-}
+            advanced: {},
+            success: function (files) {
+                console.log(files)
+            },
+            cancel: function () { /* cancel handler */
+            },
+            error: function (e) { /* error handler */
+            }
+        }
+        OneDrive.open(odOptions);
+    }
 </script>
 <button onClick="launchOneDrivePicker">Open from OneDrive</button>
 
 
-<nav class="navbar navbar-inverse navbar-fixed-top" >
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -180,31 +188,32 @@ OneDrive.open(odOptions);
             <ul class="nav navbar-nav nav-money">
                 <li class="dropdown">
                     <a showpage="default" ng-click="showpagefunc($event)"
-                       class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span class="caret"></span></a>
+                       class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Home <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a ng-click="showpage='aboutUS' ">About Us</a></li>
-                        <li><a ng-click="showpage='contactUS' ">Contact Us</a></li>
+                        <li><a href="about_us.html">About Us</a></li>
+                        <li><a href="contact_us.html">Contact Us</a></li>
+                        <!--<li><a ng-click="showpage='aboutUS' ">About Us</a></li>-->
+                        <!--<li><a ng-click="showpage='contactUS' ">Contact Us</a></li>-->
                     </ul>
                 </li>
-                <li class=""><a showpage="student" ng-click="showpagefunc($event)">Students</a></li>
-                <li class=""><a showpage="educator" ng-click="showpagefunc($event)">Educators</a></li>
-                <li><a showpage="supportflp" ng-click="showpagefunc($event)">Donate</a></li>
-                <li ng-if="(uName != undefined) && (uName != '')"><a showpage="dashboard" ng-click="showpagefunc($event)">Dashboard</a></li>
-		<li class=""><a ng-click="showpage='partners'">Partners</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="educators.html">Educators</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="partners.html">Partners</a></li>
+
+                <li ng-if="(uName != undefined) && (uName != '')"><a showpage="dashboard"
+                                                                     ng-click="showpagefunc($event)">Dashboard</a></li>
             </ul>
-            <!--<form class="navbar-form navbar-left nav-money">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-              </div>
-              <button type="submit" class="btn btn-default">Submit</button>
-            </form>-->
-
-
             <ul class="nav navbar-nav navbar-right nav-money marginTop8">
 
                 <div id="login" ng-show="!logInFlag">
 
-                    <a type="button" class="btn btn-default btn-round"  href="/login">Log in </a> <a type="button" class="btn btn-primary btn-round" href="/signup" id="signup">Sign up</a>
+                    <a type="button" class="btn btn-default btn-round" href="/login">Log in </a> <a type="button"
+                                                                                                    class="btn btn-primary btn-round"
+                                                                                                    href="/signup"
+                                                                                                    id="signup">Sign
+                    up</a>
 
                 </div>
                 <li ng-if="(uName != undefined) && (uName != '')">
@@ -222,23 +231,29 @@ OneDrive.open(odOptions);
                     </ul>
                 </li>
             </ul>
-            <form class="navbar-form navbar-left nav-money searchbar"  role="search" >
+            <form class="navbar-form navbar-left nav-money searchbar" role="search">
                 <div class="top-search-bar">
-                    <div class="input-group" id = "group-key">
+                    <div class="input-group" id="group-key">
                         <div class="input-group-btn search-panel" ng-init="searchType='All'">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Search: </button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">Search:
+                            </button>
                             <!--{{searchType}}<span class="caret"></span>-->
                             <!--<ul class="dropdown-menu" role="menu">-->
 
-                                <!--<li ng-click="setSearch('Articles'); searchType='Articles'"><a href="#id" ><i class="fa fa-angle-double-right"></i>Articles</a></li>-->
-                                <!--<li ng-click="setSearch('Presentation');searchType='Presentations'"><a href="#name" ><i class="fa fa-angle-double-right"></i>Presentations</a></li>-->
-                                <!--<li ng-click="setSearch('Video'); searchType='Videos'"><a href="#videos" ><i class="fa fa-angle-double-right"></i>Videos</a></li>-->
+                            <!--<li ng-click="setSearch('Articles'); searchType='Articles'"><a href="#id" ><i class="fa fa-angle-double-right"></i>Articles</a></li>-->
+                            <!--<li ng-click="setSearch('Presentation');searchType='Presentations'"><a href="#name" ><i class="fa fa-angle-double-right"></i>Presentations</a></li>-->
+                            <!--<li ng-click="setSearch('Video'); searchType='Videos'"><a href="#videos" ><i class="fa fa-angle-double-right"></i>Videos</a></li>-->
                             <!--</ul>-->
                         </div>
                         <input type="hidden" name="search_param" value="name" id="search_param">
-                        <input type="text" id="search-key" class="form-control search1 searchMedia"       title="What are you looking for? (e.g. Credit Scores)" placeholder="What are you looking for? (e.g. Credit Scores) " autocomplete="off">
+                        <input type="text" id="search-key" class="form-control search1 searchMedia"
+                               title="What are you looking for? (e.g. Credit Scores)"
+                               placeholder="What are you looking for? (e.g. Credit Scores) " autocomplete="off">
                         <div class="input-group-btn">
-                            <button id="search1_btn" ng-enter="searchArticle('search1')" ng-click="searchArticle('search1')" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            <button id="search1_btn" ng-enter="searchArticle('search1')"
+                                    ng-click="searchArticle('search1')" class="btn btn-default" type="submit"><i
+                                    class="glyphicon glyphicon-search"></i></button>
                         </div>
                     </div>
                 </div>
@@ -250,413 +265,120 @@ OneDrive.open(odOptions);
 <div ng-view>
 -->
 <section ng-show="showpage =='default'" class="main-banner " style="padding-top:42px;">
-	<div class="alert-success col-xs-3" ng-show="showTour" style="opacity: 0.9; padding:10px;float: right;position: absolute;z-index: 100; right: 10px;margin-top: 90px; text-align: center  ">
+    <div class="alert-success col-xs-3" ng-show="showTour"
+         style="opacity: 0.9; padding:10px;float: right;position: absolute;z-index: 100; right: 10px;margin-top: 90px; text-align: center  ">
         <strong>Are you new here? Click here to take a tour!!<br>
-        <a class="btn" onclick="hopscotch.startTour(homepage);">Start Tour</a>
-	<a class="btn btn-danger" style="background-color: #c9302c !important;" ng-click="showTour=false;">Close</a>	</strong>
+            <a class="btn" onclick="hopscotch.startTour(homepage);">Start Tour</a>
+            <a class="btn btn-danger" style="background-color: #c9302c !important;" ng-click="showTour=false;">Close</a>
+        </strong>
     </div>
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="item active"> <img src="images/Layer-1.png" alt="First slide">
+            <div class="item active"><img src="images/Layer-1.png" alt="First slide">
                 <div class="carousel-caption">
                     <!--  <h3>
                             First slide</h3> -->
                     <h4>Our Mission </h4>
-                    <h4>Connecting individuals, institutions, and organizations to resources and research in order to cultivate personal financial stability</h4> </div>
+                    <h4>Connecting individuals, institutions, and organizations to resources and research in order to
+                        cultivate personal financial stability</h4></div>
             </div>
-            <div class="item"> <img src="images/mainCarsl/main1.png" alt="Second slide">
+            <div class="item"><img src="images/mainCarsl/main1.png" alt="Second slide">
                 <div class="carousel-caption">
                     <!-- <h3>
                             Second slide</h3> -->
                     <h4>Our Vision </h4>
-                    <h4>For all people to be equipped to make sound financial decisions</h4> </div>
+                    <h4>For all people to be equipped to make sound financial decisions</h4></div>
             </div>
-            <div class="item"> <img src="images/mainCarsl/main2.jpg" alt="Third slide">
+            <div class="item"><img src="images/mainCarsl/main2.jpg" alt="Third slide">
                 <div class="carousel-caption">
                     <!-- <h3>
                             Third slide</h3>-->
-                    <h4>This platform is open to all financial literacy activist and educators</h4> </div>
+                    <h4>This platform is open to all financial literacy activist and educators</h4></div>
             </div>
-            <div class="item"> <img src="images/mainCarsl/main3.jpg" alt="Fourth slide">
+            <div class="item"><img src="images/mainCarsl/main3.jpg" alt="Fourth slide">
                 <div class="carousel-caption">
                     <!-- <h3>
                             Third slide</h3> -->
-                    <h4>Teachers of all levels, K-College will be able to create custom courses for their students</h4> </div>
-            </div>
-            <div class="item"> <img src="images/mainCarsl/main4.jpg" alt="Fifth slide">
-                <div class="carousel-caption">
-                    <!--  <h3>
-                            Third slide</h3> -->
-                    <h4>Connect with Professionals and Resources to support your financial literacy programs</h4> </div>
-            </div>
-            <div class="item"> <img src="images/mainCarsl/main5.jpg" alt="Fifth slide">
-                <div class="carousel-caption">
-                    <!--  <h3>
-                            Third slide</h3> -->
-                    <h4>Join our Network and Open an account for free</h4> </div>
-            </div>
-        </div>
-        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right">
-                        </span></a> </div>
-<!--    <div class="mainPitch" style="position:absolute; top:220px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-5">
-                    <div class="input-group" id="input_group">
-                        <div class="input-group-btn search-panel">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> <span id="search_concept">Search for</span> <span class="caret"></span> </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li ng-click="setSearch('Articles')"><a href="#id"><i class="fa fa-angle-double-right"></i>Articles</a></li>
-                                <li ng-click="setSearch('Presentation')"><a href="#name"><i class="fa fa-angle-double-right"></i>Presentations</a></li>
-                                <li ng-click="setSearch('Video')"><a href="#videos"><i class="fa fa-angle-double-right"></i>Videos</a></li>
-                                &lt;!&ndash; <li ng-click="setSearch(Articles)"><a href="#webinars"><i class="fa fa-angle-double-right"></i>Webinars</a></li>
-                                 <li ng-click="setSearch(Articles)"><a href="#journals"><i class="fa fa-angle-double-right"></i>Journals</a></li> &ndash;&gt;
-                            </ul>
-                        </div>
-                        <input type="hidden" name="search_param" value="name" id="search_param">
-                        <input type="text" id="search-key" class="form-control search2" placeholder="What are you looking for? (e.g. Credit Scores) " autocomplete="off"> <span class="input-group-btn">
-								<button id="search2_btn" ng-click="searchArticle('search2')" class="btn btn-info" type="submit">Search</button>
-							</span> </div>
+                    <h4>Teachers of all levels, K-College will be able to create custom courses for their students</h4>
                 </div>
             </div>
+            <div class="item"><img src="images/mainCarsl/main4.jpg" alt="Fifth slide">
+                <div class="carousel-caption">
+                    <!--  <h3>
+                            Third slide</h3> -->
+                    <h4>Connect with Professionals and Resources to support your financial literacy programs</h4></div>
+            </div>
+            <div class="item"><img src="images/mainCarsl/main5.jpg" alt="Fifth slide">
+                <div class="carousel-caption">
+                    <!--  <h3>
+                            Third slide</h3> -->
+                    <h4>Join our Network and Open an account for free</h4></div>
+            </div>
         </div>
-    </div>-->
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> <span
+                class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control"
+                                                                       href="#carousel-example-generic"
+                                                                       data-slide="next"><span
+            class="glyphicon glyphicon-chevron-right">
+                        </span></a></div>
+
 </section>
 
-
-
-<div ng-show="showpage =='partners'"  class="container-fluid margin5Auto partners">
-
-
-    <div class="col-sm-4">
-        <a href="https://www.dallasfed.org/"><img  class="partner-logo img-thumbnail"src="images/partners/frbdallas_logo.png" /></a>
-
-        <a href="https://www.woodforest.com/"> <img class="partner-logo img-thumbnail" src="images/partners/woodforestbank.png"/></a>
-        <a href="https://www.grandbankoftexas.com/"><img class="partner-logo img-thumbnail" src="images/partners/grandbankoftexas.png" /> </a>
-        <a href="http://www.tanglewoodwealth.com/"><img class="partner-logo img-thumbnail" src="images/partners/tanglewood.png" /> </a>
-        <a href="https://www.bbvacompass.com/"><img class="partner-logo img-thumbnail" src="images/partners/bbva.png" /></a>
-    </div>
-    <div class="col-sm-4">
-        <a href="https://www.bankwithfidelity.com/" ><img  class="partner-logo img-thumbnail"src="images/partners/fidelitybank.png" /></a>
-        <a href="https://www.wellsfargo.com/"> <img class="partner-logo img-thumbnail" src="images/partners/1024px-Wells_Fargo_Bank.svg.png" /></a>
-        <a href="https://www.frostbank.com/"><img class="partner-logo img-thumbnail" src="images/partners/frost-bank-logo.png" /></a>
-
-
-    </div>
-    <div class="col-sm-4">
-       <a href="https://www.fdic.gov/"> <img class="partner-logo img-thumbnail" src="images/partners/2000px-US-FDIC-Logo.svg.png"/></a>
-        <a href="https://www.bankozarks.com/">  <img  class="partner-logo img-thumbnail "src="images/partners/Bank-Ozarks-Logo.png" /></a>
-       <a href="https://www.iberiabank.com/personal/"> <img class="partner-logo img-thumbnail" src="images/partners/Iberiabank.png" /></a>
-       <a href="https://www.regions.com/"> <img class="partner-logo img-thumbnail" src="images/partners/Regions+Logo.png" /></a>
-
-    </div>
-</div>
-<div ng-show="showpage =='aboutUS'" class="container margin5Auto largeFont" >
-        <h2 style="text-align: center; font-weight: 800" >About Us</h2>
-      <div id="aboutus" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#aboutus" data-slide-to="0" class="active"></li>
-      <li data-target="#aboutus" data-slide-to="1"></li>
-      <li data-target="#aboutus" data-slide-to="2"></li>
-
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox" >
-
-      <div class="item active">
-        <img src="images/carouselPics/aboutus3.jpg" alt="Chania" width="100%" height="100%">
-        <div class="carousel-caption" >
-          <h3></h3>
-          <p class="carosl">
-           MoneyABCs.org is the University of Texas Arlington’s first financial literacy initiative with a nationwide focus. By creating the first professional network for educators, researchers, activists, regulators, and every organization actively engaged in designing and delivering financial literacy programs, we are taking a major step forward in the fulfillment of our mission of connecting individuals, institutions, and organizations to the resources and research they need in order to cultivate personal financial stability. </p>
-        </div>
-      </div>
-        <div class="item">
-        <img src="images/carouselPics/aboutus2.jpg" alt="Chania" width="100%" height="100%">
-        <div class="carousel-caption">
-
-          <p class="carosl">While many of its elements lend themselves well for general public consumption, this platform is intended to help those professionals who are actively engaged in financial literacy to freely share technical, pedagogic, human, and financial resources with each other in order to conduct their educational efforts more effectively and efficiently.  Whether you are a K-12 educator working in a public or private school, whether you are a volunteer or paid-activists at a non-for-profit, or whether you work in the community outreach office of a depository institution, you are all welcome!</p>
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="images/carouselPics/aboutus1.jpg" alt="Chania" width="100%" height="100%">
-        <div class="carousel-caption">
-
-          <p class="carosl">Join us if you want to gain free access to presentations, lectures, webinars, and videos with accompanying teaching notes and other supplemental materials. Join us if you would like to create a virtual course for your students or your target audience. Join us if you have educational resources you would like to share with other educators. Join us if you are in need or have financial resources to share with others. Join us if you would like to always stand at the frontier of knowledge in financial literacy by staying current on academic research and recent developments within the field. Join us if you wish to network with others in your community or across the nation. We want to help you connect and deliver your important message to the world!</p>
-        </div>
-      </div>
-
-
-
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#aboutus" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#aboutus" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-
-</div>
-
-
-
-<div ng-show="showpage =='contactUS'"  style="margin-top: 5%;" >
-    <div class="main">
-    <div class="main-top">
-        <div class="wrap" style="text-align: center; font-size: 21px;">
-            <h1>Contact Us</h1>
-        </div>
-    </div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="well well-sm">
-                <form>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="name">
-                                Name</label>
-                            <input type="text" class="form-control" id="name" ng-model="name" placeholder="Enter name" required="required" />
-                        </div>
-                        <div class="form-group">
-                            <label for="email">
-                                Email Address</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
-                                </span>
-                                <input type="email" class="form-control" id="email" ng-model="email"  placeholder="Enter email" required="required" /></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">
-                                Subject</label>
-                            <select id="subject" name="subject" ng-model="subject" class="form-control" required="required">
-                                <option value="na" selected="">Choose One:</option>
-                                <option value="General Customer Service">General Customer Service</option>
-                                <option value="suggestions">Suggestions</option>
-                                <option value="product">Product Support</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="name">
-                                Message</label>
-                            <textarea name="message" id="message" ng-model="message" class="form-control" rows="9" cols="25" required="required"
-                                placeholder="Message"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <button ng-click="contactMail()" class="btn btn-primary pull-right" id="btnContactUs">
-                            Send Message</button>
-                    </div>
-                </div>
-                </form>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <form>
-            <legend><span class="glyphicon glyphicon-globe"></span> Reach us at</legend>
-            <address>
-                <strong>Money ABCs Org</strong><br>
-
-                <abbr title="Phone">
-                    P:</abbr>
-                (817) 987-6240
-            </address>
-            <address>
-                <strong>E-Mail</strong><br>
-                <a href="mailto:#">info@moneyabcs.org</a>
-            </address>
-            </form>
-        </div>
-    </div>
-</div>
-
-    <div class="clear"></div>
-</div>
-</div>
-
-
-
-
-
-<div ng-show="showpage =='student'" class="container margin5Auto largeFont">
-
-	    <h2 style="text-align: center; font-weight: 800" >Students</h2>
-      <div id="student" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#student" data-slide-to="0" class="active"></li>
-      <li data-target="#student" data-slide-to="1"></li>
-      <li data-target="#student" data-slide-to="2"></li>
-
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox" >
-
-      <div class="item active">
-        <img src="images/carouselPics/student3.jpg" alt="Chania" width="100%" height="100%">
-        <div class="carousel-caption" >
-          <h3></h3>
-          <p class="carosl">
-            Welcome to MoneyABCs.org!
-              <br>Whether you have a teacher guiding you in your studies, or whether you are learning on your own, our platform has something for you. Use our search engine to find and access
-
-learning materials on many financial topics of interest. </p>
-        </div>
-      </div>
-        <div class="item">
-        <img src="images/carouselPics/student2.jpg" alt="Chania" width="100%" height="100%">
-        <div class="carousel-caption">
-
-          <p class="carosl">On our “Teach Me About Money” section, surely you will be able to find a video, webinar, podcast, or lecture that can help you understand the complex financial landscape better. Do you want to know which credit card is right for you? Do you want to know how to boost your credit score? Do you want to know how to secure a comfortable and laidback retirement? Are you already retired and you want to know how to manage and spend your retirement nest-egg? Try us out! Our platform is free and requires no sign-up for access.</p>
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="images/carouselPics/student1.jpg" alt="Chania" width="100%" height="100%">
-        <div class="carousel-caption">
-
-          <p class="carosl">Also, if you want to understand how the ever-changing financial landscape will affect you going forward, check out our “What’s in the News” section. There, you can find breaking news, editorials, analyses and thought pieces on any developments, trends, and policy changes within the field. There is no need to scout the whole internet for reliable information. Get it all her from reputable and trustworthy sources here.</p>
-        </div>
-      </div>
-
-
-
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#student" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#student" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-
-
-
-</div>
-<div ng-show="showpage =='educator'" class="container margin5Auto largeFont">
-
-
-
-	    <h2 style="text-align: center; font-weight: 800" >Educators</h2>
-      <div id="educator" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#educator" data-slide-to="0" class="active"></li>
-      <li data-target="#educator" data-slide-to="1"></li>
-      <li data-target="#educator" data-slide-to="2"></li>
-
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox" >
-
-      <div class="item active">
-        <img src="images/carouselPics/educator1.jpg" alt="Chania" width="100%" height="100%">
-        <div class="carousel-caption" >
-          <h3></h3>
-          <p class="carosl">
-            MoneyABCs.org has been designed with educators in mind. It doesn’t matter whether you are a K-12 teacher, a college professor, a financial literacy volunteer trying to make a difference in your community, or whether you work in the community outreach office of a bank; our platform will help you find the resources you need to deliver your educational message more effectively and efficiently.  </p>
-        </div>
-      </div>
-        <div class="item">
-        <img src="images/carouselPics/educator3.jpg" alt="Chania" width="100%" height="100%">
-        <div class="carousel-caption">
-
-          <p class="carosl">At MoneyABCs.org not only will you be able to find educational resources on many formats (PowerPoint, videos, podcasts, or webinars), but you will also be able to access teaching notes, discussion questions, lecture plans, supplementary activities, handouts, test banks, and useful feedback and recommendations from other members of the community. Not sure how to integrate financial literacy into your curriculum? Connect with other teachers in your grade-level, browse their lesson plans and replicate them with just a click. Not feeling confident enough to teach a specific topic? Call on other members of the network to secure a guest lecturer to come and speak directly to your class. Not sure if you have enough time in class to cover everything you want your students to learn? Structure an online course that your students can access and complete from home. Want to help others with their financial literacy programs, share your pedagogic materials within the platform and receive valuable feedback that you can use to improve your programs. The possibilities are endless!</p>
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="images/carouselPics/educator2.jpg" alt="Chania" width="100%" height="100%">
-        <div class="carousel-caption">
-
-          <p class="carosl">In the future, schools, non-for-profits, and community activist will also be able to use the platform to raise funds to be able to carry on their educational mission. Whether you need just $50 to make handouts for one of your workshops or $10,000 to organize a literacy fair at your neighborhood community center, our network will help you connect with both public and private agents who will be happy to advance financial literacy by supporting your educational efforts. </p>
-        </div>
-      </div>
-
-
-
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#educator" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#educator" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-
-
-
-</div>
-
-
-
-
-
-
-<!--Dashboard Code Start-->
-
-	<div class="container-fluid" ng-show="showpage =='dashboard'">
+<div class="container-fluid" ng-show="showpage =='dashboard'">
     <div id="navTabs" class="row nav nav-tabs" style="margin-left: 5%;margin-right: -48%;margin-top: 4%">
         <div class="col-sm-1 col-md-1 col-lg-1">
-            <div id="networkid" class="zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
-                <span data-toggle="tab" href="#networkic" class="fa fa-users" aria-hidden="true" style="font-size:50px;margin-left:14px;margin-top:23px"></span>
-                <div class="tabLabel" ><label>Network</label></div>
+            <div id="networkid" class="zoom"
+                 style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+                <span data-toggle="tab" href="#networkic" class="fa fa-users" aria-hidden="true"
+                      style="font-size:50px;margin-left:14px;margin-top:23px"></span>
+                <div class="tabLabel"><label>Network</label></div>
             </div>
         </div>
         <div class="col-sm-1 col-md-1 col-lg-1 ">
-            <div id="shareid"  class="zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
-                <span data-toggle="tab" href="#shareic" class="fa fa-share-alt" style="font-size:50px;margin-left:17px;margin-top:20px"></span>
-                <div class="tabLabel" ><label>Share</label></div>
+            <div id="shareid" class="zoom"
+                 style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+                <span data-toggle="tab" href="#shareic" class="fa fa-share-alt"
+                      style="font-size:50px;margin-left:17px;margin-top:20px"></span>
+                <div class="tabLabel"><label>Share</label></div>
             </div>
         </div>
         <div class="col-sm-1 col-md-1 col-lg-1 ">
-            <div id="searchid" class="zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
-                <span data-toggle="tab" href="#searchic" class="fa fa-search fa-lg" aria-hidden="true" style="font-size:50px;margin-left:20px;margin-top:25px"></span>
-                <div style="margin-top: 39%;" class="tabLabel" ><label>Search</label></div>
+            <div id="searchid" class="zoom"
+                 style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+                <span data-toggle="tab" href="#searchic" class="fa fa-search fa-lg" aria-hidden="true"
+                      style="font-size:50px;margin-left:20px;margin-top:25px"></span>
+                <div style="margin-top: 39%;" class="tabLabel"><label>Search</label></div>
             </div>
         </div>
         <div class="col-sm-1 col-md-1 col-lg-1 ">
-            <div id="suitcaseid"  class="zoom active" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
-                <span data-toggle="tab" href="#suitcaseic" class="fa fa-briefcase fa-lg" style="font-size:50px;margin-left:17px;margin-top:29px"></span>
-                <div style="margin-top: 35%;" class="tabLabel" ><label>Briefcase</label></div>
+            <div id="suitcaseid" class="zoom active"
+                 style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+                <span data-toggle="tab" href="#suitcaseic" class="fa fa-briefcase fa-lg"
+                      style="font-size:50px;margin-left:17px;margin-top:29px"></span>
+                <div style="margin-top: 35%;" class="tabLabel"><label>Briefcase</label></div>
             </div>
         </div>
         <div class="col-sm-1 col-md-1 col-lg-1 ">
-            <div id="schoolid"  class="zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
-                <span data-toggle="tab" href="#schoolic" class="fa fa-desktop" style="font-size:50px;margin-left:16px;margin-top:25px"></span>
-                <div style="margin-top: 28%;" class="tabLabel" ><label>Virtual Class</label></div>
+            <div id="schoolid" class="zoom"
+                 style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+                <span data-toggle="tab" href="#schoolic" class="fa fa-desktop"
+                      style="font-size:50px;margin-left:16px;margin-top:25px"></span>
+                <div style="margin-top: 28%;" class="tabLabel"><label>Virtual Class</label></div>
             </div>
         </div>
         <div class="col-sm-1 col-md-1 col-lg-1 ">
-            <div id= "financeid"  class="zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
-                <span data-toggle="tab" href="#financeic" class="fa fa-dollar fa-lg" style="font-size:50px;margin-left:27px;margin-top:26px"></span>
-                <div style="margin-top: 44%;" class="tabLabel" ><label>Funding</label></div>
+            <div id="financeid" class="zoom"
+                 style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+                <span data-toggle="tab" href="#financeic" class="fa fa-dollar fa-lg"
+                      style="font-size:50px;margin-left:27px;margin-top:26px"></span>
+                <div style="margin-top: 44%;" class="tabLabel"><label>Funding</label></div>
             </div>
         </div>
         <div class="col-sm-1 col-md-1 col-lg-1">
-            <div id= "profileid"  class="zoom" style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
-                <span data-toggle="tab" href="#profileic" class="fa fa-user fa-lg" aria-hidden="true" style="font-size:50px;margin-left:22px;margin-top:24px"></span>
+            <div id="profileid" class="zoom"
+                 style="background-color:#8CC63F !important;border-radius: 50%;width:85px;height:85px;margin:50px;margin-top:10px;">
+                <span data-toggle="tab" href="#profileic" class="fa fa-user fa-lg" aria-hidden="true"
+                      style="font-size:50px;margin-left:22px;margin-top:24px"></span>
                 <div style="margin-top: 45%;" class="tabLabel"><label>Profile</label></div>
             </div>
         </div>
@@ -665,7 +387,7 @@ learning materials on many financial topics of interest. </p>
 
     <div id="tabcontent" style="margin-bottom:5%">
         <div class="tabclass" id="financeid1" style="display: none;">
-            <div class="tabContentLabel" ><label>Funding</label></div>
+            <div class="tabContentLabel"><label>Funding</label></div>
             <div class="container">
                 <div id="myCarousel1" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
@@ -691,7 +413,7 @@ learning materials on many financial topics of interest. </p>
                     <div class="carousel-inner dashCarousel">
 
                         <div class="item active">
-                            <img src="images/dashboardSlides/Slide7.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide7.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>Under Construction!</h3>
                                 <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
@@ -703,7 +425,7 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide8.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide8.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
                                 <ul>
@@ -711,7 +433,8 @@ learning materials on many financial topics of interest. </p>
                                         financial institutions who have resources to support financial literacy that
                                         sometimes go unused. The reasons behind this mismatch include lack of awareness
                                         from the community about the available funds, communication barriers between the
-                                        users and providers of funds, limited outreach capacity by some of these parties,
+                                        users and providers of funds, limited outreach capacity by some of these
+                                        parties,
                                         etc.
                                     </li>
                                 </ul>
@@ -719,12 +442,13 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide9.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide9.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
                                 <ul>
                                     <li>
-                                        MoneyABCs.org will help bridge this gap by providing various services to its members,
+                                        MoneyABCs.org will help bridge this gap by providing various services to its
+                                        members,
                                         including the ability to find each other with the use of intuitive browsing and
                                         search engines that will allow all of them to search by a very diverse set of
                                         criteria, like educational objective, target audience, type of institution,
@@ -735,7 +459,7 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide10.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide10.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>For those in need of funds:</h3>
                                 <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
@@ -750,7 +474,7 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide11.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide11.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>For those in need of funds:</h3>
                                 <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
@@ -767,7 +491,7 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide12.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide12.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>For those in need of funds:</h3>
                                 <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
@@ -787,7 +511,7 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide13.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide13.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>For those in need of funds:</h3>
                                 <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
@@ -804,7 +528,7 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide14.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide14.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>For those in need of funds:</h3>
                                 <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
@@ -821,7 +545,7 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide15.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide15.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>For those in need of funds:</h3>
                                 <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
@@ -839,7 +563,7 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide16.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide16.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>For those in need of funds:</h3>
                                 <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
@@ -855,7 +579,7 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide17.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide17.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>For those with available funds:</h3>
                                 <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
@@ -870,7 +594,7 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide18.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide18.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>For those with available funds:</h3>
                                 <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
@@ -887,7 +611,7 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide1.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide1.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>For those with available funds:</h3>
                                 <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
@@ -896,7 +620,8 @@ learning materials on many financial topics of interest. </p>
                                         grant information is provided to the interested parties:
                                         <ul>
                                             <li>
-                                                They can send interested parties to their own website to submit their applications there
+                                                They can send interested parties to their own website to submit their
+                                                applications there
                                             </li>
                                             <li>They can make available in the platform a paper application that
                                                 interested parties can print, complete, and mail over regular post, or
@@ -912,7 +637,7 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide2.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide2.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>For those with available funds:</h3>
                                 <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
@@ -931,7 +656,7 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide3.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide3.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>For those with available funds:</h3>
                                 <!--Pragraph <p> and <ul> Tag hav CSS class for adding transparent black background-->
@@ -957,7 +682,7 @@ learning materials on many financial topics of interest. </p>
                         <span class="sr-only">Next</span>
                     </a>
                     <div class="carouselButtons">
-                        <button  type="button" class="btn btn-default btn-xs">
+                        <button type="button" class="btn btn-default btn-xs">
                             <span class="glyphicon glyphicon-play"></span>
                         </button>
                         <button type="button" class="btn btn-default btn-xs">
@@ -969,11 +694,11 @@ learning materials on many financial topics of interest. </p>
             <br>
         </div>
         <div class="tabclass" id="profileid1" style="display: none;">
-            <div class="tabContentLabel" ><label>Profile</label></div>
+            <div class="tabContentLabel"><label>Profile</label></div>
             <div>
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6" style="background-color: #FCFBFA;border-radius: 5px; padding: 3%;">
-                    <form action="/api/editUserProfile"  name="myprofile" method="post">
+                    <form action="/api/editUserProfile" name="myprofile" method="post">
                         <label>Personal</label><br>
                         <div class="well">
                             Prefix/Title:
@@ -981,11 +706,16 @@ learning materials on many financial topics of interest. </p>
                                 <div class="col-sm-4">
                                     <div class="prefix" tooltip="Please enter a Prefix/Title that suits you">
                                         <select name="title" id="title">  <!--ng-model={{profile.title}}-->
-                                            <option ng-selected={{profile.title}} == 'Mr.' value="Mr."> Mr.</option>
-                                            <option ng-selected={{profile.title}} == 'Mrs.' value="Mrs."> Mrs.</option>
-                                            <option ng-selected={{profile.title}} == 'Miss' value="Miss"> Miss</option>
-                                            <option ng-selected={{profile.title}} == 'Ms.' value="Ms."> Ms.</option>
-                                            <option ng-selected={{profile.title}} == 'Dr.' value="Dr."> Dr.</option>
+                                            <option ng-selected={{profile.title}}
+                                            == 'Mr.' value="Mr."> Mr.</option>
+                                            <option ng-selected={{profile.title}}
+                                            == 'Mrs.' value="Mrs."> Mrs.</option>
+                                            <option ng-selected={{profile.title}}
+                                            == 'Miss' value="Miss"> Miss</option>
+                                            <option ng-selected={{profile.title}}
+                                            == 'Ms.' value="Ms."> Ms.</option>
+                                            <option ng-selected={{profile.title}}
+                                            == 'Dr.' value="Dr."> Dr.</option>
                                         </select>
                                     </div>
                                 </div>
@@ -994,14 +724,16 @@ learning materials on many financial topics of interest. </p>
                                 <div class="col-sm-6">
                                     <div class="form-group " tooltip="Please enter your Firstname">
 
-                                        Firstname: <input  type="text" class="form-control" name="username" id="username" tabindex="1"  ng-model="profile.username">
+                                        Firstname: <input type="text" class="form-control" name="username" id="username"
+                                                          tabindex="1" ng-model="profile.username">
 
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group" tooltip="Please enter your Lastname">
 
-                                        Lastname: <input type="text"  class="form-control" name="lastname" id="lastname" tabindex="1"   ng-model="profile.lastname">
+                                        Lastname: <input type="text" class="form-control" name="lastname" id="lastname"
+                                                         tabindex="1" ng-model="profile.lastname">
                                     </div>
                                 </div>
                             </div>
@@ -1010,13 +742,16 @@ learning materials on many financial topics of interest. </p>
                                 <div class="col-sm-6">
                                     <div class="form-group" tooltip="Please enter your Email-Address">
 
-                                        Email Address: <input type="email" class="form-control" name="email" id="email" tabindex="1" class="form-control"  ng-hide="true" ng-model="profile.email">
+                                        Email Address: <input type="email" class="form-control" name="email" id="email"
+                                                              tabindex="1" class="form-control" ng-hide="true"
+                                                              ng-model="profile.email">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group" tooltip="Please enter your Phone-number here">
 
-                                        Phone: <input type="text" class="form-control "  tabindex="1"  name="phonenumber"  data-country="countries" ng-model="profile.phonenumber">
+                                        Phone: <input type="text" class="form-control " tabindex="1" name="phonenumber"
+                                                      data-country="countries" ng-model="profile.phonenumber">
                                     </div>
                                 </div>
                             </div>
@@ -1027,13 +762,15 @@ learning materials on many financial topics of interest. </p>
                                 <div class="col-sm-6">
                                     <div class="form-group" tooltip="Please enter your Address here">
 
-                                        Address line1: <input type="address" name="address1" id="address1" tabindex="1"  class="form-control" ng-model="profile.address1">
+                                        Address line1: <input type="address" name="address1" id="address1" tabindex="1"
+                                                              class="form-control" ng-model="profile.address1">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group" tooltip="Please select your State here">
 
-                                        States: <input type="states" name="states" id="states"  class="form-control" ng-model="profile.states">
+                                        States: <input type="states" name="states" id="states" class="form-control"
+                                                       ng-model="profile.states">
                                         <!--<select name="states" id="states" class="form-control" ng-model="profile.states">-->
                                         <!--</select>-->
                                     </div>
@@ -1043,12 +780,14 @@ learning materials on many financial topics of interest. </p>
                                 <div class="col-sm-6">
                                     <div class="form-group" tooltip="Please enter your Address here">
 
-                                        Address line2: <input type="address" name="address2" id="address2" tabindex="1" class="form-control" ng-model="profile.address2">
+                                        Address line2: <input type="address" name="address2" id="address2" tabindex="1"
+                                                              class="form-control" ng-model="profile.address2">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group" tooltip="Please enter your City here">
-                                        City: <input type="city" name="city" id="city"  class="form-control" ng-model="profile.city">
+                                        City: <input type="city" name="city" id="city" class="form-control"
+                                                     ng-model="profile.city">
                                     </div>
                                 </div>
                             </div>
@@ -1056,13 +795,15 @@ learning materials on many financial topics of interest. </p>
                                 <div class="col-sm-6">
                                     <div class="form-group" tooltip="Please select your Country here">
 
-                                        Country: <input type="countries" name="countries" id="countries"  class="form-control" ng-model="profile.countries">
+                                        Country: <input type="countries" name="countries" id="countries"
+                                                        class="form-control" ng-model="profile.countries">
                                         <!--<select name="countries" id="countries"  class="form-control" ng-model="profile.countries"></select>-->
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group" tooltip="Please enter your Zipcode here">
-                                        Zip code: <input type="zipcode" name="zipcode" id="zipcode"  tabindex="1" class="form-control" ng-model="profile.zipcode">
+                                        Zip code: <input type="zipcode" name="zipcode" id="zipcode" tabindex="1"
+                                                         class="form-control" ng-model="profile.zipcode">
                                     </div>
                                 </div>
                             </div>
@@ -1074,42 +815,55 @@ learning materials on many financial topics of interest. </p>
                                 <div class="col-sm-12">
                                     <!--Organisation: <select ng-model="nonprofit">-->
                                     <div class="form-group" tooltip="Please select the Type of Organisation">
-                                        Type of Organisation: <input type="text" class="form-control" name="typeoforganisation" ng-model="profile.organisation">
+                                        Type of Organisation: <input type="text" class="form-control"
+                                                                     name="typeoforganisation"
+                                                                     ng-model="profile.organisation">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group" tooltip="Please type your Name of Organization here">
-                                        Name of Organization: <input type="nameoforganisation" name="nameoforganisation" id="nameoforganisation" tabindex="1"  class="form-control"  ng-model="profile.nameoforganisation">
+                                        Name of Organization: <input type="nameoforganisation" name="nameoforganisation"
+                                                                     id="nameoforganisation" tabindex="1"
+                                                                     class="form-control"
+                                                                     ng-model="profile.nameoforganisation">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group" tooltip="Please type your Role in an  Organization here">
-                                        Role in Organization: <input type="roleinorganisation" name="roleinorganisation" id="roleinorganisation" tabindex="1"  class="form-control" ng-model="profile.roleinorganisation">
+                                        Role in Organization: <input type="roleinorganisation" name="roleinorganisation"
+                                                                     id="roleinorganisation" tabindex="1"
+                                                                     class="form-control"
+                                                                     ng-model="profile.roleinorganisation">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group" tooltip="Please enter the URL to institution">
-                                        URL to institution: <input type="url2" name="url2" id="url2" tabindex="1"  class="form-control" ng-model="profile.url2">
+                                        URL to institution: <input type="url2" name="url2" id="url2" tabindex="1"
+                                                                   class="form-control" ng-model="profile.url2">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group" tooltip="Please enter the URL to profile">
-                                        URL to Profile: <input type="url1" name="url1" id="url1" tabindex="1"  class="form-control" ng-model="profile.url1">
+                                        URL to Profile: <input type="url1" name="url1" id="url1" tabindex="1"
+                                                               class="form-control" ng-model="profile.url1">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6 col-sm-offset-5">
-                                <button type="submit" name="edit-submit" id="edit-submit" class=""  style="background-color: #8CC63F !important;border: none;color: white;padding: 15px 32px;border-radius:18px;" ng-model="button" ng-disabled="!myprofile.$dirty">Update</button>
+                                <button type="submit" name="edit-submit" id="edit-submit" class=""
+                                        style="background-color: #8CC63F !important;border: none;color: white;padding: 15px 32px;border-radius:18px;"
+                                        ng-model="button" ng-disabled="!myprofile.$dirty">Update
+                                </button>
                                 <!--style="background-color: #008000;border: none;color: white;padding: 15px 32px;"-->
                             </div>
                         </div>
@@ -1121,88 +875,11 @@ learning materials on many financial topics of interest. </p>
             <br>
         </div>
         <div class="tabclass" id="searchid1" style="display: none;">
-            <div class="tabContentLabel" ><label>Search</label></div>
-            <!--<div class="container">
-                <div id="myCarousel3" class="carousel slide" data-ride="carousel">
-                    &lt;!&ndash; Indicators &ndash;&gt;
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel3" data-slide-to="1"></li>
-                        <li data-target="#myCarousel3" data-slide-to="2"></li>
-                    </ol>
-
-                    &lt;!&ndash; Wrapper for slides &ndash;&gt;
-                    <div class="carousel-inner dashCarousel">
-                        <div class="item active">
-                            <img src="images/dashboardSlides/Slide13.JPG" alt="Moneyabcs" >
-                            <div class="carousel-caption">
-                                <h3>Under Construction!</h3>
-                                <p>This section of the platform will contain the advance search engine users will be
-                                    able to use to find the research paper or pedagogic materials they need.
-                                    They will be able to conduct an advance search for resources within the website
-                                    using the following filtering criteria</p>
-                                <ul>
-                                    <li>Topic or keyword (i.e. Income Taxes,credit scores, etc.)</li>
-                                    <li>File format (i.e. video, webinar, PowerPoint, PDF, podcast, etc.) </li>
-                                    <li>Duration or length of the resource (i.e. in minutes of video or audio,
-                                        number of slides in the presentation, estimated time of the workshop, number
-                                        of pages of the paper, etc.)</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <img src="images/dashboardSlides/Slide14.JPG" alt="Moneyabcs" >
-                            <div class="carousel-caption">
-                                <p> More criteria</p>
-                                <ul>
-                                    <li>Language of the resource (i.e. English, Spanish, Vietnamese, etc.)</li>
-                                    <li>Intended audience (i.e. age, age group, grade level, etc.)</li>
-                                    <li>Availability of supplemental materials (i.e. teaching notes, quizzes, handouts,
-                                        etc.)</li>
-                                    <li>Type of audience engagement (i.e. passive audience, interactive audience,
-                                        hands on activities, games or songs involved, etc.)</li>
-                                    <li>Profile of the poster (i.e. educator, academic, financial institution,
-                                        government agency, etc.)</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <img src="images/dashboardSlides/Slide15.JPG" alt="Moneyabcs" >
-                            <div class="carousel-caption">
-                                <p>You will be able to find out what other members of the network who share profile
-                                    attributes with you are doing to learn from their experience. For instance, if you
-                                    are a fourth grade teacher, you can find out what individual videos,
-                                    PowerPoint presentations, and webinars other fourth-grade teachers
-                                    in your district, city, state, or across the nation are using in their classrooms</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    &lt;!&ndash; Left and right controls &ndash;&gt;
-                    <a class="left carousel-control" href="#myCarousel3" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel3" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                    <div class="carouselButtons">
-                        <button  type="button" class="btn btn-default btn-xs">
-                            <span class="glyphicon glyphicon-play"></span>
-                        </button>
-                        <button type="button" class="btn btn-default btn-xs">
-                            <span class="glyphicon glyphicon-pause"></span>
-                        </button>
-                    </div>
-                </div>
-            </div>-->
+            <div class="tabContentLabel"><label>Search</label></div>
 
             <!--Advanced Search-->
             <div class="container" style="width: 100%; padding: 1% 5% !important;">
-                <form class="well form-horizontal"   id="search_form">
+                <form class="well form-horizontal" id="search_form">
                     <fieldset>
 
                         <!-- Form Name -->
@@ -1215,7 +892,8 @@ learning materials on many financial topics of interest. </p>
                             <div class="col-md-4 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-                                    <input  name="first_name" placeholder="Search Term" class="form-control" ng-model="advSearch.searchTerm" type="text">
+                                    <input name="first_name" placeholder="Search Term" class="form-control"
+                                           ng-model="advSearch.searchTerm" type="text">
                                 </div>
                             </div>
                         </div>
@@ -1227,8 +905,9 @@ learning materials on many financial topics of interest. </p>
                             <div class="col-md-4 selectContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                    <select name="state" class="form-control selectpicker" ng-model="advSearch.contentType">
-                                        <option value="" >Please select your option</option>
+                                    <select name="state" class="form-control selectpicker"
+                                            ng-model="advSearch.contentType">
+                                        <option value="">Please select your option</option>
                                         <option value="articles">Articles</option>
                                         <option value="presentations">Presentations</option>
                                         <option value="videos">Videos</option>
@@ -1242,7 +921,8 @@ learning materials on many financial topics of interest. </p>
                         <div class="form-group">
                             <label class="col-md-4 control-label"></label>
                             <div class="col-md-4">
-                                <button ng-click="updateAdvSearchResult()" class="btn btn-warning" > Submit <span class="glyphicon glyphicon-send"></span></button>
+                                <button ng-click="updateAdvSearchResult()" class="btn btn-warning"> Submit <span
+                                        class="glyphicon glyphicon-send"></span></button>
                             </div>
                         </div>
 
@@ -1252,102 +932,32 @@ learning materials on many financial topics of interest. </p>
 
                 <section class="news pad20px" style="margin-top: 25px;" id="news-section">
                     <div class="container-fluid bgColorWhite pad20px marginMain ">
-                        <div id="articlesSearchHead" style="display:none; font-size: 20px; border-radius: 60px 60px 60px 60px; background-color: #8CC63F !important; background-color: white; margin-bottom: 15px;">
+                        <div id="articlesSearchHead"
+                             style="display:none; font-size: 20px; border-radius: 60px 60px 60px 60px; background-color: #8CC63F !important; background-color: white; margin-bottom: 15px;">
                             <span style="margin-left: 20px;">Articles</span>
                         </div>
-                      <!--  <div class="row vdivide searchHide"  style="margin-bottom: 3%;">
-                            <div class="search_results" id="search_results"></div>
-                            <div class="col-md-3 col-lg-3"> <img src="images/whats_hot.png">
-                                <h3>WHAT'S IN THE NEWS?</h3>
-                                <h4 class="subheading">
-                                    Here is what's trending in the news about personal finance and financial literacy.
-                                </h4>
-                                <div class="customize_button" id="customize"> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#customize-modal" style="display: block; width: 100%;">Personlize</a> </div>
-                            </div>
-                            <div class="col-md-3 col-lg-3" id="first_result">
-                                <div class="sidebar_icons">
-                                    <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleFeatured[0].displayLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
-                                    <img data-toggle="modal" id="email_1" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                                    <img src="images/add.png" id="1" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
-                                </div>
-                                <div class="thumbnail">
-                                    <a href="{{articleFeatured[0].iframeLink}}" target="_blank"> <img  class ="newsImg"topic="{{articleFeatured[0].indexTopic}}" set="no" alt="ALT NAME" ng-src="{{articleFeatured[0].imgUrl}}" imageonload>
-                                        <div class="type">
-                                            <img alt="ALT NAME" src="images/presentation.png" style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
-                                        </div>
 
-                                        &lt;!&ndash;<div class="rating">
-                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                        <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
-                                        </div>&ndash;&gt;
-                                        <div class="caption">
-                                            <h4>{{articleFeatured[0].title}}</h4>
-                                            <p>{{articleFeatured[0].snippet}}</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-lg-3">
-                                <div class="sidebar_icons">
-                                    <a class="fb-xfbml-parse-ignore"   data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleFeatured[1].displayLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
-                                    <img data-toggle="modal" id="email_2" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                                    <img src="images/add.png" id="2" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
-                                </div>
-                                <div class="thumbnail">
-                                    <a href="{{articleFeatured[1].iframeLink}}" target="_blank"> <img class ="newsImg" set="no" topic="{{articleFeatured[1].indexTopic}}" alt="ALT NAME" ng-src="{{articleFeatured[1].imgUrl}}" imageonload>
-                                        <div class="type">
-                                            <img alt="ALT NAME" src="images/presentation.png" style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
-                                        </div>
-                                        &lt;!&ndash; <div class="rating">
-                                         <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                          <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
-                                         </div>&ndash;&gt;
-                                        <div class="caption">
-                                            <h4>{{articleFeatured[1].title}}</h4>
-                                            <p>{{articleFeatured[1].snippet}}</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-lg-3">
-                                <div class="sidebar_icons">
-                                    <a class="fb-xfbml-parse-ignore"   data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleFeatured[1].displayLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
-                                    <img data-toggle="modal" id="email_3"
-                                         data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                                    <img src="images/add.png" id="3"
-                                         data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
-                                </div>
-                                <div class="thumbnail">
-                                    <a href="{{articleFeatured[2].iframeLink}}"
-                                       target="_blank"> <img  class ="newsImg" set="no" topic="{{articleFeatured[1].indexTopic}}" alt="ALT NAME" ng-src="{{articleFeatured[2].imgUrl}}" imageonload>
-                                        <div class="type">
-                                            <img alt="ALT NAME" src="images/presentation.png" style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
-                                        </div>
-                                        &lt;!&ndash; <div class="rating">
-                                         <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                         <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
-                                         </div>&ndash;&gt;
-                                        <div class="caption">
-                                            <h4>{{articleFeatured[2].title}}</h4>
-                                            <p style="font-size:15px; overflow: hidden">{{articleFeatured[2].snippet}}</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>-->
                         <div class="row vdivide" id="sub_news"> <span ng-repeat="articleObj in article">
                     <div class={{SelectedLayout}} style="margin-bottom:5%;">
                        <div class="sidebar_icons">
-                           <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleObj.iframeLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
-                            <img data-toggle="modal" id="email_{{$index+4}}" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                            <img src="images/add.png" id={{$index+4}} data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
+                           <a class="fb-xfbml-parse-ignore" data-url="http://www.moneyabcs.org" target="_blank"
+                              href="https://www.facebook.com/sharer/sharer.php?u={{articleObj.iframeLink}}&amp;src=sdkpreparse"><img
+                                   src="images/share.png" class="share" rel="tooltip" data-placement="bottom"
+                                   title="share"> </a>
+                            <img data-toggle="modal" id="email_{{$index+4}}"
+                                 data-ng-click="emailArticleToFriend($event)" data-target="#mailer"
+                                 src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                            <img src="images/add.png" id={{$index+4}} data-ng-click="addme($event)" class="add"
+                                 rel="tooltip" data-placement="bottom" sectype="article" title="add">
 
                         </div>
 
                          <a href="{{articleObj.iframeLink}}" target="_blank">
-                        <div class="thumbnail"> <img  class ="newsImg" set="no" topic="{{articleObj.indexTopic}}" alt="ALT NAME" ng-src="{{articleObj.imgUrl}}" imageonload>
+                        <div class="thumbnail"> <img class="newsImg" set="no" topic="{{articleObj.indexTopic}}"
+                                                     alt="ALT NAME" ng-src="{{articleObj.imgUrl}}" imageonload>
                         <div class="type">
-                            <img alt="ALT NAME" src="images/presentation.png" style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
+                            <img alt="ALT NAME" src="images/presentation.png"
+                                 style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
                         </div>
                             <!-- <div class="rating">
                              <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
@@ -1361,10 +971,12 @@ learning materials on many financial topics of interest. </p>
 
                         </a>
                     </div>
-                </span> </div>
+                </span></div>
                         <div class="row">
                             <div class="col-md-12">
-                                <button id="articleLoadMore" class="btn btn-primary btn-round showMore" ng-click="loadMore()" ng-hide="hideShowMore" >Show More ▼</button>
+                                <button id="articleLoadMore" class="btn btn-primary btn-round showMore"
+                                        ng-click="loadMore()" ng-hide="hideShowMore">Show More ▼
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1375,82 +987,22 @@ learning materials on many financial topics of interest. </p>
                         <div id="resourcesSearchHead" style="display:none;font-size: 20px; border-radius: 60px 60px 60px 60px; background-color: #8CC63F !important; background-color: white; margin-bottom: 15px;">
                             <span style="margin-left: 20px;">Resources</span>
                         </div>
-                        <!--<div class="row vdivide searchHide" id="resourceHolderTop">
-                            <div class="col-md-3 col-lg-3">
-                                <img src="images/Forma-1.png">
-                                <h3>TEACH ME ABOUT MONEY</h3>
-                                <h4 class="subheading">
-                                    Dig into our multiple instructional presentations, webinars, and videos.
-                                </h4>
-                                <div class="customize_button" id="customize"> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#customize-modal" style="display: block; width: 100%;">Personalize</a> </div>
-                            </div>
-                            <div class="col-md-3 col-lg-3" id="first_result_resource">
-                                <div class="sidebar_icons">
-                                    <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[0].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
-                                    <img data-toggle="modal" id="resourceEmail_1" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                                    <img src="images/add.png" id="1" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
-                                </div>
-                                <div class="thumbnail" data-toggle="modal" data-target="#resources">
-                                    <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[0].thumbnailLink}}" imageonload>
-                                    <div class="type">
-                                        <img alt="ALT NAME" ng-src="{{resourceFeatured[0].type}}" imageonload>
-                                    </div>
 
-                                    <div class="caption">
-                                        <p class="embedUrl" style="display:none;">{{resourceFeatured[0].embedUrl}}</p>
-                                        <h4 class="resourceTitle">{{resourceFeatured[0].name}}</h4>
-                                        <p>{{resourceFeatured[0].description}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-lg-3" id="second_result_resource">
-                                <div class="sidebar_icons">
-                                    <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[1].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
-                                    <img data-toggle="modal" id="resourceEmail_2" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                                    <img src="images/add.png" id="2" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
-                                </div>
-                                <div class="thumbnail" data-toggle="modal" data-target="#resources">
-                                    <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[1].thumbnailLink}}" imageonload>
-                                    <div class="type">
-                                        <img alt="ALT NAME" ng-src="{{resourceFeatured[1].type}}" imageonload>
-                                    </div>
-
-                                    <div class="caption">
-                                        <p class="embedUrl" style="display:none;">{{resourceFeatured[1].embedUrl}}</p>
-                                        <h4 class="resourceTitle">{{resourceFeatured[1].name}}</h4>
-                                        <p>{{resourceFeatured[1].description}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-lg-3" id="third_result_resource">
-                                <div class="sidebar_icons">
-                                    <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[2].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
-                                    <img data-toggle="modal" id="resourceEmail_3" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                                    <img src="images/add.png" id="3" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
-                                </div>
-                                <div class="thumbnail" data-toggle="modal" data-target="#resources">
-                                    <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[2].thumbnailLink}}" imageonload>
-                                    <div class="type">
-                                        <img alt="ALT NAME" ng-src="{{resourceFeatured[2].type}}" imageonload>
-                                    </div>
-
-                                    <div class="caption">
-                                        <p class="embedUrl" style="display:none;">{{resourceFeatured[2].embedUrl}}</p>
-                                        <h4 class="resourceTitle">{{resourceFeatured[2].name}}</h4>
-                                        <p>{{resourceFeatured[2].description}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
                         <div class="row vdivide" id="resourceHolderSearch">
             <span ng-repeat="resourcesObj in resources">
-                <div class={{SelectedLayout}} >
+                <div class={{SelectedLayout}}>
                         <div class=" sidebar_icons"> <!---->
-                            <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourcesObj.webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
-                             <img data-toggle="modal" id="resourceEmail_{{$index+4}}" data-ng-click="emailArticlesToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                            <img src="images/add.png" id={{$index+4}} data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
+                            <a class="fb-xfbml-parse-ignore" data-url="http://www.moneyabcs.org" target="_blank"
+                               href="https://www.facebook.com/sharer/sharer.php?u={{resourcesObj.webUrl}}&amp;src=sdkpreparse"><img
+                                    src="images/share.png" class="share" rel="tooltip" data-placement="bottom"
+                                    title="share"> </a>
+                             <img data-toggle="modal" id="resourceEmail_{{$index+4}}"
+                                  data-ng-click="emailArticlesToFriend($event)" data-target="#mailer"
+                                  src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                            <img src="images/add.png" id={{$index+4}} data-ng-click="addme($event)" class="add"
+                                 rel="tooltip" data-placement="bottom" sectype="resource" title="add">
                         </div>
-                    <div class="thumbnail"  data-toggle="modal" data-target="#resources">
+                    <div class="thumbnail" data-toggle="modal" data-target="#resources">
                         <img class="thumb" alt="ALT NAME" ng-src="{{resourcesObj.thumbnailLink}}" imageonload>
                         <div class="type">
                             <img alt="ALT NAME" ng-src="{{resourcesObj.type}}" imageonload>
@@ -1473,7 +1025,9 @@ learning materials on many financial topics of interest. </p>
                         <hr>
                         <div class="row">
                             <div class="col-md-12">
-                                <button id="resourceLoadMore" class="btn btn-primary btn-round showMore" ng-click="loadMoreResources()" ng-hide="hideShowMoreResources" >Show More ▼</button>
+                                <button id="resourceLoadMore" class="btn btn-primary btn-round showMore"
+                                        ng-click="loadMoreResources()" ng-hide="hideShowMoreResources">Show More ▼
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1484,18 +1038,19 @@ learning materials on many financial topics of interest. </p>
             <br>
         </div>
         <div class="tabclass" id="suitcaseid1" style="display: block;">
-            <div class="tabContentLabel" ><label>Briefcase</label></div>
-            <div ng-init="refreshData()" >
+            <div class="tabContentLabel"><label>Briefcase</label></div>
+            <div ng-init="refreshData()">
                 <div class="col-sm-6 col-md-6 col-lg-6">
                     <h3 class="col-sm-10 col-sm-offset-1">Your saved articles </h3>
-                    <div class="col-sm-10 col-sm-offset-1"  ng-repeat="articleObj in saved_articles">
+                    <div class="col-sm-10 col-sm-offset-1" ng-repeat="articleObj in saved_articles">
                         <div class="row marketing">
                             <div class="col-lg-6">
-                                <p> <img alt="ALT NAME" ng-src="{{articleObj.imgUrl}}" imageonload  align="left"> </p>
+                                <p><img alt="ALT NAME" ng-src="{{articleObj.imgUrl}}" imageonload align="left"></p>
                             </div>
                             <div class="col-lg-6">
                                 <a href="{{articleObj.iframeLink}}" target="_blank">{{articleObj.title}}</a>
-                                <span class="glyphicon glyphicon-remove" ng-click="deleteSavedArticlesfunc($index)" style="float: right;"></span>
+                                <span class="glyphicon glyphicon-remove" ng-click="deleteSavedArticlesfunc($index)"
+                                      style="float: right;"></span>
                                 <!--<button type="button" class="close" aria-hidden="true" style="float: right;" ng-click="deleteSavedArticlesfunc($index)">&times;</button>-->
                                 <p>{{articleObj.snippet}}</p>
                             </div>
@@ -1505,14 +1060,16 @@ learning materials on many financial topics of interest. </p>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6">
                     <h3 class="col-sm-10 col-sm-offset-1">Your saved resources </h3>
-                    <div class="col-sm-10 col-sm-offset-1"  ng-repeat="resourceObj in saved_resources">
+                    <div class="col-sm-10 col-sm-offset-1" ng-repeat="resourceObj in saved_resources">
                         <div class="row marketing">
                             <div class="col-lg-6">
-                                <p> <img alt="ALT NAME" ng-src="{{resourceObj.thumbnailLink}}" imageonload  align="left"> </p>
+                                <p><img alt="ALT NAME" ng-src="{{resourceObj.thumbnailLink}}" imageonload align="left">
+                                </p>
                             </div>
                             <div class="col-lg-6">
                                 <a href="{{resourceObj.embedUrl}}" target="_blank">{{resourceObj.name}}</a>
-                                <span class="glyphicon glyphicon-remove" ng-click="deleteSavedResourcesfunc($index)" style="float: right;"></span>
+                                <span class="glyphicon glyphicon-remove" ng-click="deleteSavedResourcesfunc($index)"
+                                      style="float: right;"></span>
                                 <p>{{resourceObj.description}}</p>
                             </div>
                         </div>
@@ -1523,7 +1080,7 @@ learning materials on many financial topics of interest. </p>
             <br>
         </div>
         <div class="tabclass" id="networkid1" style="display: none;">
-            <div class="tabContentLabel" ><label>Network</label></div>
+            <div class="tabContentLabel"><label>Network</label></div>
             <div class="container">
                 <div id="myCarousel5" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
@@ -1542,18 +1099,19 @@ learning materials on many financial topics of interest. </p>
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner dashCarousel">
                         <div class="item active">
-                            <img src="images/dashboardSlides/Slide1.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide1.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>Under Construction!</h3>
                                 <p>You will be able to find out what other members of the network who share profile
                                     attributes with you are doing to learn from their experience. For instance, if you
                                     are a fourth grade teacher, you can find out what individual videos,
                                     PowerPoint presentations, and webinars other fourth-grade teachers
-                                    in your district, city, state, or across the nation are using in their classrooms</p>
+                                    in your district, city, state, or across the nation are using in their
+                                    classrooms</p>
                             </div>
                         </div>
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide2.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide2.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <p>Similarly, if you are a financial literacy volunteer at a non-for-profit, if you are
                                     a community advocate, or a social security worker, you will be able to find out what
@@ -1566,7 +1124,8 @@ learning materials on many financial topics of interest. </p>
                             <div class="carousel-caption">
                                 <p>You can also see the comments and feedback these users have left on specific
                                     videos or presentations they have used, and you can instant message them if they are
-                                    online, leave a short message in their inbox, or email them directly to inquire about
+                                    online, leave a short message in their inbox, or email them directly to inquire
+                                    about
                                     their experience with the main materials or with any the supplementary materials
                                     they have used (like teaching notes, or quizzes). </p>
                             </div>
@@ -1587,10 +1146,10 @@ learning materials on many financial topics of interest. </p>
                                 <p>By entering a specific area of expertise, license, certification,
                                     or background-check status, you will be able get a listing of the members of the
                                     community who meet such profile criteria so you can ask them for advise, or you
-                                    can invite them to support your educational programs.  For instance, if you are
+                                    can invite them to support your educational programs. For instance, if you are
                                     interested in finding a Certified Financial Planner who has a recent FBI clearance
                                     certificate on file with MoneyABCs.org to work with children within 20 miles of your
-                                    elementary school’s address, you will be able to do so.  </p>
+                                    elementary school’s address, you will be able to do so. </p>
                             </div>
                         </div>
                         <div class="item">
@@ -1603,7 +1162,7 @@ learning materials on many financial topics of interest. </p>
                                     personal income taxes, in life insurance, or in investments. By the same token, you
                                     will be able to indicate whether you are willing to collaborate with others in your
                                     area, whether by travelling to the site of the event or by hosting people in your
-                                    organization’s facilities.   </p>
+                                    organization’s facilities. </p>
                             </div>
                         </div>
                         <div class="item">
@@ -1650,7 +1209,7 @@ learning materials on many financial topics of interest. </p>
                         <span class="sr-only">Next</span>
                     </a>
                     <div class="carouselButtons">
-                        <button  type="button" class="btn btn-default btn-xs">
+                        <button type="button" class="btn btn-default btn-xs">
                             <span class="glyphicon glyphicon-play"></span>
                         </button>
                         <button type="button" class="btn btn-default btn-xs">
@@ -1662,7 +1221,7 @@ learning materials on many financial topics of interest. </p>
             <br>
         </div>
         <div class="tabclass" id="shareid1" style="display: none;">
-            <div class="tabContentLabel" ><label>Share</label></div>
+            <div class="tabContentLabel"><label>Share</label></div>
             <div class="container">
                 <div id="myCarousel6" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
@@ -1676,7 +1235,7 @@ learning materials on many financial topics of interest. </p>
                     <div class="carousel-inner dashCarousel">
 
                         <div class="item active">
-                            <img src="images/dashboardSlides/Slide10.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide10.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>Under Construction!</h3>
                                 <p> Do you want to share your white research paper, presentation slides, video, podcast,
@@ -1686,7 +1245,7 @@ learning materials on many financial topics of interest. </p>
                             </div>
                         </div>
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide11.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide11.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <p>Upon receiving your files, one of MoneyABCs specialists will confirm that your
                                     materials are appropriate for our community and will approve them or get back to
@@ -1695,7 +1254,7 @@ learning materials on many financial topics of interest. </p>
                             </div>
                         </div>
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide12.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide12.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <p>Resources like videos and webinars will be available to the general public via the
                                     front page of the platform, while supplemental materials, like teaching notes and
@@ -1714,7 +1273,7 @@ learning materials on many financial topics of interest. </p>
                         <span class="sr-only">Next</span>
                     </a>
                     <div class="carouselButtons">
-                        <button  type="button" class="btn btn-default btn-xs">
+                        <button type="button" class="btn btn-default btn-xs">
                             <span class="glyphicon glyphicon-play"></span>
                         </button>
                         <button type="button" class="btn btn-default btn-xs">
@@ -1728,7 +1287,7 @@ learning materials on many financial topics of interest. </p>
             </p>
         </div>
         <div class="tabclass" id="schoolid1" style="display: none;">
-            <div class="tabContentLabel" ><label>Virtual Classroom</label></div>
+            <div class="tabContentLabel"><label>Virtual Classroom</label></div>
             <div class="container">
                 <div id="myCarousel7" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
@@ -1747,7 +1306,7 @@ learning materials on many financial topics of interest. </p>
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner dashCarousel">
                         <div class="item active">
-                            <img src="images/dashboardSlides/Slide16.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide16.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <h3>Under Construction!</h3>
                                 <p>Are you a K-College Instructor and would like to make some educational resources
@@ -1762,12 +1321,14 @@ learning materials on many financial topics of interest. </p>
 
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide17.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide17.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <ul>
                                     <li>You will be able construct your virtual classroom with a set of mixed
-                                        educational resources (i.e. videos, webinars, podcasts, etc.) that your students can
-                                        complete in a prescribed order or as they please.</li>
+                                        educational resources (i.e. videos, webinars, podcasts, etc.) that your students
+                                        can
+                                        complete in a prescribed order or as they please.
+                                    </li>
                                     <li>For those courses with a
                                         prescribed order, your students will only be able to proceed to the next module
                                         after completing every aspect of one module (presentation, exercises, quizzes,
@@ -1778,10 +1339,12 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide18.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide18.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
-                                <ul><li>The modules can have an expiration date or be open for the students to complete
-                                    at their leisure.</li>
+                                <ul>
+                                    <li>The modules can have an expiration date or be open for the students to complete
+                                        at their leisure.
+                                    </li>
                                     <li>Your virtual classroom will be able to provide you with a
                                         universal username and password for all your students in case you do not wish
                                         to track your students’ progress or performance on an individual basis.
@@ -1793,14 +1356,16 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide1.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide1.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
                                 <ul>
                                     <li>Usernames and passwords can be easily customized to be age appropriate, with
-                                        visual passwords for small children and regular text-passwords for older students.
+                                        visual passwords for small children and regular text-passwords for older
+                                        students.
                                     </li>
                                     <li>Your students’ privacy and security while participating in the platform will be
-                                        safe-guarded by a master roster that you will be able to easily generate with the
+                                        safe-guarded by a master roster that you will be able to easily generate with
+                                        the
                                         click of a button and store safely on your own computer. With no personally
                                         identifying data from your students ever uploaded onto our servers, you can
                                         rest assured that any potential malicious attacks on our servers will never
@@ -1811,11 +1376,15 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide2.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide2.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
-                                <ul><li>You will have the opportunity to create exercises and quizzes (with follow-up essay
-                                    questions, problems, or multiple-choice questions) that your students can complete
-                                    and submit electronically.</li>
+                                <ul>
+                                    <li>You will have the opportunity to create exercises and quizzes (with follow-up
+                                        essay
+                                        questions, problems, or multiple-choice questions) that your students can
+                                        complete
+                                        and submit electronically.
+                                    </li>
                                     <li>To generate the exercises and quizzes on your virtual
                                         classroom, you will be able to use some of the existing questions in the
                                         platform’s exercise and test banks, but you will also be able to write
@@ -1826,11 +1395,13 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide3.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide3.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
-                                <ul><li>While the platform can grade problems and multiple-choice questions
-                                    automatically, as the instructor you will have the opportunity to grade their
-                                    essays on screen before the final grade of an exercise or quiz is generated.</li>
+                                <ul>
+                                    <li>While the platform can grade problems and multiple-choice questions
+                                        automatically, as the instructor you will have the opportunity to grade their
+                                        essays on screen before the final grade of an exercise or quiz is generated.
+                                    </li>
                                     <li>You will have the option of deciding which
                                         exercises or quizzes will affect your student’s overall grade and which
                                         ones will serve just as practice runs or review.
@@ -1840,12 +1411,14 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide4.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide4.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
-                                <ul><li>Your students will be able to rate and leave comments on any or all the
-                                    elements of your course, so you can use their feedback to judge which resources
-                                    were most useful to them, and which resources were ineffective. Thus, with their
-                                    feedback you will be able to improve your courses over time.</li>
+                                <ul>
+                                    <li>Your students will be able to rate and leave comments on any or all the
+                                        elements of your course, so you can use their feedback to judge which resources
+                                        were most useful to them, and which resources were ineffective. Thus, with their
+                                        feedback you will be able to improve your courses over time.
+                                    </li>
                                     <li>Your students will have the ability to send
                                         you questions, which you can answer privately over the platform, or you
                                         can publish on a digital billboard for everyone’s benefit. Thus, you will
@@ -1856,14 +1429,16 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide5.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide5.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
-                                <ul><li>You will be able to customize the look of your virtual classroom, so that
-                                    it reflects your institution’s colors, name, and even display your logo.
-                                    Thus, your virtual classroom will feel like a part of your organization,
-                                    rather than a facility provided by a third party. This feature should be
-                                    somewhat reassuring for parents of small children who may have reservations
-                                    about allowing their little ones interact with a third-party platform.</li>
+                                <ul>
+                                    <li>You will be able to customize the look of your virtual classroom, so that
+                                        it reflects your institution’s colors, name, and even display your logo.
+                                        Thus, your virtual classroom will feel like a part of your organization,
+                                        rather than a facility provided by a third party. This feature should be
+                                        somewhat reassuring for parents of small children who may have reservations
+                                        about allowing their little ones interact with a third-party platform.
+                                    </li>
                                     <li>Your classroom will be assigned a URL that
                                         you can distribute to your students to allow them to access the virtual
                                         classroom directly without having to go through the front page of our website.
@@ -1873,18 +1448,22 @@ learning materials on many financial topics of interest. </p>
                         </div>
 
                         <div class="item">
-                            <img src="images/dashboardSlides/Slide6.JPG" alt="Moneyabcs" >
+                            <img src="images/dashboardSlides/Slide6.JPG" alt="Moneyabcs">
                             <div class="carousel-caption">
-                                <ul><li>You will be able to maintain multiple courses at once in case you have
-                                    different cohorts in an academic period, and you can replicate an entire course
-                                    (or import just parts of it) easily with the click of a button.</li>
+                                <ul>
+                                    <li>You will be able to maintain multiple courses at once in case you have
+                                        different cohorts in an academic period, and you can replicate an entire course
+                                        (or import just parts of it) easily with the click of a button.
+                                    </li>
                                     <li>You will have the option of sharing the
                                         courses you design with other educators in the network, or keep it private
                                         while you are beta-testing it.
                                     </li>
                                     <li style="display: block;">You will be able to access our customer support
                                         free of charge if you ever encounter technical problems with your
-                                        virtual classroom or if you are just learning how to use it.</li>                                        </li>
+                                        virtual classroom or if you are just learning how to use it.
+                                    </li>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -1902,7 +1481,7 @@ learning materials on many financial topics of interest. </p>
                         <span class="sr-only">Next</span>
                     </a>
                     <div class="carouselButtons">
-                        <button  type="button" class="btn btn-default btn-xs">
+                        <button type="button" class="btn btn-default btn-xs">
                             <span class="glyphicon glyphicon-play"></span>
                         </button>
                         <button type="button" class="btn btn-default btn-xs">
@@ -1918,335 +1497,56 @@ learning materials on many financial topics of interest. </p>
 </div>
 <!--Dashboard Code End-->
 
-
-
-
-
-
-
-
-
-<div ng-show="showpage =='supportflp'" class="container margin5Auto largeFont" >
-
-
-
- <h2 style="text-align: center; font-weight: 800" >Donate</h2>
-      <div id="donate" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#donate" data-slide-to="0" class="active"></li>
-      <li data-target="#donate" data-slide-to="1"></li>
-      <li data-target="#donate" data-slide-to="2"></li>
-
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox" >
-
-      <div class="item active">
-        <img src="images/carouselPics/donate1.jpg" alt="Chania" width="100%" height="100%">
-        <div class="carousel-caption" >
-          <h3></h3>
-          <p class="carosl">
-           Would you like to help the UTA Financial Literacy Program complete its vision for this online community of financial educators and activists? We can certainly use your help to maintain and grow the resources in this platform. All donations and gifts, no matter the size, can help and will be greatly appreciated. </p>
-        </div>
-      </div>
-        <div class="item">
-        <img src="images/carouselPics/donate2.jpg" alt="Chania" width="100%" height="100%">
-        <div class="carousel-caption">
-
-          <p class="carosl">Please complete the form below and our development officer will reach out to you to make the donation process as easy as possible for you. Individuals, alumni, corporations, non-for-profits, public and private foundations --  we’ll be happy to work with you so that your donation is channeled to where you want it to go. If you are a financial institution interested in structuring your gift and receive CRA credit, we’ll be happy to work closely with you and regulators to make sure you get the acknowledgement you need. </p>
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="images/carouselPics/aboutus3.jpg" alt="Chania" width="100%" height="100%">
-        <div class="carousel-caption">
-
-          <p class="carosl"> If you need assistance in making your gift, or would like more information about our program to make up your mind, please contact the program director at 817-987-6240 or complete the form below and we’ll get back to you promptly. </p>
-        </div>
-      </div>
-
-        <br>
-
-    </div>
-   <!-- Left and right controls -->
-    <a class="left carousel-control" href="#donate" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#donate" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-
-
- <div class="container" style="width: 100%; padding: 1% 5% !important;">
-           <form class="well form-horizontal"   id="contact_form">
-<fieldset>
-
-<!-- Form Name -->
-<legend>Contact Information</legend>
-
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label">First Name</label>
-  <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="first_name" placeholder="First Name" class="form-control" ng-model="donar.first_name" type="text">
-    </div>
-  </div>
-</div>
-
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Last Name</label>
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="last_name" placeholder="Last Name" class="form-control" ng-model="donar.last_name" type="text">
-    </div>
-  </div>
-</div>
-
-<!-- Text input-->
-       <div class="form-group">
-  <label class="col-md-4 control-label">E-Mail</label>
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-  <input name="email" placeholder="E-Mail Address" class="form-control" ng-model="donar.email" type="text">
-    </div>
-  </div>
-</div>
-
-
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label">Phone #</label>
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-  <input name="phone" placeholder="(845)555-1212" class="form-control" ng-model="donar.phone" type="text">
-    </div>
-  </div>
-</div>
-
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label">Address</label>
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input name="address" placeholder="Address" class="form-control" ng-model="donar.address" type="text">
-    </div>
-  </div>
-</div>
-
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label">City</label>
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input name="city" placeholder="city" class="form-control" ng-model="donar.city" type="text">
-    </div>
-  </div>
-</div>
-
-<!-- Select Basic -->
-
-<div class="form-group">
-  <label class="col-md-4 control-label">State</label>
-    <div class="col-md-4 selectContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <select name="state" class="form-control selectpicker" ng-model="donar.state">
-      <option value=" " >Please select your state</option>
-      <option>Alabama</option>
-      <option>Alaska</option>
-      <option >Arizona</option>
-      <option >Arkansas</option>
-      <option >California</option>
-      <option >Colorado</option>
-      <option >Connecticut</option>
-      <option >Delaware</option>
-      <option >District of Columbia</option>
-      <option> Florida</option>
-      <option >Georgia</option>
-      <option >Hawaii</option>
-      <option >daho</option>
-      <option >Illinois</option>
-      <option >Indiana</option>
-      <option >Iowa</option>
-      <option> Kansas</option>
-      <option >Kentucky</option>
-      <option >Louisiana</option>
-      <option>Maine</option>
-      <option >Maryland</option>
-      <option> Mass</option>
-      <option >Michigan</option>
-      <option >Minnesota</option>
-      <option>Mississippi</option>
-      <option>Missouri</option>
-      <option>Montana</option>
-      <option>Nebraska</option>
-      <option>Nevada</option>
-      <option>New Hampshire</option>
-      <option>New Jersey</option>
-      <option>New Mexico</option>
-      <option>New York</option>
-      <option>North Carolina</option>
-      <option>North Dakota</option>
-      <option>Ohio</option>
-      <option>Oklahoma</option>
-      <option>Oregon</option>
-      <option>Pennsylvania</option>
-      <option>Rhode Island</option>
-      <option>South Carolina</option>
-      <option>South Dakota</option>
-      <option>Tennessee</option>
-      <option>Texas</option>
-      <option> Uttah</option>
-      <option>Vermont</option>
-      <option>Virginia</option>
-      <option >Washington</option>
-      <option >West Virginia</option>
-      <option>Wisconsin</option>
-      <option >Wyoming</option>
-    </select>
-  </div>
-</div>
-</div>
-
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label">Zip Code</label>
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input name="zip" placeholder="Zip Code" class="form-control" ng-model="donar.zip" type="text">
-    </div>
-</div>
-</div>
-
-<!-- Text input-->
-
-
-<!-- radio checks -->
-
-
-<!-- Text area -->
-<legend>Addtional Information</legend>
-<div class="form-group">
-                        <label class="col-md-4 control-label">Corporate</label>
-                        <div class="col-md-4">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" ng-model="donar.corporate"name="corporate" /> This gift is on behalf of a company or foundation
-                                </label>
-                            </div>
-                        </div>
-</div>
-    <div class="form-group">
-                        <label class="col-md-4 control-label">CRA Gift</label>
-                        <div class="col-md-4">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" ng-model="donar.CRAGift" name="CRAGift" /> I would like our gift to be given CRA consideration.
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-        <div class="form-group">
-                        <label class="col-md-4 control-label">Individual</label>
-                        <div class="col-md-4">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" ng-model="donar.individual" name="individual" /> This will be a personal gift.
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-            <div class="form-group">
-                        <label class="col-md-4 control-label">Anonymous</label>
-                        <div class="col-md-4">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" ng-model="donar.Anonymous" name="Anonymous" /> I prefer to make this gift anonymously
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-    <div class="form-group">
-  <label class="col-md-4 control-label">Comments</label>
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-        	<textarea class="form-control" name="comment" ng-model="donar.comment" placeholder="Enter comments"></textarea>
-  </div>
-  </div>
-</div>
-<!-- Success message -->
-<div class="alert alert-success" role="alert" ng-show="donarSuccess" >Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for supporting us</div>
-
-<!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label"></label>
-  <div class="col-md-4">
-    <button type="submit" ng-click="update_donar(donar)" class="btn btn-warning" > Submit <span class="glyphicon glyphicon-send"></span></button>
-  </div>
-</div>
-
-</fieldset>
-
-</form>
-
-</div>
-
-
-</div>
-<section ng-show="showpage =='default'"  style="display: -webkit-box;margin: 5px;width: 160px;border-radius: 36px;background-color: #8CC63F !important;float: right;">
+<section ng-show="showpage =='default'"
+         style="display: -webkit-box;margin: 5px;width: 160px;border-radius: 36px;background-color: #8CC63F !important;float: right;">
     <p style="margin: 7px 5px 5px 10px;color: white;">Sort By </p>
-    <select ng-model="newssortby" style="width: 80px;margin: 7px 5px 5px 5px;border-radius: inherit;" ng-change="onNewsSortChange(newssortby)" >
+    <select ng-model="newssortby" style="width: 80px;margin: 7px 5px 5px 5px;border-radius: inherit;"
+            ng-change="onNewsSortChange(newssortby)">
         <!--<option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>-->
         <option selected="selected" value='Date'>Date</option>
         <option value='Rank'>Rank</option>
 
-</select>
+    </select>
 </section>
 <section ng-show="showpage =='default'" class="news pad20px" style="margin-top: 25px;" id="news-section">
     <div class="container-fluid bgColorWhite pad20px marginMain ">
-        <div id="articlesSearchHead" style="display:none; font-size: 20px; border-radius: 60px 60px 60px 60px; background-color: #8CC63F !important; background-color: white; margin-bottom: 15px;">
+        <div id="articlesSearchHead"
+             style="display:none; font-size: 20px; border-radius: 60px 60px 60px 60px; background-color: #8CC63F !important; background-color: white; margin-bottom: 15px;">
             <span style="margin-left: 20px;">Articles</span>
         </div>
-        <div class="row vdivide searchHide"  style="margin-bottom: 3%;">
+        <div class="row vdivide searchHide" style="margin-bottom: 3%;">
             <div class="search_results" id="search_results"></div>
-            <div class="col-md-3 col-lg-3"> <img src="images/whats_hot.png">
+            <div class="col-md-3 col-lg-3"><img src="images/whats_hot.png">
                 <h3>WHAT'S IN THE NEWS?</h3>
                 <h4 class="subheading">
                     Here is what's trending in the news about personal finance and financial literacy.
                 </h4>
-                <div class="customize_button" id="customize"> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#customize-modal" style="display: block; width: 100%;">Personlize</a> </div>
+                <div class="customize_button" id="customize"><a type="button" class="btn btn-default"
+                                                                data-toggle="modal" data-target="#customize-modal"
+                                                                style="display: block; width: 100%;">Personlize</a>
+                </div>
             </div>
             <div class="col-md-3 col-lg-3" id="first_result">
                 <div class="sidebar_icons">
-                    <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleFeatured[0].displayLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
-                    <img data-toggle="modal" id="email_1" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                    <img src="images/add.png" id="1" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
+                    <a class="fb-xfbml-parse-ignore" data-url="http://www.moneyabcs.org" target="_blank"
+                       href="https://www.facebook.com/sharer/sharer.php?u={{articleFeatured[0].displayLink}}&amp;src=sdkpreparse"><img
+                            src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"
+                            id="share"></a>
+                    <img data-toggle="modal" id="email_1" data-ng-click="emailArticleToFriend($event)"
+                         data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom"
+                         title="mail">
+                    <img src="images/add.png" id="1" data-ng-click="addme($event)" class="add" rel="tooltip"
+                         data-placement="bottom" sectype="article" title="add">
                 </div>
                 <div class="thumbnail">
-                    <a href="{{articleFeatured[0].iframeLink}}" target="_blank"> <img  class ="newsImg"topic="{{articleFeatured[0].indexTopic}}" set="no" alt="ALT NAME" ng-src="{{articleFeatured[0].imgUrl}}" imageonload>
+                    <a href="{{articleFeatured[0].iframeLink}}" target="_blank"> <img class="newsImg"
+                                                                                      topic="{{articleFeatured[0].indexTopic}}"
+                                                                                      set="no" alt="ALT NAME"
+                                                                                      ng-src="{{articleFeatured[0].imgUrl}}"
+                                                                                      imageonload>
                         <div class="type">
-                            <img alt="ALT NAME" src="images/presentation.png" style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
+                            <img alt="ALT NAME" src="images/presentation.png"
+                                 style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
                         </div>
 
                         <!--<div class="rating">
@@ -2262,19 +1562,30 @@ learning materials on many financial topics of interest. </p>
             </div>
             <div class="col-md-3 col-lg-3">
                 <div class="sidebar_icons">
-                    <a class="fb-xfbml-parse-ignore"   data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleFeatured[1].displayLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
-                    <img data-toggle="modal" id="email_2" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                    <img src="images/add.png" id="2" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
+                    <a class="fb-xfbml-parse-ignore" data-url="http://www.moneyabcs.org" target="_blank"
+                       href="https://www.facebook.com/sharer/sharer.php?u={{articleFeatured[1].displayLink}}&amp;src=sdkpreparse"><img
+                            src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share">
+                    </a>
+                    <img data-toggle="modal" id="email_2" data-ng-click="emailArticleToFriend($event)"
+                         data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom"
+                         title="mail">
+                    <img src="images/add.png" id="2" data-ng-click="addme($event)" class="add" rel="tooltip"
+                         data-placement="bottom" sectype="article" title="add">
                 </div>
                 <div class="thumbnail">
-                    <a href="{{articleFeatured[1].iframeLink}}" target="_blank"> <img class ="newsImg" set="no" topic="{{articleFeatured[1].indexTopic}}" alt="ALT NAME" ng-src="{{articleFeatured[1].imgUrl}}" imageonload>
+                    <a href="{{articleFeatured[1].iframeLink}}" target="_blank"> <img class="newsImg" set="no"
+                                                                                      topic="{{articleFeatured[1].indexTopic}}"
+                                                                                      alt="ALT NAME"
+                                                                                      ng-src="{{articleFeatured[1].imgUrl}}"
+                                                                                      imageonload>
                         <div class="type">
-                            <img alt="ALT NAME" src="images/presentation.png" style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
+                            <img alt="ALT NAME" src="images/presentation.png"
+                                 style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
                         </div>
-                       <!-- <div class="rating">
-                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                         <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
-                        </div>-->
+                        <!-- <div class="rating">
+                         <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                          <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
+                         </div>-->
                         <div class="caption">
                             <h4>{{articleFeatured[1].title}}</h4>
                             <p>{{articleFeatured[1].snippet}}</p>
@@ -2284,22 +1595,29 @@ learning materials on many financial topics of interest. </p>
             </div>
             <div class="col-md-3 col-lg-3">
                 <div class="sidebar_icons">
-                    <a class="fb-xfbml-parse-ignore"   data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleFeatured[1].displayLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
+                    <a class="fb-xfbml-parse-ignore" data-url="http://www.moneyabcs.org" target="_blank"
+                       href="https://www.facebook.com/sharer/sharer.php?u={{articleFeatured[1].displayLink}}&amp;src=sdkpreparse"><img
+                            src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share">
+                    </a>
                     <img data-toggle="modal" id="email_3"
-                         data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                         data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png"
+                         class="mail" rel="tooltip" data-placement="bottom" title="mail">
                     <img src="images/add.png" id="3"
-                         data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
+                         data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom"
+                         sectype="article" title="add">
                 </div>
                 <div class="thumbnail">
                     <a href="{{articleFeatured[2].iframeLink}}"
-                       target="_blank"> <img  class ="newsImg" set="no" topic="{{articleFeatured[1].indexTopic}}" alt="ALT NAME" ng-src="{{articleFeatured[2].imgUrl}}" imageonload>
+                       target="_blank"> <img class="newsImg" set="no" topic="{{articleFeatured[1].indexTopic}}"
+                                             alt="ALT NAME" ng-src="{{articleFeatured[2].imgUrl}}" imageonload>
                         <div class="type">
-                            <img alt="ALT NAME" src="images/presentation.png" style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
+                            <img alt="ALT NAME" src="images/presentation.png"
+                                 style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
                         </div>
-                       <!-- <div class="rating">
-                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                        <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
-                        </div>-->
+                        <!-- <div class="rating">
+                         <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                         <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
+                         </div>-->
                         <div class="caption">
                             <h4>{{articleFeatured[2].title}}</h4>
                             <p style="font-size:15px; overflow: hidden">{{articleFeatured[2].snippet}}</p>
@@ -2311,21 +1629,29 @@ learning materials on many financial topics of interest. </p>
         <div class="row vdivide" id="sub_news"> <span ng-repeat="articleObj in article">
                     <div class={{SelectedLayout}} style="margin-bottom:5%;">
                        <div class="sidebar_icons">
-                           <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{articleObj.iframeLink}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
-                            <img data-toggle="modal" id="email_{{$index+4}}" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                            <img src="images/add.png" id={{$index+4}} data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="article" title="add">
+                           <a class="fb-xfbml-parse-ignore" data-url="http://www.moneyabcs.org" target="_blank"
+                              href="https://www.facebook.com/sharer/sharer.php?u={{articleObj.iframeLink}}&amp;src=sdkpreparse"><img
+                                   src="images/share.png" class="share" rel="tooltip" data-placement="bottom"
+                                   title="share"> </a>
+                            <img data-toggle="modal" id="email_{{$index+4}}"
+                                 data-ng-click="emailArticleToFriend($event)" data-target="#mailer"
+                                 src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                            <img src="images/add.png" id={{$index+4}} data-ng-click="addme($event)" class="add"
+                                 rel="tooltip" data-placement="bottom" sectype="article" title="add">
 
                         </div>
 
                          <a href="{{articleObj.iframeLink}}" target="_blank">
-                        <div class="thumbnail"> <img  class ="newsImg" set="no" topic="{{articleObj.indexTopic}}" alt="ALT NAME" ng-src="{{articleObj.imgUrl}}" imageonload>
+                        <div class="thumbnail"> <img class="newsImg" set="no" topic="{{articleObj.indexTopic}}"
+                                                     alt="ALT NAME" ng-src="{{articleObj.imgUrl}}" imageonload>
                         <div class="type">
-                            <img alt="ALT NAME" src="images/presentation.png" style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
+                            <img alt="ALT NAME" src="images/presentation.png"
+                                 style="width: 35px;padding: 10px 0px 10px 10px; height: 45px;" imageonload>
                         </div>
-                       <!-- <div class="rating">
-                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                        <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
-                        </div>-->
+                            <!-- <div class="rating">
+                             <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                             <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
+                             </div>-->
                             <div class="caption">
                                 <h4>{{articleObj.title}}</h4>
                                 <p>{{articleObj.snippet}}</p>
@@ -2334,10 +1660,12 @@ learning materials on many financial topics of interest. </p>
 
                         </a>
                     </div>
-                </span> </div>
+                </span></div>
         <div class="row">
             <div class="col-md-12">
-                <button id="articleLoadMore" class="btn btn-primary btn-round showMore" ng-click="loadMore()" ng-hide="hideShowMore" >Show More ▼</button>
+                <button id="articleLoadMore" class="btn btn-primary btn-round showMore" ng-click="loadMore()"
+                        ng-hide="hideShowMore">Show More ▼
+                </button>
             </div>
         </div>
     </div>
@@ -2347,17 +1675,21 @@ learning materials on many financial topics of interest. </p>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-share-alt"></i> Share</h4> </div>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-share-alt"></i> Share</h4></div>
             <div class="modal-body">
                 <h2><i class="fa fa-envelope"></i>Send this article to your friend</h2>
                 <p>Subscribe to our weekly Newsletter and stay tuned.</p>
                 <form action="" method="post">
-                    <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                         <input type="email" ng-model="recieverEmail" class="form-control" placeholder="your@email.com">
-                        <input type="url" class="form-control" placeholder="URL of the article" value={{emailArticle.title}} /> </div>
-                    <br />
-                    <button type="button" ng-click="sendMail()" class="btn btn-default send-mail" data-dismiss="modal">Send Mail!</button>
+                        <input type="url" class="form-control" placeholder="URL of the article"
+                               value={{emailArticle.title}}/></div>
+                    <br/>
+                    <button type="button" ng-click="sendMail()" class="btn btn-default send-mail" data-dismiss="modal">
+                        Send Mail!
+                    </button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -2368,41 +1700,59 @@ learning materials on many financial topics of interest. </p>
 </div>
 <!-- Mailer End -->
 <!-- Modal fullscreen -->
-<div class="modal modal-fullscreen" id="customize-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <input id="SelectedLayout" hidden />
+<div class="modal modal-fullscreen" id="customize-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <input id="SelectedLayout" hidden/>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title headDef" id="myModalLabel" style="text-align:center">Personalize Your Experience</h3>
-                <h3 class="modal-title headRes"  style="text-align:center;display:none;"  id="myModalLabel" style="text-align:center">Tell us Which Topics you Want us to Prioritize</h3>
-                <h5 class="subtitleRes" style="text-align:center;display:none;">Unless you tell us otherwise, we’ll show you all the trending topics in the field. You can always revert to the default priority criterion by clicking <a class="resetCustomize" ng-click="resetCustomized()">here</a> anytime</h5>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h3 class="modal-title headDef" id="myModalLabel" style="text-align:center">Personalize Your
+                    Experience</h3>
+                <h3 class="modal-title headRes" style="text-align:center;display:none;" id="myModalLabel"
+                    style="text-align:center">Tell us Which Topics you Want us to Prioritize</h3>
+                <h5 class="subtitleRes" style="text-align:center;display:none;">Unless you tell us otherwise, we’ll show
+                    you all the trending topics in the field. You can always revert to the default priority criterion by
+                    clicking <a class="resetCustomize" ng-click="resetCustomized()">here</a> anytime</h5>
                 <ul class="pager">
                     <li class="previous" id="previous_customize" style="display:none;"><a href="">Previous</a></li>
                     <li class="" id="next_topics" style="position: absolute;right: 15px;"><a href="">Next</a></li>
                 </ul>
-                <ul class="pager onkeysearchip" style="display:none;"><li>
-                    <div class="input-group" >
-                        <input type="hidden" name="search_param" value="name" id="search_param">
-                        <input type="text" id="search-key" class="form-control search1 onkeysearchip" placeholder="If you don’t like the suggested topics, type what you are interested in here! (e.g. Credit Scores)" autocomplete="off" class="customizeSearch" >
-                        <span class="input-group-addon onkeysearchbt" id="basic-addon2" >Add</span>
-                    </div>
-                    <div class="selected-topics-holder">
-                        <div class="footerContent" style="display:none;">
-                            <p>Your selection here</p>
-                            <div class="selected-topics"></div>
+                <ul class="pager onkeysearchip" style="display:none;">
+                    <li>
+                        <div class="input-group">
+                            <input type="hidden" name="search_param" value="name" id="search_param">
+                            <input type="text" id="search-key" class="form-control search1 onkeysearchip"
+                                   placeholder="If you don’t like the suggested topics, type what you are interested in here! (e.g. Credit Scores)"
+                                   autocomplete="off" class="customizeSearch">
+                            <span class="input-group-addon onkeysearchbt" id="basic-addon2">Add</span>
                         </div>
-                    </div>
-                </li></ul>
+                        <div class="selected-topics-holder">
+                            <div class="footerContent" style="display:none;">
+                                <p>Your selection here</p>
+                                <div class="selected-topics"></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
             <div class="modal-body">
                 <div class="customize_columns">
                     <h4 id="customize">Choose your preferred display.</h4>
                     <div class="row customize-column" id="schema" style="text-align:center">
-                        <div onclick="sixcols();" id ="id-col-md-2" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/6col.jpg'); background-size:cover;"><p style="padding: 70px;color:#8CC63F;">Six Column</p></div>
-                        <div onclick="original();" id ="id-col-md-3" class="selectedLayout" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/4col.jpg'); background-size:cover;"> <p style="padding: 70px;color:#8CC63F;">Four Column</p></div>
-                        <div onclick="threecols();" id ="id-col-md-4" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/3col.jpg'); background-size:cover;"><p style="padding: 70px;color:#8CC63F;">Three Column</p></div>
-                        <div onclick="twocols();" id ="id-col-md-6" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/2col.jpg'); background-size:cover;"><p style="padding: 70px;color:#8CC63F;">Two Column</p></div>
+                        <div onclick="sixcols();" id="id-col-md-2"
+                             style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/6col.jpg'); background-size:cover;">
+                            <p style="padding: 70px;color:#8CC63F;">Six Column</p></div>
+                        <div onclick="original();" id="id-col-md-3" class="selectedLayout"
+                             style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/4col.jpg'); background-size:cover;">
+                            <p style="padding: 70px;color:#8CC63F;">Four Column</p></div>
+                        <div onclick="threecols();" id="id-col-md-4"
+                             style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/3col.jpg'); background-size:cover;">
+                            <p style="padding: 70px;color:#8CC63F;">Three Column</p></div>
+                        <div onclick="twocols();" id="id-col-md-6"
+                             style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/2col.jpg'); background-size:cover;">
+                            <p style="padding: 70px;color:#8CC63F;">Two Column</p></div>
                     </div>
                 </div>
 
@@ -2414,14 +1764,16 @@ learning materials on many financial topics of interest. </p>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="customizer-save" ng-click="getCustomizedArticles()" data-dismiss="modal">Save & Exit</button>
+                <button class="customizer-save" ng-click="getCustomizedArticles()" data-dismiss="modal">Save & Exit
+                </button>
             </div>
         </div>
     </div>
 </div>
 <section class="resources pad20px " id="sub_resources" ng-show="showpage =='default'">
     <div class="container-fluid pad20px bgColorWhite marginMain ">
-        <div id="resourcesSearchHead" style="display:none;font-size: 20px; border-radius: 60px 60px 60px 60px; background-color: #8CC63F !important; background-color: white; margin-bottom: 15px;">
+        <div id="resourcesSearchHead"
+             style="display:none;font-size: 20px; border-radius: 60px 60px 60px 60px; background-color: #8CC63F !important; background-color: white; margin-bottom: 15px;">
             <span style="margin-left: 20px;">Resources</span>
         </div>
         <div class="row vdivide searchHide" id="resourceHolderTop">
@@ -2431,13 +1783,22 @@ learning materials on many financial topics of interest. </p>
                 <h4 class="subheading">
                     Dig into our multiple instructional presentations, webinars, and videos.
                 </h4>
-                <div class="customize_button" id="customize"> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#customize-modal" style="display: block; width: 100%;">Personalize</a> </div>
+                <div class="customize_button" id="customize"><a type="button" class="btn btn-default"
+                                                                data-toggle="modal" data-target="#customize-modal"
+                                                                style="display: block; width: 100%;">Personalize</a>
+                </div>
             </div>
             <div class="col-md-3 col-lg-3" id="first_result_resource">
                 <div class="sidebar_icons">
-                    <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[0].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
-                    <img data-toggle="modal" id="resourceEmail_1" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                    <img src="images/add.png" id="1" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
+                    <a class="fb-xfbml-parse-ignore" data-url="http://www.moneyabcs.org" target="_blank"
+                       href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[0].webUrl}}&amp;src=sdkpreparse"><img
+                            src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"
+                            id="share"></a>
+                    <img data-toggle="modal" id="resourceEmail_1" data-ng-click="emailArticleToFriend($event)"
+                         data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom"
+                         title="mail">
+                    <img src="images/add.png" id="1" data-ng-click="addme($event)" class="add" rel="tooltip"
+                         data-placement="bottom" sectype="resource" title="add">
                 </div>
                 <div class="thumbnail" data-toggle="modal" data-target="#resources">
                     <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[0].thumbnailLink}}" imageonload>
@@ -2454,9 +1815,15 @@ learning materials on many financial topics of interest. </p>
             </div>
             <div class="col-md-3 col-lg-3" id="second_result_resource">
                 <div class="sidebar_icons">
-                    <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[1].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
-                    <img data-toggle="modal" id="resourceEmail_2" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                    <img src="images/add.png" id="2" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
+                    <a class="fb-xfbml-parse-ignore" data-url="http://www.moneyabcs.org" target="_blank"
+                       href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[1].webUrl}}&amp;src=sdkpreparse"><img
+                            src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"
+                            id="share"></a>
+                    <img data-toggle="modal" id="resourceEmail_2" data-ng-click="emailArticleToFriend($event)"
+                         data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom"
+                         title="mail">
+                    <img src="images/add.png" id="2" data-ng-click="addme($event)" class="add" rel="tooltip"
+                         data-placement="bottom" sectype="resource" title="add">
                 </div>
                 <div class="thumbnail" data-toggle="modal" data-target="#resources">
                     <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[1].thumbnailLink}}" imageonload>
@@ -2473,9 +1840,15 @@ learning materials on many financial topics of interest. </p>
             </div>
             <div class="col-md-3 col-lg-3" id="third_result_resource">
                 <div class="sidebar_icons">
-                    <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[2].webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share" id="share"></a>
-                    <img data-toggle="modal" id="resourceEmail_3" data-ng-click="emailArticleToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                    <img src="images/add.png" id="3" data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
+                    <a class="fb-xfbml-parse-ignore" data-url="http://www.moneyabcs.org" target="_blank"
+                       href="https://www.facebook.com/sharer/sharer.php?u={{resourceFeatured[2].webUrl}}&amp;src=sdkpreparse"><img
+                            src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"
+                            id="share"></a>
+                    <img data-toggle="modal" id="resourceEmail_3" data-ng-click="emailArticleToFriend($event)"
+                         data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom"
+                         title="mail">
+                    <img src="images/add.png" id="3" data-ng-click="addme($event)" class="add" rel="tooltip"
+                         data-placement="bottom" sectype="resource" title="add">
                 </div>
                 <div class="thumbnail" data-toggle="modal" data-target="#resources">
                     <img class="thumb" alt="ALT NAME" ng-src="{{resourceFeatured[2].thumbnailLink}}" imageonload>
@@ -2493,22 +1866,28 @@ learning materials on many financial topics of interest. </p>
         </div>
         <div class="row vdivide" id="resourceHolder">
             <span ng-repeat="resourcesObj in resources">
-                <div class={{SelectedLayout}} >
+                <div class={{SelectedLayout}}>
                         <div class=" sidebar_icons"> <!---->
-                            <a class="fb-xfbml-parse-ignore"  data-url="http://www.moneyabcs.org" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{resourcesObj.webUrl}}&amp;src=sdkpreparse" ><img src="images/share.png" class="share" rel="tooltip" data-placement="bottom" title="share"> </a>
-                             <img data-toggle="modal" id="resourceEmail_{{$index+4}}" data-ng-click="emailArticlesToFriend($event)" data-target="#mailer" src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
-                            <img src="images/add.png" id={{$index+4}} data-ng-click="addme($event)" class="add" rel="tooltip" data-placement="bottom" sectype="resource" title="add">
+                            <a class="fb-xfbml-parse-ignore" data-url="http://www.moneyabcs.org" target="_blank"
+                               href="https://www.facebook.com/sharer/sharer.php?u={{resourcesObj.webUrl}}&amp;src=sdkpreparse"><img
+                                    src="images/share.png" class="share" rel="tooltip" data-placement="bottom"
+                                    title="share"> </a>
+                             <img data-toggle="modal" id="resourceEmail_{{$index+4}}"
+                                  data-ng-click="emailArticlesToFriend($event)" data-target="#mailer"
+                                  src="images/mail.png" class="mail" rel="tooltip" data-placement="bottom" title="mail">
+                            <img src="images/add.png" id={{$index+4}} data-ng-click="addme($event)" class="add"
+                                 rel="tooltip" data-placement="bottom" sectype="resource" title="add">
                         </div>
-                    <div class="thumbnail"  data-toggle="modal" data-target="#resources">
+                    <div class="thumbnail" data-toggle="modal" data-target="#resources">
                         <img class="thumb" alt="ALT NAME" ng-src="{{resourcesObj.thumbnailLink}}" imageonload>
                         <div class="type">
                             <img alt="ALT NAME" ng-src="{{resourcesObj.type}}" imageonload>
                         </div>
 
-                       <!-- <div class="rating">
-                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                        <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
-                        </div>-->
+                        <!-- <div class="rating">
+                         <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                         <p href="#" style="float: right;padding-top: 10px; text-decoration: underline;">Comments: 2799</p>
+                         </div>-->
 
                         <div class="caption">
                             <p class="embedUrl" style="display:none;">{{resourcesObj.embedUrl}}</p>
@@ -2521,19 +1900,23 @@ learning materials on many financial topics of interest. </p>
         </div>
         <hr>
         <div class="row">
-             <div class="col-md-12">
-                 <button id="resourceLoadMore" class="btn btn-primary btn-round showMore" ng-click="loadMoreResources()" ng-hide="hideShowMoreResources" >Show More ▼</button>
-             </div>
-         </div>
+            <div class="col-md-12">
+                <button id="resourceLoadMore" class="btn btn-primary btn-round showMore" ng-click="loadMoreResources()"
+                        ng-hide="hideShowMoreResources">Show More ▼
+                </button>
+            </div>
+        </div>
     </div>
 </section>
 <!-- Resources -->
-<div class="modal modal-fullscreen in" id="resources" tabindex="-1" role="dialog" aria-labelledby="resources" aria-hidden="true">
+<div class="modal modal-fullscreen in" id="resources" tabindex="-1" role="dialog" aria-labelledby="resources"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close clearResource" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="modal_header"></h4> </div>
+                <button type="button" class="close clearResource" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="modal_header"></h4></div>
             <div class="modal-body">
                 <span class="resourcesSpace"></span>
             </div>
@@ -2552,7 +1935,9 @@ learning materials on many financial topics of interest. </p>
                 <h3>TESTIMONIALS</h3>
             </div>
             <div class="col-md-9 testimonials_">
-                <h4><i>“Thank you so much for taking the time to speak to my residents. The event was a success and they all enjoyed it and learned from it. I look forward to working with you in the future ”</i><br/><br/><span style="font-size:20px;">“- W.R., Resident Assistant”</span></h4> </div>
+                <h4><i>“Thank you so much for taking the time to speak to my residents. The event was a success and they
+                    all enjoyed it and learned from it. I look forward to working with you in the future ”</i><br/><br/><span
+                        style="font-size:20px;">“- W.R., Resident Assistant”</span></h4></div>
         </div>
     </div>
 </section>
@@ -2560,8 +1945,10 @@ learning materials on many financial topics of interest. </p>
     <div class="navbar navbar-default navbar-fixed-bottom">
         <div class="footer">
             <div class="container-fluid">
-                <p>Copyright © 2016 Money ABCs. All Rights Reserved | Design by MoneyABCs &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Follow us on:
-                    <a href="https://www.facebook.com/Moneyabcs-1795814797370838/ " target="_blank"> <span class="fa-stack fa-lg">
+                <p>Copyright © 2016 Money ABCs. All Rights Reserved | Design by MoneyABCs &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Follow us on:
+                    <a href="https://www.facebook.com/Moneyabcs-1795814797370838/ " target="_blank"> <span
+                            class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                 </span> </a>
@@ -2601,16 +1988,16 @@ learning materials on many financial topics of interest. </p>
 <!-- //for bootstrap working -->
 
 <script type="text/javascript">
-    onResize = function() {
+    onResize = function () {
         // apply dynamic padding at the top of the body according to the fixed navbar height
-        $(".main-banner").css("padding-top", $(".navbar-fixed-top").height()-31);
+        $(".main-banner").css("padding-top", $(".navbar-fixed-top").height() - 31);
     }
     onResize();
     // attach the function to the window resize event
     $(window).resize(onResize);
 
     // call it also when the page is ready after load or reload
-    $(function() {
+    $(function () {
         onResize();
     });
 

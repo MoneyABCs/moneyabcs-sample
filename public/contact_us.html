@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Money ABCs</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Money ABCs Financial literacy program"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- one drive CDN -->
+    <script type="text/javascript" src="https://js.live.net/v7.0/OneDrive.js"></script>
+
+
+    <style>
+        .dashCarousel > .item > img,
+        .dashCarousel > .item > a > img {
+            width: 70%;
+            margin: auto;
+        }
+
+        .dashCarousel p, .dashCarousel ul {
+            font-size: 20px !important;
+            font-weight: 500 !important;
+            color: #fff !important;
+            background-color: black;
+            z-index: 0;
+            opacity: 0.5;
+            /*text-align: justify;
+            text-justify: inter-word;*/
+        }
+
+        .dashCarousel h3 {
+            background-color: black;
+            z-index: 0;
+            opacity: 0.5;
+            font-weight: 500;
+            font-size: 30px;
+        }
+
+        .dashCarousel img {
+            /*filter: grayscale(100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+            opacity: 0.8;*/
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            /*position: absolute;*/
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            /*
+                        background-color: rgba(0,0,0,0.8);
+            */
+        }
+
+        .navbar #nav > .active > a {
+            color: #fff;
+            background-color: #8cc63f;
+        }
+
+        .active {
+            color: #fff !important;
+            background-color: #8cc63f !important;
+        }
+
+        .tabLabel {
+            text-align: center;
+            margin-top: 30%;
+            color: black;
+        }
+
+        .tabContentLabel {
+            text-align: center;
+            color: #131313;
+            background: #e0e0e0;
+            margin-bottom: 1%;
+            margin-top: 1%;
+        }
+
+        .carouselButtons {
+            text-align: center;
+            margin-left: 48%;
+            position: absolute;
+            bottom: 2px;
+        }
+    </style>
+
+
+    <!-- //for-mobile-apps -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap-tour.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/image-picker.css">
+    <link href="css/hopscotch.min.css" rel="stylesheet">
+    <link href="css/flat-ui.css" rel="stylesheet">
+    <link href="css/demo.css" rel="stylesheet">
+    <!-- js -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/notify.css">
+    <!-- //js -->
+</head>
+
+<body ng-app="moneyabcs" ng-controller="moneycontroller" class="ng-cloak" style="overflow-x: hidden;">
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8&appId=728413860639319";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<script type="text/javascript">
+    function launchOneDrivePicker() {
+        var odOptions = {
+            clientId: "235ed9a9-b071-423e-81d2-abbfbe3c7ed1",
+            action: "share | download | query",
+            multiSelect: true,
+            openInNewWindow: true,
+            advanced: {},
+            success: function (files) {
+                console.log(files)
+            },
+            cancel: function () { /* cancel handler */
+            },
+            error: function (e) { /* error handler */
+            }
+        }
+        OneDrive.open(odOptions);
+    }
+</script>
+<button onClick="launchOneDrivePicker">Open from OneDrive</button>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand logo" id="logo" href="index.html" ui-sref="home"><img src="images/logo.png"></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav nav-money">
+                <li class="dropdown">
+                    <a  href="index.html">Home</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about_us.html">About Us</a></li>
+                        <li><a href="contact_us.html">Contact Us</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="educators.html">Educators</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="partners.html">Partners</a></li>
+                <li ng-if="(uName != undefined) && (uName != '')"><a showpage="dashboard"
+                                                                     ng-click="showpagefunc($event)">Dashboard</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right nav-money marginTop8">
+
+                <div id="login" ng-show="!logInFlag">
+
+                    <a type="button" class="btn btn-default btn-round" href="/login">Log in </a> <a type="button"
+                                                                                                    class="btn btn-primary btn-round"
+                                                                                                    href="/signup"
+                                                                                                    id="signup">Sign
+                    up</a>
+
+                </div>
+                <li ng-if="(uName != undefined) && (uName != '')">
+                    <ul class="nav navbar-nav navbar-right" style="padding-bottom: 0%;padding-top: 0%;">
+                        <div class="dropdown">
+                            <span style="color: #9d9d9d;">Hi,</span>
+                            <a class="dropdown-toggle"
+                               data-toggle="dropdown">{{uName}}
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+
+                                <li><a ng-click="logOutProfile()">Sign Out</a></li>
+                            </ul>
+                        </div>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left nav-money searchbar" role="search">
+                <div class="top-search-bar">
+                    <div class="input-group" id="group-key">
+                        <div class="input-group-btn search-panel" ng-init="searchType='All'">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">Search:
+                            </button>
+                            <!--{{searchType}}<span class="caret"></span>-->
+                            <!--<ul class="dropdown-menu" role="menu">-->
+
+                            <!--<li ng-click="setSearch('Articles'); searchType='Articles'"><a href="#id" ><i class="fa fa-angle-double-right"></i>Articles</a></li>-->
+                            <!--<li ng-click="setSearch('Presentation');searchType='Presentations'"><a href="#name" ><i class="fa fa-angle-double-right"></i>Presentations</a></li>-->
+                            <!--<li ng-click="setSearch('Video'); searchType='Videos'"><a href="#videos" ><i class="fa fa-angle-double-right"></i>Videos</a></li>-->
+                            <!--</ul>-->
+                        </div>
+                        <input type="hidden" name="search_param" value="name" id="search_param">
+                        <input type="text" id="search-key" class="form-control search1 searchMedia"
+                               title="What are you looking for? (e.g. Credit Scores)"
+                               placeholder="What are you looking for? (e.g. Credit Scores) " autocomplete="off">
+                        <div class="input-group-btn">
+                            <button id="search1_btn" ng-enter="searchArticle('search1')"
+                                    ng-click="searchArticle('search1')" class="btn btn-default" type="submit"><i
+                                    class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="container" style="width: 100%; padding: 1% 5% !important;">
+    <div class="main">
+        <div class="main-top">
+            <div class="wrap" style="text-align: center; font-size: 21px;">
+                <h1>Contact Us</h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="well well-sm">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">
+                                            Name</label>
+                                        <input type="text" class="form-control" id="name" ng-model="name"
+                                               placeholder="Enter name" required="required"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">
+                                            Email Address</label>
+                                        <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                </span>
+                                            <input type="email" class="form-control" id="email" ng-model="email"
+                                                   placeholder="Enter email" required="required"/></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Subject</label>
+                                        <select id="subject" name="subject" ng-model="subject" class="form-control"
+                                                required="required">
+                                            <option value="na" selected="">Choose One:</option>
+                                            <option value="General Customer Service">General Customer Service</option>
+                                            <option value="suggestions">Suggestions</option>
+                                            <option value="product">Product Support</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">
+                                            Message</label>
+                                        <textarea name="message" id="message" ng-model="message" class="form-control"
+                                                  rows="9" cols="25" required="required"
+                                                  placeholder="Message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <button ng-click="contactMail()" class="btn btn-primary pull-right"
+                                            id="btnContactUs">
+                                        Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <form>
+                        <legend><span class="glyphicon glyphicon-globe"></span> Reach us at</legend>
+                        <address>
+                            <strong>Money ABCs Org</strong><br>
+
+                            <abbr title="Phone">
+                                P:</abbr>
+                            (817) 987-6240
+                        </address>
+                        <address>
+                            <strong>E-Mail</strong><br>
+                            <a href="mailto:#">info@moneyabcs.org</a>
+                        </address>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+</div>
+
+<div class="navbar navbar-default navbar-fixed-bottom">
+    <div class="footer">
+        <div class="container-fluid">
+            <p>Copyright © 2016 Money ABCs. All Rights Reserved | Design by MoneyABCs &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Follow us on:
+                <a href="https://www.facebook.com/Moneyabcs-1795814797370838/ " target="_blank"> <span
+                        class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span> </a>
+                <a href="https://twitter.com/moneyabcs_uta" target="_blank"> <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span> </a>
+                <a href="https://www.instagram.com/moneyabcs_uta/" target="_blank"> <span
+                        class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                </span> </a>
+                <a href="#" target="_blank"> <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span> </a>
+            </p>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/hopscotch.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/bootstrap-typeahead.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap-tour.js"></script>
+<script src="js/tour.js"></script>
+<script src="js/app.js">
+</script>
+<script src="js/controllers/moneycontroller.js"></script>
+<script src="js/homeController.js"></script>
+<script src="js/animatedModal.min.js"></script>
+<script src="js/image-picker.min.js"></script>
+<script src="js/image-picker.js"></script>
+<!-- //for bootstrap working -->
+
+<script type="text/javascript">
+    onResize = function () {
+        // apply dynamic padding at the top of the body according to the fixed navbar height
+        $(".main-banner").css("padding-top", $(".navbar-fixed-top").height() - 31);
+    }
+    onResize();
+    // attach the function to the window resize event
+    $(window).resize(onResize);
+
+    // call it also when the page is ready after load or reload
+    $(function () {
+        onResize();
+    });
+
+</script>
+</div>
+</body>
+
+</html>

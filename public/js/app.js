@@ -141,7 +141,7 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
 	//fix tab links
 
     $scope.showpagefunc = function(obj){
-
+        // alert(123);
         $scope.showpage = obj.target.attributes.showpage.value;
     };
     ///Only after Loggin
@@ -190,7 +190,7 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
     $scope.update_donar = function(donar) {
 
        $scope.donar_master = angular.copy(donar);
-       $http.post("/addDonation", $scope.donar_master).success(function(res) {
+       $http.post("/SelectedLayout", $scope.donar_master).success(function(res) {
 	    $scope.donarSuccess = true;
             if(res.status==200){
                 $scope.donarSuccess = true;
@@ -309,13 +309,12 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
 
     $scope.searchArticle = function(className) {
         var searchKey = document.getElementsByClassName(className)[0].value;
-        //alert(searchKey)
-        // console.log(searchKey);
-        // console.log($scope.searchParam);
         $("#resourceLoadMore").hide(); //CHECK this
 
         $http.post("/searchSample", {name: searchKey }).success(function(res) {
-            //alert(res)
+            // alert(res)
+            // console.log("printing response------------------");
+            // console.log(res);
             // debugger;
             if(res.data.length > 0){
                 var uniqueNames = [];
@@ -344,8 +343,10 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
                     $scope.article[i].indexTopic = res.data[i].topicName;
                 }
 
-                console.log($scope.article)
+                // console.log($scope.article)
+                // console.log("----------------------")
             } else {
+                // console.log("error part");
                 //print error message that data is not found
                 //$scope.err = res.errMsg;
                 try{
@@ -356,20 +357,23 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
                     $("#articlesSearchHead").css("display","block");
                     $scope.article = tempbackup.splice(0,12);
                 }catch(e){
-                    console.log(e)
+                    // console.log(e)
                 }
             }
         });
-
+        // console.log("done searching articles, now searching resources");
         var resourcedata = [];
         $scope.resources = $scope.resourcesBackup;
+        // console.log("start finding resources");
+        console.log($scope.resources);
         $scope.resources.filter(function(el) {
             if(el.category) {
                 var categories = el.category.split(",");
+                // console.log(categories);
                 for (var i = 0; i < categories.length; i++) {
                     categories[i] = categories[i].trim();
                     //alert(el.type.split("/")[1] +" "+  $scope.searchParam.toLowerCase()+".png");
-                    console.log(searchKey.trim() + " == " + categories[i].trim());
+                    // console.log(searchKey.trim() + " == " + categories[i].trim());
                     if (searchKey.trim() == categories[i].trim()) // && el.type.split("/")[1] == $scope.searchParam.toLowerCase()+".png") IGNORED SINCE WE ARE REMOVING SEARCH BY ARTICLE/PRESENTATION/VIDEO
                     {
                         resourcedata.push(el)
@@ -377,8 +381,8 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
                 }
             }
         });
-        //console.log("resourcedata");
-        // console.log(resourcedata.length);
+        // console.log(resourcedata);
+        // console.log("resource data length:"+resourcedata.length);
         if(resourcedata.length > 0){
 
             // $("#resourceHolder").hide();
@@ -785,7 +789,6 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
     }
 
     var getFeaturedArticles = function($scope){
-        console.log("getFeaturedArticles.......................................................");
         //purpose
         //articleTopics - ???
         //fromEmailArticle - ???
@@ -801,7 +804,6 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
             }
             //if(!localStorage.getItem("fromEmailArticle") || localStorage.getItem("fromEmailArticle") == ""){
             var articleTopics = localStorage.getItem("articleTopics");
-            console.log(articleTopics);
             if(articleTopics){
                 console.log("If...");
                 $http.post("/article/chosenTopics", {articleTopics : localStorage.getItem("articleTopics") }).success(function(res) {
@@ -868,28 +870,6 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
                     }
                 });
             }
-            /*}  else {
-             $http.get("/article/featured").success(function(res){
-             var featuredData = res;
-             console.log(featuredData)
-             var searchKey = $('<textarea />').html(localStorage.getItem("fromEmailArticle")).text();
-             $http.post("/searchArticle", {name: searchKey }).success(function(res) {
-             console.log(res)
-             if(res.data.length > 0){
-             res.data[0].indexTopic = res.data[0].topicName;
-             johnRemoved = featuredData.filter(function(el) {
-             return el.title !== res.data[0].title;
-             });
-             johnRemoved.unshift(res.data[0])
-             setData(johnRemoved);
-             localStorage.setItem("fromEmailArticle","")
-             }
-             })
-             });
-
-             } */
-
-
         }
         $scope.func();
     }
@@ -995,7 +975,6 @@ $scope.refreshData = function(){
     }).error(function(data) {
         console.log('Error: ' + data);
     });
-    console.log($scope.resources);
 
     $scope.loadMoreResources = function(){
         //var arr = $scope.totalRes.splice(0,9);
@@ -1076,7 +1055,8 @@ $scope.refreshData = function(){
         $("#resourceLoadMore").hide(); //CHECK this
 
         $http.post("/searchArticles", {name: searchKey }).success(function(res) {
-            //alert(res)
+            // alert(1232)
+            // alert("dfgdsfgdfgdhdfghdf")
             // debugger;
             if(res.data.length > 0){
                 var uniqueNames = [];
